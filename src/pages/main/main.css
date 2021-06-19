@@ -1,0 +1,20 @@
+.menuItem {
+    width: 100vw;
+    margin: 5px auto;
+    user-select: none;
+    cursor: pointer;
+    border: none;
+    background-color: aqua;
+}
+
+.menuItem.Mechanics {
+    background-image: none;
+}
+
+.menuItem.Molecular {
+    background-image: none; 
+}
+
+.menuItem.Electrostatics {
+    background-image: none;  
+}
