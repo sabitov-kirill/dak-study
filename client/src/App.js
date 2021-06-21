@@ -5,6 +5,7 @@ import PageHeader from './patterns/common/header/header.js'
 import PageFooter from './patterns/common/footer/footer.js'
 
 import MainPage from './pages/main/main'
+import ProfilePage from './pages/profile/profile'
 
 class App extends Component {
 
@@ -15,7 +16,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MainPage switchPage={this.switchPage} />
+        {/* <MainPage switchPage={this.switchPage} /> */}
+        <ProfilePage />
       </div>
     );
   }

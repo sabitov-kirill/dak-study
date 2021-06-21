@@ -1,4 +1,4 @@
-import LoginControl from './login-control'
+import LoginControl from './login/login-control'
 
 function LogoSpace(props) {
     return (
@@ -13,12 +13,12 @@ function DivSpace(props) {
     return (
         <div>
             <LogoSpace />
-            <LoginControl />
+            <LoginControl isLoggedIn={false} />
         </div>
     );
 }
 
-export default function PageHeader(props) {
+export default function Header(props) {
     return (
         <header>
             <DivSpace />
