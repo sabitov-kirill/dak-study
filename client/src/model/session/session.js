@@ -1,6 +1,6 @@
 import { io, Socket } from "socket.io-client"
 
-import UserService from '../user-service/user-service'
+import UserService from '../services/user-service'
 let userService = new UserService();
 
 class Session {
@@ -29,7 +29,7 @@ class Session {
     // User sign in function
     async signIn(email, password) {
         try {
-            let user = userService.login(email.password);
+            let user = await userService.login(email, password);
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
