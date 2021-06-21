@@ -1,6 +1,7 @@
 # dependencies
-node_modules/
-src/app.js/
+client/node_modules/
+client/src/app.js/
+server/node_modules/
 
 # production
 /build
