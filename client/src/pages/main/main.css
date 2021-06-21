@@ -1,20 +1,48 @@
-.menuItem {
+* {
+    box-sizing: border-box;
+  }
+.menu-item {
     width: 100vw;
-    margin: 5px auto;
     user-select: none;
     cursor: pointer;
-    border: none;
-    background-color: aqua;
+    text-align: justify;
+    border: 1px transparent solid;
+    height: 100vh;
+    font-family: roboto condensed, sans-serif;
+    color: white;
+    font-size: 6vw;
+    text-align: center;
+    padding-top: 30vh;
+   
+  }
+ .menu-item-wrapper {
+    border: 1px transparent solid;
+  }
+
+.menu-item.Mechanics {
+    background-image :url("../../images/cern-da-vinci.jpg");
+    transition: background-image 0.2s;
 }
 
-.menuItem.Mechanics {
-    background-image: none;
+.menu-item.Molecular {
+    background-image :url("../../images/mol.jpg");
+    transition: background-image 0.2s;
 }
 
-.menuItem.Molecular {
-    background-image: none; 
+.menu-item.Electrostatics {
+    background-image: url("../../images/el.jpg");
+    transition: background-image 0.2s;  
 }
-
-.menuItem.Electrostatics {
-    background-image: none;  
+.menu-item.Magnetism {
+    background-image: url("../../images/mag.jpg");  
+    transition: background-image 0.2s;
 }
+.menu-item.Optics {
+    background-image: url("../../images/opt.jpg");  
+    transition: background-image 0.2s;
+}
+  
+  .PagesMenu {
+    text-align: center;
+  }
+  
