@@ -13,13 +13,9 @@ class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div>
         <MainPage switchPage={this.switchPage} />
       </div>
-=======
-      <PageFooter />
->>>>>>> eb664b331010b2d40278ec2e2659b74c75549351
     );
   }
 }
