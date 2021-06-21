@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import ScrollMenu from 'react-horizontal-scrolling-menu'
 
@@ -5,7 +6,7 @@ import ScrollMenu from 'react-horizontal-scrolling-menu'
 const MenuItem = ({ text, imageSrc }) => {
     return (
         <div
-            className={`menuItem ${text}`}
+            className={`menu-item ${text}`}
         >
             <p>{text}</p>
         </div>
@@ -33,7 +34,9 @@ class PagesMenu extends Component {
         this.menuItemsConstructor = [
             { name: "Mechanics" },
             { name: "Molecular" },
-            { name: "Electrostatics" }
+            { name: "Electrostatics" },
+            { name: "Magnetism" },
+            { name: "Optics" }
         ];
 
         this.menuItems = Menu(this.menuItemsConstructor);
@@ -47,14 +50,14 @@ class PagesMenu extends Component {
 
     render() {
         return (
-            <div className={`menuItem`}>
+            <div className={`menu-item`}>
                 <ScrollMenu
                     data={this.menuItems}
                     alignOnResize={true}
                     clickWhenDrag={false}
                     wheel={true}
                     dragging={true}
-                    transition={1}
+                    transition={15}
                     inertiaScrolling={1}
                     onSelect={this.pageSelect}
                 />
