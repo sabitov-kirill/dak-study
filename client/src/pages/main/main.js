@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './main.css'
 
+import LoginForm from '../../patterns/common/login-form/login-form'
 import PagesMenu from './body/scroll-menu'
 import InfoPanel from './body/info'
 

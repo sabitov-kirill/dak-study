@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 import './App.css';
 
-import PageHeader from './patterns/common/header/header.js'
-import PageFooter from './patterns/common/footer/footer.js'
-
 import MainPage from './pages/main/main'
+import LoginForm from './patterns/common/login-form/login-form';
+
+const routes = [
+  { path: '/', Component: MainPage },
+  { path: '/login', Component: LoginForm },
+]
 
 class App extends Component {
-
-  switchPage(page) {
-    alert(page);
-  }
-
   render() {
     return (
-      <div>
-        <MainPage switchPage={this.switchPage} />
-      </div>
+      <Router>
+        <Switch>
+          {routes.map(({ path, Component }) => (
+            <Route key={path} path={path} exact>
+              <Component />
+            </Route>
+          ))}
+        </Switch>
+      </Router>
     );
   }
 }

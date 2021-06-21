@@ -1,0 +1,17 @@
+{
+  "name": "dak-study",
+  "version": "0.1.0",
+  "description": "Single page reactovski' s raznimy view.",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm cd server dev",
+    "client": "npm cd client start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CGSG-KS6/dak-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/CGSG-KS6/dak-study#readme"
+}
