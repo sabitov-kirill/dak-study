@@ -10,6 +10,8 @@ export const session = new Session();
 export const Context = React.createContext(session);
 
 ReactDOM.render(
-  <App />,
+  <Context.Provider value={session}>
+    <App />
+  </Context.Provider>,
   document.getElementById('root')
 );

@@ -1,13 +1,8 @@
-const { validationResult } = require('express-validator');
-
 const userService = require('../services/user-service')
 
 class UserController {
     async login(request, result) {
         try {
-            // Check for request errors
-            if (!validationResult(request).isEmpty()) throw new Error("Request validation error.");
-
             // Getting registration data from body
             const { email, password } = JSON.parse(request.body);
             const user_data = await userService.login(email, password);
@@ -15,6 +10,7 @@ class UserController {
             // Return user data
             result.status(200).send(user_data);
         } catch (e) {
+            result.status(400).send(e);
             console.log(e);
         }
     }
@@ -28,6 +24,7 @@ class UserController {
             // Return user data
             result.status(200).send(user_data);
         } catch (e) {
+            result.status(400).send(e);
             console.log(e);
         }
     }
@@ -35,8 +32,10 @@ class UserController {
     async logout(request, result) {
         try {
             const { email } = JSON.parse(request.body);
-            const user_data = await userService.logout(email);
+            await userService.logout(email);
+            result.status(200);
         } catch (e) {
+            result.status(400).send(e);
             console.log(e);
         }
     }

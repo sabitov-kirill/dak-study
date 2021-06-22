@@ -3,11 +3,11 @@ require('dotenv').config()
 //
 // Application requirements declaration
 //
-const express      = require('express');
-const app          = express();
-const server       = require('http').createServer(app);
+const express = require('express');
+const app = express();
+const server = require('http').createServer(app);
 const cookieParser = require('cookie-parser');
-const mongoose     = require('mongoose');
+const mongoose = require('mongoose');
 
 app.use(express.text());
 app.use(cookieParser());
@@ -43,6 +43,7 @@ async function startServer() {
     try {
         // connecting to mongoDB
         await mongoose.connect(DB_URL, {
+            useFindAndModify: false,
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

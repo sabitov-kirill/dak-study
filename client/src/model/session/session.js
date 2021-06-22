@@ -13,11 +13,7 @@ class Session {
         }
     }
     setUser(value) {
-        if (typeof value === "User") {
-            this.User = value;
-        } else {
-            console.log("Can't set session user. Wrong Type.");
-        }
+        this.User = value;
     }
 
     // Basic constructor
@@ -33,25 +29,33 @@ class Session {
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
-            console.log(`Sign in error: ${e.response?.data?.message}`);
+            console.log(`Sign in error: ${e}`);
+            throw new Error(`Sign in error: ${e}`);
         }
     }
 
     // User sign up function
     async signUp(email, firstName, lastName, password) {
         try {
-            let user = userService.register(email, firstName, lastName, password);
-            this.setUser = user;
+            let user = await userService.register(email, `${firstName} ${lastName}`, password);
+            this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
-            console.log(`Sign up error: ${e.response?.data?.message}`);
+            console.log(`Sign up error: ${e}`);
+            throw new Error(`Sign up error: ${e}`);
         }
     }
 
     // User sign out function
-    signOut() {
-        this.User = null;
-        this.isLoggedIn = false;
+    signOut(email) {
+        try {
+            userService.logout(email);
+            this.setUser(null);
+            this.setIsLoggedIn(false);
+        } catch (e) {
+            console.log(`Sign up error: ${e}`);
+            throw new Error(`Sign out error: ${e}`);
+        }
     }
 }
 

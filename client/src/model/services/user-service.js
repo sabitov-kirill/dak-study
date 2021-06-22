@@ -1,54 +1,61 @@
 class UserService {
     async register(email, name, password) {
-        try {
-            let reg_data = { email, name, password }
-            let result = await fetch("/req/user-registration", {
-                method: "POST",
-                headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: JSON.stringify(reg_data)
-            });
+        let reg_data = { email, name, password }
+        let result = await fetch("/req/user-registration", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: JSON.stringify(reg_data)
+        });
+
+        if (result.ok) {
             return await result.json();
-        } catch {
-            console.log("Auth service post method error.");
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
         }
     }
 
     async login(email, password) {
-        try {
-            let login_data = { email, password }
-            let result = await fetch("/req/user-login", {
-                method: "POST",
-                headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: JSON.stringify(login_data)
-            });
+        let login_data = { email, password }
+        let result = await fetch("/req/user-login", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: JSON.stringify(login_data)
+        });
+
+        if (result.ok) {
             return await result.json();
-        } catch {
-            console.log("Auth service post method error.");
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
         }
     }
 
     async logout(email) {
-        try {
-            let result = await fetch("/req/user-logout", {
-                method: "POST",
-                headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: { email }
-            });
-        } catch {
-            console.log("Auth service post method error.");
+        let result = await fetch("/req/user-logout", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: { email }
+        });
+
+        if (!result.ok) {
+            let err = await result.text();
+            throw new Error(`${err}`);
         }
     }
 
     async getInfo(id) {
-        try {
-            let result = await fetch("/req/user-getinfo", {
-                method: "POST",
-                headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: { id }
-            });
+        let result = await fetch("/req/user-getinfo", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: { id }
+        });
+
+        if (result.ok) {
             return await result.json();
-        } catch {
-            console.log("Auth service post method error.");
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
         }
     }
 }

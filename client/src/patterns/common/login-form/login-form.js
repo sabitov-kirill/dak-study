@@ -1,32 +1,16 @@
-import { Context } from "../../../index";
-
 import React, { useContext, useState } from 'react';
 
+import Login from './login'
+import Register from './register'
+
 function LoginForm() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const session = useContext(Context);
+    const [action, setAction] = useState(<Login />)
 
     return (
         <div>
-            <input
-                onChange={e => setEmail(e.target.value)}
-                value={email}
-                type="text"
-                placeholder='Email'
-            />
-            <input
-                onChange={e => setPassword(e.target.value)}
-                value={password}
-                type="password"
-                placeholder='Password'
-            />
-            <button onClick={() => session.signIn(email, password)}>
-                Sign In
-            </button>
-            <button onClick={() => session.signUp(email, "kirill", "sabitov", password)}>
-                Sign Up
-            </button>
+            <input type="button" onClick={() => setAction(<Login />)} value={"Login"} />
+            <input type="button" onClick={() => setAction(<Register />)} value={"Register"} />
+            {action}
         </div>
     );
 }
