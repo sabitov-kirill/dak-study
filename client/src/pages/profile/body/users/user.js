@@ -16,8 +16,8 @@ class ChooseUser extends Component {
 
     render() {
         let user = (this.state.status === "Teacher"
-            ? <Teacher />
-            : <Student />);
+            ? <Teacher userGroup={['zxc', 'flex']} />
+            : <Student userGroup={['abc', 'asd']} />);
 
         return (
             <div>
@@ -25,7 +25,7 @@ class ChooseUser extends Component {
                     <option value="Student">Student</option>
                     <option value="Teacher">Teacher</option>
                 </select>
-                user
+                {user}
             </div>
         );
     }

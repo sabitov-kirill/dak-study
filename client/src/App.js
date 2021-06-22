@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import MainPage from './pages/main/main'
+import Profile from './pages/profile/profile'
 import LoginForm from './patterns/common/login-form/login-form';
 
 const routes = [
-  { path: '/', Component: MainPage },
+  { path: '/', Component: Profile },
   { path: '/login', Component: LoginForm },
 ]
 
