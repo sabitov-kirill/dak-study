@@ -4,10 +4,10 @@ import LoginControl from './login/login-control';
 
 function LogoSpace(props) {
     return (
-        <a>
+        <div >
             <img src="../../../../public/favicon.ico"></img>
-            <span>DAK-Study</span>
-        </a>
+            <span >DAK-Study</span>
+        </div>
     );
 }
 
@@ -24,7 +24,7 @@ function DivSpace(props) {
 
 export default function Header(props) {
     return (
-        <header>
+        <header className="Logo">
             <DivSpace />
         </header>
     );
