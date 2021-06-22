@@ -1,6 +1,8 @@
+import '../../../pages/main/main.scss';
+
 function AboutUs(props) {
     return (
-        <div>
+        <div className>
             <h3>About us</h3>
             <p>..text here..</p>
         </div>
