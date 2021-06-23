@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 
 function LoginButton(props) {
     return (
-        <button onClick={props.onClick}>Login</button>
+        <button className="loginForm" onClick={props.onClick}>Login</button>
     );
 }
 
 function LoggedButton(props) {
     return (
         <button onClick={props.onClick}>
-            <img src="" />
+            {/* <img src="" />*/}
         </button>
     );
 }
