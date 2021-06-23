@@ -61,6 +61,7 @@ function Register() {
                         await session.signUp(email, name, lastName, password);
                         setLogStatus(session.isLoggedIn);
                     } catch (error) {
+                        alert(error);
                         setError(true);
                     }
                 }}

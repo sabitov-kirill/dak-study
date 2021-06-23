@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Fragment className="loginForm">
                 <FormContainer
                     {...this.state}
                     signInSubmit={this.signInSubmitHandler}

@@ -38,6 +38,7 @@ function Login() {
                         await session.signIn(email, password);
                         setLogStatus(session.isLoggedIn);
                     } catch (error) {
+                        alert(error);
                         setError(true);
                     }
                 }}

@@ -17,7 +17,7 @@ class AddGroup extends Component {
     render() { 
         return ( 
             <div>
-                <button onClick={this.handleClick}>"open/close button"</button>
+                <button onClick={this.handleClick}>Join group</button>
                 {this.state.isOpened && <GroupForm closeForm={this.handleClick} />}
             </div>
          );

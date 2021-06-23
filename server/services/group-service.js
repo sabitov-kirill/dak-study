@@ -1,8 +1,8 @@
 const GroupModel = require('../models/group-model');
 
 class GroupService {
-    create(groupName) {
-        GroupModel.create({
+    async create(groupName) {
+        await GroupModel.create({
             name: groupName
         })
             .then(null, (error) => {
@@ -14,8 +14,8 @@ class GroupService {
             });
     }
 
-    create(groupName, groupPassword) {
-        GroupModel.create({
+    async create(groupName, groupPassword) {
+        await GroupModel.create({
             name: groupName,
             isPublic: true,
             password: groupPassword
@@ -29,18 +29,22 @@ class GroupService {
             });
     }
 
-    getInfo(groupName) {
-        const group = GroupModel.findOne({ name: groupName });
+    async getUsers(groupName) {
+        const group = await GroupModel.findOne({ name: groupName });
         if (!group) throw new Error(`Group with name ${groupName} doesn't exist.`);
 
-        return {
-            name: group.name,
-            usersId: group.usersId
-        };
+        return group.usersId;
     }
 
-    addMember(groupName, userId) {
-        const group = GroupModel.findOneAndUpdate(
+    async getPrivacy(groupName) {
+        const group = await GroupModel.findOne({ name: groupName });
+        if (!group) throw new Error(`Group with name ${groupName} doesn't exist.`);
+
+        return group.isPrivate;
+    }
+
+    async addMember(groupName, userId) {
+        const group = await GroupModel.findOneAndUpdate(
             { name: groupName },
             { $addToSet: { usersId: userId } }
         );

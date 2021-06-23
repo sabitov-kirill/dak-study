@@ -5,7 +5,7 @@ class UserController {
     async register(request, result) {
         try {
             // Getting login data from body
-            const { email, name, password } = request.body;
+            const { email, name, password } = JSON.parse(request.body);
             const user_data = await userService.registeration(email, name, password);
 
             // Return user data
@@ -19,7 +19,7 @@ class UserController {
     async login(request, result) {
         try {
             // Getting registration data from body
-            const { email, password } = request.body;
+            const { email, password } = JSON.parse(request.body);
             const user_data = await userService.login(email, password);
 
             // Return user data
@@ -32,7 +32,7 @@ class UserController {
 
     async logout(request, result) {
         try {
-            const { email } = request.body;
+            const { email } = JSON.parse(request.body);
             await userService.logout(email);
             result.status(200);
         } catch (e) {
@@ -43,7 +43,7 @@ class UserController {
 
     async getInfo(request, result) {
         try {
-            const { id } = request.body;
+            const { id } = JSON.parse(request.body);
             const user_data = await userService.getInfo(id);
 
             // Return user data
@@ -56,7 +56,7 @@ class UserController {
 
     async joinGroup(request, result) {
         try {
-            const { userId, groupName } = request.body;
+            const { userId, groupName } = JSON.parse(request.body);
 
             GroupService.addMember(groupName, userId);
             userService.joinGroup(userId, groupName);

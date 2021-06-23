@@ -5,12 +5,12 @@ import './App.css';
 
 import MainPage from './pages/main/main'
 import Profile from './pages/profile/profile'
-// import LoginForm from './patterns/common/login-form/login-form';
-import LoginForm from './patterns/common/login-form2/login-form'
+import LoginForm from './patterns/common/login-form/login-form'
 
 const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginForm },
+  { path: '/profile', Component: Profile },
 ]
 
 class App extends Component {

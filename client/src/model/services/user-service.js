@@ -4,7 +4,7 @@ class UserService {
         let result = await fetch("/req/user-registration", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: reg_data
+            body: JSON.stringify(reg_data)
         });
 
         if (result.ok) {
@@ -20,7 +20,7 @@ class UserService {
         let result = await fetch("/req/user-login", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: login_data
+            body: JSON.stringify(login_data)
         });
 
         if (result.ok) {
@@ -31,11 +31,9 @@ class UserService {
         }
     }
 
-    async logout(email) {
+    async logout() {
         let result = await fetch("/req/user-logout", {
             method: "POST",
-            headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: { email }
         });
 
         if (!result.ok) {
@@ -48,7 +46,7 @@ class UserService {
         let result = await fetch("/req/user-getinfo", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: { id }
+            body: JSON.stringify({ id })
         });
 
         if (result.ok) {
@@ -59,11 +57,11 @@ class UserService {
         }
     }
 
-    async joinGroup(userId, groupName) {
+    async joinGroup(groupName) {
         let result = await fetch("/req/user-join-group", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: { userId, groupName }
+            body: JSON.stringify({ groupName })
         });
 
         if (!result.ok) {
@@ -73,4 +71,4 @@ class UserService {
     }
 }
 
-export default UserService;
+export default new UserService();

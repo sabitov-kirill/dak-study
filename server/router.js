@@ -15,6 +15,8 @@ router.post('/user-join-group', userController.joinGroup);
 
 // Groups interaction
 router.post('/group-create', groupController.create);
+router.post('/group-privacy', groupController.getPrivacy);
+router.post('/group-users', groupController.getPrivacy);
 
 // Tests interaction
 router.post('/test-create', testController.create);

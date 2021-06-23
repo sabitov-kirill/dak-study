@@ -1,38 +1,45 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useContext } from 'react';
+
+import { Context } from '../../../../../index';
+import GroupService from '../../../../../model/services/group-service';
+import FormInput from '../../../../../patterns/common/input';
 
 function GroupForm(props) {
-    const [nameValue, setNameValue] = useState();
-    const [groupValue, setGroupValue] = useState();
-    const [passwordValue, setPasswordValue] = useState();
+    const [nameValue, setNameValue] = useState();              // Group name
+    const [passwordValue, setPasswordValue] = useState('');    // Group password
+    const [isGroupPrivate, setGroupPrivacy] = useState(false); // Group privacy status
 
-    const handleNameChange = (event) => {
-        setNameValue(event.target.value);
+    const [isError, setError] = useState(false);          // Wrong group name or password status
+    const [isNameCorrect, setNameIsCorrect] = useState(); // Name correct status
+
+    let session = useContext(Context);
+
+    const getGroupPrivacy = async () => {
+        // wathing if group is private
+        try {
+            let privacy = await GroupService.getPrivacy(nameValue);
+            setGroupPrivacy();
+            setNameIsCorrect(true);
+        } catch (e) {
+            setError(true);
+        }
     }
-
-    const handleOnClick = (event) => {
-        setGroupValue(event.target.value);
-    }
-
-    const handlePasswordChange = (event) => {
-        setPasswordValue(event.target.value);
-    }
-
 
     const handleSubmit = (event) => {
-        if (groupValue === 'Public') {
+        if (isGroupPrivate) {
             try {
-                //add suka group
+                // Clearing fields
                 setNameValue('');
-                setGroupValue('');
+                setGroupPrivacy(false);
                 event.target.reset();
             } catch (e) {
 
             }
-        } else if (groupValue === 'Private') {
+        } else if (isGroupPrivate) {
             // check if group exists and password
             // send data
             setNameValue('');
-            setGroupValue('');
+            setGroupPrivacy(false);
             setPasswordValue('');
             event.target.reset();
 
@@ -46,21 +53,31 @@ function GroupForm(props) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>Group name</div>
-                    <input type="text" value={nameValue} onChange={handleNameChange} required />
+                    <input 
+                        type="text"
+                        value={nameValue}
+                        className={`baseInput${isError ? ' incorectInput' : ''}${isNameCorrect ? ' correctInput' : ''}`}
+                        onBlur={getGroupPrivacy}
+                        onChange={(event) => {
+                            setNameValue(event.target.value);
+                            setError(false);
+                        }}
+                        required 
+                    />
                 </div>
 
-                <input type="radio" name="Type" value="Public" onClick={handleOnClick} required /> Public <br />
-                <input type="radio" name="Type" value="Private" onClick={handleOnClick} required /> Private <br />
-
-                {groupValue === 'Private' &&
-                    <div>
-                        <div>password</div>
-                        <input type='password' onChange={handlePasswordChange} required />
-                        <br />
-                    </div>
+                {isGroupPrivate &&
+                    <FormInput
+                        label="Group Password"
+                        type="text"
+                        name="name"
+                        placeholder="Enter group password"
+                        setValue={setPasswordValue}
+                        value={passwordValue}   
+                    />
                 }
 
-                <input type="submit" value="Add" />
+                {isNameCorrect && <input type="submit" value="Add" />}
             </form>
             <button onClick={props.closeForm}>"close button"</button>
         </div>

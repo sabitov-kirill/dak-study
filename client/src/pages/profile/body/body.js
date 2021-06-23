@@ -1,9 +1,8 @@
 // import Teacher from "./users/teacher/teacher"
-import Student from "./users/student/student"
-import ChooseUser from "./users/user"
 import { Context } from "../../../index"
 import { useContext } from "react";
 
+import ChooseUser from "./users/user"
 
 // client status stored in context
 
@@ -21,9 +20,7 @@ function SimpleAccoutInfo(props) {
                 <div>{props.userEmail}</div>
             </div>
             <div>
-                <button onClick={props.signOut}>
-                    <img scr="" />
-                </button>
+                <button onClick={props.signOut}>Sign out</button>
             </div>
         </div>
     );

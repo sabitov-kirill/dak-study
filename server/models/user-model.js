@@ -1,9 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const UserSchema = new Schema({
-    /* Unique user id. Public user data can be get by that */
-    id: { type: String, unique: true, required: true },
-
     /* Email */
     email: { type: String, unique: true, required: true },
 

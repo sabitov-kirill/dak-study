@@ -3,7 +3,7 @@ const TestsService = require('../services/test-service')
 class TestController {
     create(request, result) {
         try {
-            const { name, description, questions, maxPassCount } = request.body;
+            const { name, description, questions, maxPassCount } = JSON.parse(request.body);
             TestsService.create(name, description, questions, maxPassCount);
 
             result.status(200);
@@ -14,7 +14,7 @@ class TestController {
 
     addUserResult(request, result) {
         try {
-            const { userId, testResult, testName } = request.body;
+            const { userId, testResult, testName } = JSON.parse(request.body);
             TestsService.addUserResult(userId, testResult, testName);
 
             result.status(200);
@@ -25,7 +25,7 @@ class TestController {
 
     getUserResult(request, result) {
         try {
-            const { userId, testName } = request.body;
+            const { userId, testName } = JSON.parse(request.body);
             const testResult = TestsService.getUserResult(userId, testName);
 
             result.status(200).send(testResult);

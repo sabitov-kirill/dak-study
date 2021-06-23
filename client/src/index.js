@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import Controller from './model/controller/controller'
+import Session from './model/session'
 
-export const controller = new Controller();
-export const Context = React.createContext(Controller);
+export const session = new Session();
+export const Context = React.createContext(session);
 
 ReactDOM.render(
-  <Context.Provider value={controller}>
+  <Context.Provider value={session}>
     <App />
   </Context.Provider>,
   document.getElementById('root')

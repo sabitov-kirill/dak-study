@@ -5,7 +5,7 @@ export default function FormInput(props) {
             <input
                 name={props.name}
                 type={props.type}
-                className={'form-control' + props.isError ? ' error' : ''}
+                className="form-control"
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={e => {

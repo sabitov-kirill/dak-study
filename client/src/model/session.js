@@ -1,10 +1,8 @@
 import { io, Socket } from "socket.io-client"
 
-import UserService from '../services/user-service'
+import UserService from './services/user-service'
 
-let userService = new UserService();
-
-class Controller {
+class Session {
     // properties setters
     setIsLoggedIn(value) {
         if (typeof value === "boolean") {
@@ -26,7 +24,7 @@ class Controller {
     // User sign in function
     async signIn(email, password) {
         try {
-            let user = await userService.login(email, password);
+            let user = await UserService.login(email, password);
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
@@ -37,7 +35,7 @@ class Controller {
     // User sign up function
     async signUp(email, firstName, lastName, password) {
         try {
-            let user = await userService.register(email, `${firstName} ${lastName}`, password);
+            let user = await UserService.register(email, `${firstName} ${lastName}`, password);
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
@@ -46,23 +44,15 @@ class Controller {
     }
 
     // User sign out function
-    signOut(email) {
+    signOut() {
         try {
-            userService.logout(email);
+            UserService.logout();
             this.setUser(null);
             this.setIsLoggedIn(false);
         } catch (e) {
             throw new Error(`Sign out error: ${e}`);
         }
     }
-
-    joinGroup(groupName) {
-        try {
-            userService.joinGroup(this.user.id, groupName);
-        } catch (e) {
-            throw new Error(`Joining group error: ${e}`);
-        }
-    }
 }
 
-export default Controller;
+export default Session;
