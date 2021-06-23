@@ -1,0 +1,268 @@
+html {
+    height: 100vh;
+    padding: 0;
+  }
+  
+  body {
+    height: 100%;
+    margin: 0;
+    display: grid;
+    align-content: center;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .pb-5, .py-5 {
+    padding-bottom: 3rem!important;
+  }
+
+  .pt-5, .py-5 {
+    padding-top: 2rem!important;
+  }
+  
+  body:before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    height: 105vh;
+    width: 105vw;
+    top: -2.5vh;
+    left: -2.5vw;
+    display: block;
+    background: url("https://cdn.pixabay.com/photo/2017/02/27/21/47/yogurt-2104327_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Selection Container */
+  
+  .containSelection {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 5px 8px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  
+  .containSelection .left,
+  .containSelection .right {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 25px;
+    margin: 0;
+    color: #ec5353;
+    font-weight: 500;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 15px 0 0 0;
+    color: white;
+    font-weight: 300;
+  }
+  
+  .containSelection button {
+    font-size: 16px;
+    margin: 25px 0 0 0;
+  }
+  
+  /* Form Container */
+ 
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .containForm {
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 30%;
+    margin: auto;
+    background: white;
+    transition: all 800ms ease-in-out 400ms;
+    z-index: 2;
+  }
+  
+  .containForm form {
+    border-radius: 5px;
+    border: 4px double;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  label {
+    margin: 8px 0 2px 0;
+    color: #ec5353;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  form .btn:hover {
+    color: white;
+    box-shadow: 0 0 6px 0 #ec5353;
+  }
+
+  .btn-danger:hover {
+      color: #fff;
+      background-color: #c82333;
+      border-color: #bd2130;
+  }
+  .btn:hover {
+      color: #212529;
+      text-decoration: none;
+  }
+  [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      cursor: pointer;
+  }
+
+  form .btn {
+      margin: 15px 0 0 0;
+      border-radius: 500px;
+      transition: all 300ms ease-in-out;
+  }
+
+  .btn-danger {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+  }
+
+  .containSelection button {
+    font-size: 16px;
+    margin: 25px 0 0 0;
+  }
+
+  .btn {
+      display: inline-block;
+      font-weight: 400;
+      color: #212529;
+      text-align: center;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .form-control {
+      display: block;
+      width: 100%;
+      height: calc(1.5em + .75rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  [type=button], [type=reset], [type=submit], button {
+      -webkit-appearance: button;
+  }
+
+  button, select {
+      text-transform: none;
+  }
+  button, input {
+      overflow: visible;
+  }
+  button, input, optgroup, select, textarea {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+  button {
+      border-radius: 0;
+  }
+  *, ::after, ::before {
+      box-sizing: border-box;
+  }
+
+  button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    outline: 0 !important;
+  }
+  
+  .forgotPassword {
+    font-size: 12px;
+    text-align: center;
+    color: #ec5353;
+    margin-top: 25px;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+  }
+
+  input.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vmin;
+  }
+
