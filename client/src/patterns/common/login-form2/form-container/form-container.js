@@ -9,11 +9,11 @@ export default function FormContainer(props) {
         <div className="containForm" style={animate}>
             {props.userToggle ? (
                 <div className="container" id="signUp">
-                    <Form form="Sign up" submitted={props.signUpSubmit} />
+                    <Form form="Sign up" />
                 </div>
             ) : (
                 <div className="container" id="signIn">
-                    <Form form="Sign in" submitted={props.signInSubmit} />
+                    <Form form="Sign in" />
                 </div>
             )}
         </div>

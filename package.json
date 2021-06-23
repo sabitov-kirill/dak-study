@@ -13,5 +13,8 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/CGSG-KS6/dak-study#readme"
+  "homepage": "https://github.com/CGSG-KS6/dak-study#readme",
+  "dependencies": {
+    "react-scripts": "^4.0.3"
+  }
 }
