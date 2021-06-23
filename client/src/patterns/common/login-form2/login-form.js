@@ -32,8 +32,6 @@ export default class LoginForm extends Component {
             <Fragment className="loginForm">
                 <FormContainer
                     {...this.state}
-                    signInSubmit={this.signInSubmitHandler}
-                    signUpSubmit={this.signUpSubmitHandler}
                 />
                 <SelectionContainer
                     signUpClicked={this.signUpClickHandler}

@@ -18,7 +18,7 @@ class Group extends Component {
         super(props);
         this.state = { 
             isOpened: false,
-            students: [],
+            students: [{ name: "student1:", marks: [3, 2, 1, 3] }, { name: "student2:", marks: [3, 4, 5, 3] }],
             mouseEnter: false,
             getData: false 
             };
@@ -31,8 +31,7 @@ class Group extends Component {
         if (!this.state.getData) {
             // TODO: get students from group name and add them in state
             // get students marks and set it
-                    // test
-            this.setState({ students: [...this.state.students, { name: "student1:", marks: [3, 2, 1, 3] }] });
+
             this.setState({ getData: true });
         }
 
@@ -72,6 +71,8 @@ class Group extends Component {
                 {
                     this.state.isOpened &&
                     <div>
+                    {
+                        this.state.students.length !== 0 &&
                         <table>
                             <TableHeader />
                             <tbody>
@@ -95,6 +96,7 @@ class Group extends Component {
                             }
                             </tbody>
                         </table>
+                    }
                     </div>
                 }
             </div>

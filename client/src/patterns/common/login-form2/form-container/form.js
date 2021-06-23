@@ -2,6 +2,7 @@ import React, { Component, useContext, useState, Fragment } from 'react';
 
 import { Context } from "./../../../../index"
 import FormInput from "./input"
+import WrongInputLabel from './wrong-input-label'
 
 function SignIn(props) {
     return (
@@ -34,30 +35,43 @@ function SignUp(props) {
             <FormInput
                 label="Name"
                 type="text"
-                name="Name"
+                name="name"
                 placeholder="Enter Name"
+                setValue={props.setName}
+                value={props.name}
+                setError={props.setError}
             />
             <FormInput
                 label="Last Name"
                 type="text"
-                name="Last Name"
+                name="last Name"
                 placeholder="Enter Last Name"
+                setValue={props.setLastName}
+                value={props.lastName}
+                setError={props.setError}
             />
             <FormInput
                 label="Email"
                 type="email"
                 name="email"
                 placeholder="Enter email"
+                setValue={props.setEmail}
+                value={props.email}
+                setError={props.setError}
             />
             <FormInput
                 label="Password"
                 type="password"
                 name="password"
                 placeholder="Enter password"
+                setValue={props.setPassword}
+                value={props.password}
+                setError={props.setError}
             />
         </Fragment>
     );
 }
+
 
 export default function Form(props) {
     const [email, setEmail] = useState('');
@@ -68,10 +82,38 @@ export default function Form(props) {
     const [loginStatus, setLogStatus] = useState();
     const session = useContext(Context);
 
+    // не юзал isError + loginStatus, тк они используются только в классИмя
+    // чтобы Сане было удобнее переписать css porahu
 
+    // {isError && <WrongInputLabel text='Wrong email or password.' />} for debug now
+
+    // v next strokah stremnoe der'mo
+    // mne len' pisat' otdel'nie funkcii
+    // sorre) 
 
     return (
-        <form onSubmit={props.submitted}>
+        <form onSubmit={
+            props.form === "Sign in"
+                ? async () => {
+                    try {
+                        await session.signIn(email, password);
+                        setLogStatus(session.isLoggedIn);
+                    } catch (error) {
+                        alert(loginStatus);
+                        setError(true);
+                    }
+                }
+                : async () => {
+                    try {
+                        await session.signUp(email, name, lastName, password);
+                        setLogStatus(session.isLoggedIn);
+                    } catch (error) {
+                        alert(loginStatus);
+                        setError(true);
+                    }
+                }
+            }
+        >
             <div>
                 <h1 className="text-center">{props.form}</h1>
             </div>
@@ -85,7 +127,15 @@ export default function Form(props) {
                     password={password}
                 />
                 : <SignUp
-
+                    setEmail={setEmail}
+                    email={email}
+                    setError={setError}
+                    setPassword={setPassword}
+                    password={password}
+                    setName={setName}
+                    name={name}
+                    setLastName={setLastName}
+                    lastName={lastName}
                 />
             }
             <div className="form-group">
@@ -95,6 +145,7 @@ export default function Form(props) {
             </div>
 
             <div className="forgotPassword">Forgot Password?</div>
+            {isError && <WrongInputLabel text='Wrong email or password.' />}
         </form>
     );
 }
