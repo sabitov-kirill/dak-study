@@ -45,13 +45,12 @@ class MainPage extends Component {
     render() {
         return (
             <div>
-                <div className="Footage">
+                <div className="footage">
                     <Header />
                     <InfoPanel />
                 </div>
                 <Sliders heading="Example Slider" slides={slideData} />
                 <Footer />
-
             </div>
         );
     }

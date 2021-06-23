@@ -8,7 +8,7 @@ import Profile from './pages/profile/profile'
 import LoginForm from './patterns/common/login-form/login-form';
 
 const routes = [
-  { path: '/', Component: Profile },
+  { path: '/', Component: MainPage },
   { path: '/login', Component: LoginForm },
 ]
 
