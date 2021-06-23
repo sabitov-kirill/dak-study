@@ -14,10 +14,115 @@
 
 html, body {
   height: 100%;
+  overflow-x: hidden;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.footage {
+ background-repeat: no-repeat;
+ background-size: cover;
+ height: 100vh;
+ width: 100vw;
+ animation: headerLane 1.5s linear 1 forwards;
+ //  margin-top: 1vmin; это черная линия наверху :)))))))))
+ top: 0;
+}
+
+.imageLogo {
+  display: inline-block;
+  background-image: url(../../images/3.png);
+  border: #fff solid 2px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.head {
+  animation: paragraph 1.5s linear 1 forwards;
+  font-family: 'Courier' monospace;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  padding-left: 9vmin;
+  color: rgba($color: #fff, $alpha: 1.0);
+ }
+
+ .headProject {
+   font-size: 9vmin;
+   border-bottom: #fff 2px solid;
+   width: fit-content;
+   margin: 0;
+   padding-top: 12vmin; // вот эту парашу менять
+ }
+ .Zagolovok {
+   color: #fff;
+   font-family: 'Courier' monospace;
+   letter-spacing: 6px;
+   text-transform: uppercase;
+   margin-bottom: 3vw;
+   position: absolute;
+   margin-top: 14px;
+   margin-left: 1.5vw;
+   font-size: 2vmin;
+ }
+ .headerClass {
+   display:inline-block;
+ }
+
+ .headLogo {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-image:url(../../images/grad.png);
+   padding-top: 2vmin;
+   padding-left: 2vmin;
+   height: 102px;
+   animation: paragraph 1.5s linear 1 forwards;
+ }
+
+ .loginForm {
+   margin-left: 84vw;
+   position: absolute;
+   margin-top: 17px;
+   font-family: 'Courier' monospace !important;
+   letter-spacing: 6px;
+   text-transform: uppercase;
+    background-color: transparent;
+    border: white solid 2px;
+    color: white;
+    text-align: center;
+    font-size: 1.6vmin;
+ }
+ .loginForm:hover {
+ 
+   background-color: white;
+   border: transparent solid 2px;
+   color: black;
+   transition-duration: 0.6s;
+}
+
+@keyframes paragraph {
+  0% {
+      opacity: 0;
+  }
+
+100% {
+  opacity: 1;
+}
+}
+@keyframes headerLane {
+  0% {
+      background-image: url(../../images/space.jpg);
+  }
+  50% {
+      background-image: url(../../images/space1.jpg);
+  }
+  100% {
+      background-image: url(../../images/space1.jpg);
+  }
 }
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
   background-color: var(--color-secondary);
 }
 
@@ -281,7 +386,3 @@ h1, h2, h3 {
 // HEADER
 // =========================
 
-.Logo {
-  height: 10vmin;
-  background-color: rgba($color: #000000, $alpha: 0.6);
-}
