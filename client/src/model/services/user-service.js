@@ -4,7 +4,7 @@ class UserService {
         let result = await fetch("/req/user-registration", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: JSON.stringify(reg_data)
+            body: reg_data
         });
 
         if (result.ok) {
@@ -20,7 +20,7 @@ class UserService {
         let result = await fetch("/req/user-login", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: JSON.stringify(login_data)
+            body: login_data
         });
 
         if (result.ok) {
@@ -54,6 +54,19 @@ class UserService {
         if (result.ok) {
             return await result.json();
         } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
+        }
+    }
+
+    async joinGroup(userId, groupName) {
+        let result = await fetch("/req/user-join-group", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: { userId, groupName }
+        });
+
+        if (!result.ok) {
             let err = await result.text();
             throw new Error(`${err}`);
         }

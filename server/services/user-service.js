@@ -6,11 +6,9 @@ const UserModel = require('../models/user-model');
 class UserService {
     async registeration(email, name, password) {
         // User creation
-        const id = nanoid.nanoid();
-        const activationLink = `activate${id}`;
+        const activationLink = `activate${nanoid.nanoid()}`;
         const passwordHash = await bcrypt.hash(password, 4);
         const user = await UserModel.create({
-            id: id,
             email,
             name,
             password: passwordHash,
@@ -37,9 +35,8 @@ class UserService {
     async login(email, password) {
         // Check if user exist and set online status to true
         const user = await UserModel.findOneAndUpdate({ email }, { isOnline: true })
-        if (!user) {
-            throw new Error('Wrong email. User not found.')
-        }
+        if (!user) throw new Error('Wrong id. User not found.');
+
         const isPassEquals = await bcrypt.compare(password, user.password);
         if (!isPassEquals) {
             throw new Error(`Wrong password.`)
@@ -56,16 +53,12 @@ class UserService {
 
     async logout(email) {
         const user = await UserModel.findOneAndUpdate({ email }, { isOnline: false });
-        if (!user) {
-            throw new Error("Logout error. User not found.")
-        }
+        if (!user) throw new Error('Wrong id. User not found.');
     }
 
     async getInfo(id) {
         const user = await UserModel.findOne({ id })
-        if (!user) {
-            throw new Error('Wrong id. User not found.')
-        }
+        if (!user) throw new Error('Wrong id. User not found.');
 
         // Return user info object
         return {
@@ -74,6 +67,14 @@ class UserService {
             isOnline: user.isOnline,
             id: user._id
         }
+    }
+
+    async joinGroup(id, groupName) {
+        const user = await UserModel.findOne({ id })
+        if (!user) throw new Error('Wrong id. User not found.');
+
+        if (user.groupsNames.has(groupName)) throw new Error(`User already in group with name ${groupName}`);
+        else user.groupsNames.set(groupName, 1);
     }
 }
 

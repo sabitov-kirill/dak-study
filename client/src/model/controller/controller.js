@@ -1,9 +1,10 @@
 import { io, Socket } from "socket.io-client"
 
 import UserService from '../services/user-service'
+
 let userService = new UserService();
 
-class Session {
+class Controller {
     // properties setters
     setIsLoggedIn(value) {
         if (typeof value === "boolean") {
@@ -29,7 +30,6 @@ class Session {
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
-            console.log(`Sign in error: ${e}`);
             throw new Error(`Sign in error: ${e}`);
         }
     }
@@ -41,7 +41,6 @@ class Session {
             this.setUser(user);
             this.setIsLoggedIn(true);
         } catch (e) {
-            console.log(`Sign up error: ${e}`);
             throw new Error(`Sign up error: ${e}`);
         }
     }
@@ -53,10 +52,17 @@ class Session {
             this.setUser(null);
             this.setIsLoggedIn(false);
         } catch (e) {
-            console.log(`Sign up error: ${e}`);
             throw new Error(`Sign out error: ${e}`);
+        }
+    }
+
+    joinGroup(groupName) {
+        try {
+            userService.joinGroup(this.user.id, groupName);
+        } catch (e) {
+            throw new Error(`Joining group error: ${e}`);
         }
     }
 }
 
-export default Session;
+export default Controller;
