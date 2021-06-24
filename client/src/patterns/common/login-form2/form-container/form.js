@@ -120,7 +120,7 @@ export default function Form(props) {
         }
         >
             <div>
-                <h1 className="text-center">{props.form}</h1>
+                <h1 className="Zag">{props.form}</h1>
             </div>
             <hr />
             {props.form === "Sign in"

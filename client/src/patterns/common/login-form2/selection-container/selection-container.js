@@ -9,6 +9,7 @@ export default function SelectionContainer(props) {
             <br />
             Sign Up for an account
         </p>
+
     );
     const right = (
         <p>
@@ -21,23 +22,27 @@ export default function SelectionContainer(props) {
     return (
         <Fragment>
             <div className="d-flex py-5">
+
                 <div className="containSelection col-md-8">
-                    <Selection
-                        selectionClass="left"
-                        header="Sign up"
-                        dialog={left}
-                        buttonText="Sign Up"
-                        id="signUp"
-                        clicked={props.signUpClicked}
-                    />
-                    <Selection
-                        selectionClass="right"
-                        header="Sign in"
-                        dialog={right}
-                        buttonText="Sign in"
-                        id="signIn"
-                        clicked={props.signInClicked}
-                    />
+                    <div className="fonLogin">
+                        <Selection
+                            selectionClass="left"
+                            header="Sign up"
+                            dialog={left}
+                            buttonText="Sign Up"
+                            id="signUp"
+                            clicked={props.signUpClicked}
+                        /></div>
+                    <div className="fonLogin">
+                        <Selection
+                            selectionClass="right"
+                            header="Sign in"
+                            dialog={right}
+                            buttonText="Sign in"
+                            id="signIn"
+                            clicked={props.signInClicked}
+                        /></div>
+
                 </div>
             </div>
         </Fragment>
