@@ -17,16 +17,6 @@ export default class LoginForm extends Component {
         this.setState({ userToggle: false });
     };
 
-    signInSubmitHandler = evt => {
-        evt.preventDefault();
-        alert("Successful login");
-    };
-
-    signUpSubmitHandler = evt => {
-        evt.preventDefault();
-        alert("Successful registration");
-    };
-
     render() {
         return (
             <Fragment>

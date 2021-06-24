@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginForm from '../../login-form2/login-form'
+import { Link } from "react-router-dom";
 
 
 function LoginButton(props) {
@@ -36,9 +36,9 @@ class LoginControl extends Component {
         let button;
 
         if (this.props.isLoggedIn) {
-            button = <LoggedButton onClick={this.handleLoggedInClick} />
+            button = <Link to="profile"><LoggedButton onClick={this.handleLoggedInClick} /></Link>
         } else {
-            button = <LoginButton onClick={this.handleLoginClick} />
+            button = <Link to="/login"><LoginButton onClick={this.handleLoginClick} /></Link>
         }
         return button;
     }
