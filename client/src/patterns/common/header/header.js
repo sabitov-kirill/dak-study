@@ -19,8 +19,7 @@ function DivSpace(props) {
     return (
         <div className="headLogo">
             <LogoSpace />
-            {/* <LoginControl isLoggedIn={session.user.isLoggedIn} /> */}
-            <LoginControl className="loginForm" isLoggedIn={false} />
+            <LoginControl className="loginForm" isLoggedIn={session.isLoggedIn} />
         </div>
     );
 }

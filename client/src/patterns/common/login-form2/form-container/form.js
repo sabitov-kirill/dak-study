@@ -91,28 +91,33 @@ export default function Form(props) {
     // mne len' pisat' otdel'nie funkcii
     // sorre) 
 
+    const superFlexFunctionByFlex = props.form === "Sign in"
+        ? async () => {
+            try {
+                await session.signIn(email, password);
+                setLogStatus(session.isLoggedIn);
+            } catch (error) {
+                alert(loginStatus);
+                setError(true);
+            }
+        }
+        : async () => {
+            try {
+                await session.signUp(email, name, lastName, password);
+                setLogStatus(session.isLoggedIn);
+            } catch (error) {
+                alert(loginStatus);
+                setError(true);
+            }
+        }
+
     return (
         <form onSubmit={
-            props.form === "Sign in"
-                ? async () => {
-                    try {
-                        await session.signIn(email, password);
-                        setLogStatus(session.isLoggedIn);
-                    } catch (error) {
-                        alert(loginStatus);
-                        setError(true);
-                    }
-                }
-                : async () => {
-                    try {
-                        await session.signUp(email, name, lastName, password);
-                        setLogStatus(session.isLoggedIn);
-                    } catch (error) {
-                        alert(loginStatus);
-                        setError(true);
-                    }
-                }
+            event => {
+                event.preventDefault();
+                superFlexFunctionByFlex();
             }
+        }
         >
             <div>
                 <h1 className="text-center">{props.form}</h1>
