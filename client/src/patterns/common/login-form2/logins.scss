@@ -8,9 +8,20 @@
      margin: 0;
      display: grid;
      align-content: center;
-     background-image: url(../../../images/space2.jpg);
      background-size: cover;
      background-repeat: no-repeat;
+      animation: headerLane1 2s linear 1 forwards;
+  }
+  @keyframes headerLane1 {
+    0% {
+        background-image: url(../../../images/space3.jpg);
+    }
+    50% {
+        background-image: url(../../../images/space2.jpg);
+    }
+    100% {
+        background-image: url(../../../images/space2.jpg);
+    }
   }
 
   .pb-5, .py-5 {
@@ -100,7 +111,7 @@
     text-align: center;
     padding: 20px;
   }
-  
+
   .container h1 {
     font-size: 25px;
     margin: 0;
@@ -141,7 +152,7 @@
     transition: all 800ms ease-in-out 400ms;
     z-index: 7;
   }
-  
+
   .containForm form {
     border-radius: 5px;
     border: 4px double;
