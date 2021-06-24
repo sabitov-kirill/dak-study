@@ -7,16 +7,19 @@ import FormInput from '../../../../../patterns/common/input';
 function GroupCreator(props) {
     const [groupName, setGroupName] = useState('');
     const [groupPassword, setGroupPassword] = useState('');
-    const [groupValue, setGroupValue] = useState(false);
+    const [groupValue, setGroupValue] = useState('Public');
     const [isError, setIsError] = useState(false);
 
     const createGroup = async () => {
         try {
-            if (groupValue === 'Public') await GroupService.create(groupName, true);
-            else await GroupService.create(groupName, false, groupPassword);
-            
+            if (groupValue === 'Public') {
+                await GroupService.create(groupName, true);
+            }
+            else {
+                await GroupService.create(groupName, false, groupPassword);
+            }
+
             alert("Sucsess");
-            // UserService.joinGroup(groupName);
         } catch (e) {
             alert(e);
             setIsError(true);
@@ -25,7 +28,10 @@ function GroupCreator(props) {
 
     return (
         <div>
-            <form onSubmit={createGroup}>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                createGroup();
+            }}>
                 <FormInput
                     label="Group Name"
                     type="text"
@@ -37,19 +43,11 @@ function GroupCreator(props) {
                     setError={setIsError}
                 />
 
-                <input 
-                    type="radio"
-                    name="Type"
-                    value={'Public'}
-                    onClick={(e) => setGroupValue(e.target.value)}
-                    required
-                /> Public <br />
                 <input
-                    type="radio"
+                    type="checkbox"
                     name="Type"
                     value={'Private'}
-                    onClick={(e) => setGroupValue(e.target.value)}
-                    required
+                    onChange={(e) => setGroupValue(e.target.checked ? 'Private' : 'Public')}
                 /> Private <br />
 
                 {groupValue === 'Private' &&
@@ -59,14 +57,16 @@ function GroupCreator(props) {
                         name="name"
                         placeholder="Enter group password"
                         setValue={setGroupPassword}
-                        value={groupPassword}   
+                        value={groupPassword}
+                        isError={isError}
+                        setError={setIsError}
                     />
                 }
 
-                <input type="submit" value="Create" />
+                <button type="submit">Create</button>
             </form>
         </div>
     );
 }
- 
+
 export default GroupCreator;

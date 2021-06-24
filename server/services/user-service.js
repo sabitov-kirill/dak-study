@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const nanoid = require('nanoid');
-const mongoose = require('mongoose')
 
 const UserModel = require('../models/user-model');
 
@@ -29,6 +28,7 @@ class UserService {
             email: user.email,
             name: user.name,
             isOnline: user.isOnline,
+            status: user.status,
             id: user._id
         };
     }
@@ -47,6 +47,7 @@ class UserService {
         return {
             email: user.email,
             name: user.name,
+            status: user.status,
             isOnline: user.isOnline,
             id: user._id
         }
@@ -54,6 +55,11 @@ class UserService {
 
     async logout(email) {
         const user = await UserModel.findOneAndUpdate({ email }, { isOnline: false });
+        if (!user) throw new Error('Wrong id. User not found.');
+    }
+
+    async setStatus(id, status) {
+        const user = await UserModel.findOneAndUpdate({ id }, { status });
         if (!user) throw new Error('Wrong id. User not found.');
     }
 

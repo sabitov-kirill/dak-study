@@ -9,9 +9,12 @@ import Session from './model/session'
 export const session = new Session();
 export const Context = React.createContext(session);
 
-ReactDOM.render(
-  <Context.Provider value={session}>
-    <App />
-  </Context.Provider>,
-  document.getElementById('root')
-);
+session.init()
+  .then(() => {
+    ReactDOM.render(
+      <Context.Provider value={session}>
+        <App />
+      </Context.Provider>,
+      document.getElementById('root')
+    );
+  });

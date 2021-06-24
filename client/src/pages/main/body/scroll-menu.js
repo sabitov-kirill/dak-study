@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // =========================
 // Slide
@@ -8,6 +9,8 @@ import React, { Component } from 'react';
 class Slide extends Component {
     constructor(props) {
         super(props)
+
+        this.state = { isClicked: false };
 
         this.handleMouseMove = this.handleMouseMove.bind(this)
         this.handleMouseLeave = this.handleMouseLeave.bind(this)
@@ -40,34 +43,38 @@ class Slide extends Component {
     render() {
         const { src, /*button,*/ headline, index } = this.props.slide
         const current = this.props.current
+        const page = this.props.page;
         let classNames = 'slide'
+        let link = `/${headline}/${page}`
 
         if (current === index) classNames += ' slide--current'
         else if (current - 1 === index) classNames += ' slide--previous'
         else if (current + 1 === index) classNames += ' slide--next'
 
         return (
-            <li
-                ref={this.slide}
-                className={classNames}
-                onClick={this.handleSlideClick}
-                onMouseMove={this.handleMouseMove}
-                onMouseLeave={this.handleMouseLeave}
-            >
-                <div className="slide__image-wrapper">
-                    <img
-                        className="slide__image"
-                        alt={headline}
-                        src={src}
-                        onLoad={this.imageLoaded}
-                    />
-                </div>
+            <Link to={link}>
+                <li
+                    ref={this.slide}
+                    className={classNames}
+                    onClick={this.handleSlideClick}
+                    onMouseMove={this.handleMouseMove}
+                    onMouseLeave={this.handleMouseLeave}
+                >
+                    <div className="slide__image-wrapper">
+                        <img
+                            className="slide__image"
+                            alt={headline}
+                            src={src}
+                            onLoad={this.imageLoaded}
+                        />
+                    </div>
 
-                <article className="slide__content">
-                    <h2 className="slide__headline btn">{headline}</h2>
-                    {/* <button className="slide__action ">{button}</button> */}
-                </article>
-            </li>
+                    <article className="slide__content">
+                        <h2 className="slide__headline btn">{headline}</h2>
+                        {/* <button className="slide__action ">{button}</button> */}
+                    </article>
+                </li>
+            </Link>
         )
     }
 }
@@ -141,7 +148,7 @@ class Sliders extends Component {
         return (
             <div className='slider' aria-labelledby={headingId}>
                 <ul className="slider__wrapper" style={wrapperTransform}>
-                    <h3 id={headingId} class="visuallyhidden">{heading}</h3>
+                    <h3 id={headingId} className="visuallyhidden">{heading}</h3>
 
                     {slides.map(slide => {
                         return (
@@ -150,6 +157,7 @@ class Sliders extends Component {
                                 slide={slide}
                                 current={current}
                                 handleSlideClick={this.handleSlideClick}
+                                page={this.props.page}
                             />
                         )
                     })}

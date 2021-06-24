@@ -1,19 +1,17 @@
 class GroupService {
     async create(name, isPublic, password) {
-        let result, groupData;
+        let result;
         if (isPublic) {
-            groupData = { name, isPublic };
             result = await fetch("/req/group-create", {
                 method: "POST",
                 headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: JSON.stringify(groupData)
+                body: JSON.stringify({ name, isPublic })
             });
         } else {
-            groupData = { name, isPublic, password };
             result = await fetch("/req/group-create", {
                 method: "POST",
                 headers: { "Contet-Type": "application/json;charset=utf-8" },
-                body: JSON.stringify(groupData)
+                body: JSON.stringify({ name, isPublic, password })
             });
         }
 

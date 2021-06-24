@@ -1,4 +1,5 @@
-import React, { Component, useContext, useState, Fragment } from 'react';
+import React, { useContext, useState, Fragment } from 'react';
+import { Redirect } from 'react-router';
 
 import { Context } from "./../../../../index"
 import FormInput from "./input"
@@ -75,11 +76,11 @@ function SignUp(props) {
 
 export default function Form(props) {
     const [email, setEmail] = useState('');
-    const [name, setName] = useState();
+    const [name, setName] = useState('');
     const [lastName, setLastName] = useState();
     const [password, setPassword] = useState('');
+    const [isSuccsess, setIsSuccsess] = useState(false);
     const [isError, setError] = useState(false);
-    const [loginStatus, setLogStatus] = useState();
     const session = useContext(Context);
 
     // не юзал isError + loginStatus, тк они используются только в классИмя
@@ -91,33 +92,26 @@ export default function Form(props) {
     // mne len' pisat' otdel'nie funkcii
     // sorre) 
 
-    const superFlexFunctionByFlex = props.form === "Sign in"
-        ? async () => {
-            try {
-                await session.signIn(email, password);
-                setLogStatus(session.isLoggedIn);
-            } catch (error) {
-                alert(loginStatus);
-                setError(true);
-            }
-        }
-        : async () => {
-            try {
+    const superFlexFunctionByFlex = async () => {
+        try {
+            if (props.form === "Sign in") {
+                await session.signIn(email, password)
+            } else {
                 await session.signUp(email, name, lastName, password);
-                setLogStatus(session.isLoggedIn);
-            } catch (error) {
-                alert(loginStatus);
-                setError(true);
             }
+
+            setIsSuccsess(true);
+        } catch (e) {
+            alert(e);
+            setError(true);
         }
+    }
 
     return (
-        <form onSubmit={
-            event => {
-                event.preventDefault();
-                superFlexFunctionByFlex();
-            }
-        }
+        <form onSubmit={event => {
+            event.preventDefault();
+            superFlexFunctionByFlex();
+        }}
         >
             <div>
                 <h1 className="Zag">{props.form}</h1>
@@ -151,6 +145,7 @@ export default function Form(props) {
 
             <div className="forgotPassword">Forgot Password?</div>
             {isError && <WrongInputLabel text='Wrong email or password.' />}
+            {isSuccsess && <Redirect to='/' />}
         </form>
     );
 }
