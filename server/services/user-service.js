@@ -11,7 +11,9 @@ class UserService {
         const user = await UserModel.create({
             email,
             name,
+            status: 'student',
             password: passwordHash,
+            groupsNames: new Map(),
             isOnline: true,
             activationLink
         })
@@ -21,7 +23,9 @@ class UserService {
                 } else {
                     throw error;
                 }
-            })
+            });
+
+        await this.joinGroup(user._id, 'public');
 
         // Return user info object
         return {
@@ -29,6 +33,7 @@ class UserService {
             name: user.name,
             isOnline: user.isOnline,
             status: user.status,
+            groupsNames: user.groupsNames,
             id: user._id
         };
     }
@@ -49,6 +54,7 @@ class UserService {
             name: user.name,
             status: user.status,
             isOnline: user.isOnline,
+            groupsNames: user.groupsNames,
             id: user._id
         }
     }
@@ -59,12 +65,12 @@ class UserService {
     }
 
     async setStatus(id, status) {
-        const user = await UserModel.findOneAndUpdate({ id }, { status });
+        const user = await UserModel.findOneAndUpdate({ _id: id }, { status });
         if (!user) throw new Error('Wrong id. User not found.');
     }
 
     async getInfo(id) {
-        const user = await UserModel.findOne({ id })
+        const user = await UserModel.findOne({ _id: id })
         if (!user) throw new Error('Wrong id. User not found.');
 
         // Return user info object
@@ -72,16 +78,18 @@ class UserService {
             email: user.email,
             name: user.name,
             isOnline: user.isOnline,
+            groupsNames: user.groupsNames,
             id: user._id
         }
     }
 
     async joinGroup(id, groupName) {
-        const user = await UserModel.findOne({ id })
+        const user = await UserModel.findOne({ _id: id })
         if (!user) throw new Error('Wrong id. User not found.');
 
         if (user.groupsNames.has(groupName)) throw new Error(`User already in group with name ${groupName}`);
         else user.groupsNames.set(groupName, 1);
+        await user.save();
     }
 }
 

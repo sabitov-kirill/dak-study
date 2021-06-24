@@ -14,6 +14,7 @@ function GroupCreator(props) {
         try {
             if (groupValue === 'Public') {
                 await GroupService.create(groupName, true);
+                await UserService.joinGroup(groupName);
             }
             else {
                 await GroupService.create(groupName, false, groupPassword);

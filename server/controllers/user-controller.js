@@ -87,6 +87,18 @@ class UserController {
         }
     }
 
+    async getGroups(request, result) {
+        try {
+            const { id } = JSON.parse(request.cookies);
+            const user_group = await userService.getGroups(id);
+
+            // Return user data
+            result.status(200).send(JSON.stringify(user_group));
+        } catch (e) {
+            result.status(400).send(e);
+        }
+    }
+
     async joinGroup(request, result) {
         try {
             const { userId, groupName } = JSON.parse(request.body);

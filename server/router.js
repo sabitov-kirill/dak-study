@@ -13,6 +13,7 @@ router.post('/user-login', userController.login);
 router.get('/user-logout', userController.logout);
 router.post('/user-set-status', userController.setStatus);
 router.post('/user-getinfo', userController.getInfo);
+router.post('/user-get-groups', userController.getGroups);
 router.post('/user-join-group', userController.joinGroup);
 
 // Groups interaction

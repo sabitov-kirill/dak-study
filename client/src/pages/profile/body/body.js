@@ -2,51 +2,36 @@ import { Redirect } from 'react-router';
 import { useContext, useState } from "react";
 
 import { Context } from "../../../index"
-import ChooseUser from "./users/user"
-
-function SimpleAccoutInfo(props) {
-    return (
-        <div>
-            <div>
-                <div>{props.user.name}</div>
-                <div>{props.user.email}</div>
-            </div>
-            <div>
-                <button onClick={props.signOut}>Sign out</button>
-            </div>
-        </div>
-    );
-}
+import ActionsContainer from "./actions/actions-container"
+import InfoPanel from "./info-panel"
 
 export default function Body() {
-    let session = useContext(Context);
     const [shouldRedirect, setShouldRedirect] = useState(false);
+    let session = useContext(Context);
 
-    let content = session.isLoggedIn
-        ? <div>
-            <h1>Profile</h1>
-            <SimpleAccoutInfo
-                user={session.user}
-                signOut={async () => {
-                    try {
-                        await session.signOut();
-                        setShouldRedirect(true);
-                    } catch {
-                        alert('Sign Out error.');
-                    }
-                }}
-            />
-
-            /* in props of group 'userGroup' list need to give user groups from context */
-            <ChooseUser status={session.user.status} />
-        </div>
-        : <div>
-            <p>You need Sign In to see profile.</p>
-        </div>
+    const signOut = async () => {
+        try {
+            await session.signOut();
+            setShouldRedirect(true);
+        } catch {
+            alert('Sign Out error.');
+        }
+    }
 
     return (
         <>
-            { content}
+            { session.isLoggedIn &&
+                <div className='profileBody'>
+                    <h1>Profile</h1>
+                    <InfoPanel className='profileInfo' signOut={signOut}/>
+                    <ActionsContainer className='profileActions' />
+                </div>
+            }
+            { !session.isLoggedIn &&
+                <div className='profileBody'>
+                    <p>You need Sign In to see profile.</p>
+                </div>
+            }
             { shouldRedirect && <Redirect to='/' />}
         </>
     );

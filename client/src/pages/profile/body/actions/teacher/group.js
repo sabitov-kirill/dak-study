@@ -1,5 +1,4 @@
-import React, { Children, Component } from 'react';
-import Student from './student';
+import React, { Component } from 'react';
 
 const TableHeader = () => {
     return (

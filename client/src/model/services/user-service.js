@@ -70,6 +70,20 @@ class UserService {
         }
     }
 
+    async getGroups() {
+        let result = await fetch("/req/user-get-groups", {
+            method: "GET"
+        });
+
+        if (result.ok) {
+            let userGroups = await result.text();
+            return JSON.parse(userGroups);
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
+        }
+    }
+
     async joinGroup(groupName) {
         let result = await fetch("/req/user-join-group", {
             method: "POST",

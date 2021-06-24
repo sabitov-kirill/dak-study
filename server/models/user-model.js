@@ -21,7 +21,13 @@ const UserSchema = new Schema({
     isOnline: { type: Boolean },
 
     /* Users group list */
-    groupsNames: { type: Map, of: Number }
+    groupsNames: { type: Map, of: Number, get: (groupsMap) => {
+        let values = [], i = 0;
+        groupsMap.forEach((value, group) => {
+            values[i++] = group;
+        });
+        return values;
+    } }
 });
 
 module.exports = model('User', UserSchema);

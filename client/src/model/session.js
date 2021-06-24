@@ -3,6 +3,10 @@ import { io, Socket } from "socket.io-client"
 import UserService from './services/user-service'
 
 class Session {
+    constructor() {
+        this.isLoggedIn = false;
+    }
+
     // Basic constructor
     async init() {
         this.socket = io();
@@ -44,7 +48,7 @@ class Session {
     // User sign out function
     async signOut() {
         try {
-            if (this.user) {
+            if (this.isLoggedIn) {
                 await UserService.logout();
                 delete this.user;
                 this.isLoggedIn = false;

@@ -3,9 +3,8 @@ export default function FormInput(props) {
         <div className="form-group">
             <label htmlFor={props.name}>{props.label}</label>
             <input
-                name={props.name}
                 type={props.type}
-                className="form-control"
+                className={props.className + props.isError ? ' error' : ''}
                 placeholder={props.placeholder}
                 value={props.value}
                 onChange={e => {
