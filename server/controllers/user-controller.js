@@ -11,7 +11,7 @@ class UserController {
             // Return user data
             result.status(200).send(user_data);
         } catch (e) {
-            result.status(400).send(e);
+            result.status(400).send({ Error: e });
             console.log(e);
         }
     }
