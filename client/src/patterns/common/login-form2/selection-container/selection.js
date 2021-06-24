@@ -8,7 +8,7 @@ export default function Selection(props) {
                     id={props.id}
                     type="button"
                     onClick={props.clicked}
-                    className="btn btn-outline-danger"
+                    className="btns btn-outline-danger"
                 >
                     {props.buttonText}
                 </button>

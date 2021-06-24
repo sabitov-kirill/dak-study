@@ -144,7 +144,7 @@ export default function Form(props) {
                 />
             }
             <div className="form-group">
-                <button type="submit" className="btn btn-danger form-control">
+                <button type="submit" className="btns btn-danger form-control">
                     {props.form}
                 </button>
             </div>
