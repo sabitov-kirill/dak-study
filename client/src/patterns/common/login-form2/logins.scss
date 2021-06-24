@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
   
  .allElements {
      height: 100vh;
@@ -6,6 +8,7 @@
      margin: 0;
      display: grid;
      align-content: center;
+     background-color:darken(#101118, 4%);
   }
 
   .pb-5, .py-5 {
@@ -15,18 +18,72 @@
   .pt-5, .py-5 {
     padding-top: 2rem!important;
   }
+
+  @mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+    &:after {
+      position: absolute;
+      content: "";
+      top: $y;
+      left: $x;
+      right: 0;
+      z-index: -1;
+      height:40vh;
+      width: 70vw;
+      margin: 0 auto;
+      transform: scale($size);
+      -webkit-filter: blur($spread);
+      -moz-filter: blur($spread);
+      -ms-filter: blur($spread);
+      filter: blur($spread);
+      background: linear-gradient(270deg, $colorA, $colorB);
+      background-size: 200% 200%;
+      animation: animateGlow $duration ease infinite;
+      
+      @keyframes animateGlow {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+      }
+    }
+  }
   
+  .fonLogin h1 {
+    color: #252B37;
+    animation: textColor 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor {
+      0% {
+        color: #7e0fff;
+      }
+      50% {
+        color: #0fffc1;
+      }
+      100% {
+        color: #7e0fff;
+      }
+    }
+  }
+
+  .Zag {
+    color: #101118 !important;
+  }
+
+  .fonLogin {
+    background-color: rgba($color: #101118, $alpha: 1.0);
+    height: 35vh;
+    padding-top: 4vh;
+  }
+ 
   
   .containSelection {
     display: flex;
     justify-content: space-around;
     margin: auto;
-    background: rgba(0, 0, 0, 0.75);
-    box-shadow: 0 5px 8px 3px rgba(0, 0, 0, 0.3);
+
     border-radius: 5px;
     padding: 60px;
     position: relative;
-    z-index: 1;
+    z-index: 4;
   }
 
   .col-md-8 {
@@ -44,7 +101,7 @@
   .container h1 {
     font-size: 25px;
     margin: 0;
-    color: #ec5353;
+    color: #fff;
     font-weight: 500;
   }
   
@@ -79,7 +136,7 @@
     margin-top: 30vh;
     background: white;
     transition: all 800ms ease-in-out 400ms;
-    z-index: 2;
+    z-index: 7;
   }
   
   .containForm form {
@@ -91,26 +148,27 @@
   
   .form-group label {
     margin: 8px 0 2px 0;
-    color: #ec5353;
+    color: rgba($color: #101118, $alpha: 1.0);
     font-size: 14px;
     text-align: left;
   }
 
   .btn-outline-danger:hover {
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: #fff;
+    box-shadow: 0 0 6px 0 #fff;
+    transition-duration: 0.3s;
   }
   
-  form .btn:hover {
+  form .btns:hover {
     color: white;
-    box-shadow: 0 0 6px 0 #ec5353;
+    box-shadow: 0 0 6px 0 #101118;
+    transition-duration: 0.3s;
   }
 
   .btn-danger:hover {
       color: #fff;
-      background-color: #c82333;
-      border-color: #bd2130;
+      background-color: #101118;
+      border-color: #101118;
   }
   .btns:hover {
       color: #212529;
@@ -124,12 +182,6 @@
       margin: 15px 0 0 0;
       border-radius: 500px;
       transition: all 300ms ease-in-out;
-  }
-
-  .btn-danger {
-      color: #fff;
-      background-color: #dc3545;
-      border-color: #dc3545;
   }
 
   .containSelection button {
@@ -148,7 +200,6 @@
       -ms-user-select: none;
       user-select: none;
       background-color: transparent;
-      border: 1px solid transparent;
       padding: .375rem .75rem;
       font-size: 1rem;
       line-height: 1.5;
@@ -156,9 +207,50 @@
       transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
 
+  #signUp.btns {
+    color: #252B37;
+    animation: textColor1 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor1 {
+      0% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+      50% {
+        color: #0fffc1;
+        border: #0fffc1 solid 2px;
+      }
+      100% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+    }
+  }
+  
+
+  #signIn.btns {
+    color: #252B37;
+    animation: textColor1 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor1 {
+      0% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+      50% {
+        color: #0fffc1;
+        border: #0fffc1 solid 2px;
+      }
+      100% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+    }
+  }
+
   .btn-outline-danger {
-    color: #dc3545;
-    border-color: #dc3545;
+    color: rgba($color: #fff, $alpha: 1.0);
+    border-color: rgba($color: #fff, $alpha: 1.0);
   }
 
   .form-control {
@@ -217,7 +309,7 @@
   .forgotPassword {
     font-size: 12px;
     text-align: center;
-    color: #ec5353;
+    color: rgba($color: #101118, $alpha: 1.0);
     margin-top: 25px;
     text-decoration: underline;
     text-decoration-style: dotted;
