@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <Fragment className="loginForm">
+            <Fragment>
                 <FormContainer
                     {...this.state}
                 />
@@ -41,3 +41,4 @@ export default class LoginForm extends Component {
         );
     }
 }
+

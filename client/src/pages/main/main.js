@@ -3,7 +3,6 @@ import './main.scss';
 
 import InfoPanel from './body/info';
 import Header from '../../patterns/common/header/header';
-import ScrollExample from '../../patterns/common/header/header';
 import Footer from '../../patterns/common/footer/footer';
 import Sliders from './body/scroll-menu';
 
@@ -47,12 +46,12 @@ class MainPage extends Component {
         return (
             <div>
                 <div className="footage">
-                    <Header />
+
                     <InfoPanel />
                 </div>
                 <Sliders heading="Example Slider" slides={slideData} />
                 <Footer />
-                <ScrollExample />
+                <Header />
             </div>
         );
     }

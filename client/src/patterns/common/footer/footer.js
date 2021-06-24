@@ -2,9 +2,9 @@ import '../../../pages/main/main.scss';
 
 function AboutUs(props) {
     return (
-        <div className>
+        <div className="Discr">
             <h3>About us</h3>
-            <p>..text here..</p>
+            <p>text here..</p>
         </div>
     );
 }
@@ -17,7 +17,7 @@ function Contacts(props) {
     ];
 
     return (
-        <div>
+        <div className="contacts">
             <h3>Contacts</h3>
             <ul>
                 {
@@ -36,7 +36,7 @@ function Contacts(props) {
 
 function DivRights(props) {
     return (
-        <div>
+        <div className="Rights">
             <img src="" />
             <div>
                 © 2021 DAK LLC.
@@ -48,10 +48,13 @@ function DivRights(props) {
 
 function DivFooter(props) {
     return (
-        <div>
-            <AboutUs />
-            <Contacts />
+        <div className="footerClass">
+            <div className="commonFooter">
+                <AboutUs />
+                <Contacts />
+            </div>
             <DivRights />
+
         </div>
     );
 }

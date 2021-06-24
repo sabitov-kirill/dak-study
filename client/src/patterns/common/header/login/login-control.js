@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import LoginForm from '../../login-form2/login-form'
 
 
 function LoginButton(props) {
     return (
         <button className="loginForm" onClick={props.onClick}>Login</button>
+
     );
 }
 
 function LoggedButton(props) {
     return (
-        <button onClick={props.onClick}>
-            {/* <img src="" />*/}
+        <button className="logged" onClick={props.onClick}>
+            <p>name</p>
         </button>
     );
 }
+
 
 class LoginControl extends Component {
     constructor(props) {
