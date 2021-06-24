@@ -6,7 +6,7 @@ import Student from "./student/student"
 class ChooseUser extends Component {
     constructor(props) {
         super(props);
-        this.state = { status: "Student" };
+        this.state = { status: this.props.status };
         this.handleChange = this.handleChange.bind(this);
     }
 

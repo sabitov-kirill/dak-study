@@ -1,7 +1,7 @@
-import { Context } from '../../../index.js';
-import { useContext } from 'react';
-import LoginControl from './login/login-control';
+import { Link } from "react-router-dom";
 import React from 'react';
+
+import LoginControl from './login/login-control';
 
 function LogoSpace(props) {
     return (
@@ -12,20 +12,11 @@ function LogoSpace(props) {
     );
 }
 
-function DivSpace(props) {
-    let session = useContext(Context);
-
-
-    return (
-        <div className="headLogo">
-            <LogoSpace />
-            <LoginControl className="loginForm" isLoggedIn={session.isLoggedIn} />
-        </div>
-    );
-}
-
 export default function Header(props) {
     return (
-        <DivSpace />
+        <div className="headLogo">
+            <Link to="/"><LogoSpace /></Link>
+            <LoginControl className="loginForm" />
+        </div>
     );
 }

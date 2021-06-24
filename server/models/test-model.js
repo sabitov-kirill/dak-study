@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 
 const TestSchema = new Schema({
+    /* Test theme */
+    theme: { type: String, required: true },
+
     /* Test name */
     name: { type: String, unique: true, required: true },
 

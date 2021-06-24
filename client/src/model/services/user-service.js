@@ -1,4 +1,17 @@
 class UserService {
+    async getUserFromSession() {
+        let result = await fetch("/req/user-session", {
+            method: "GET"
+        });
+
+        if (result.ok) {
+            return await result.json();
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
+        }
+    }
+
     async register(email, name, password) {
         let reg_data = { email, name, password }
         let result = await fetch("/req/user-registration", {
@@ -33,7 +46,7 @@ class UserService {
 
     async logout() {
         let result = await fetch("/req/user-logout", {
-            method: "POST",
+            method: "GET",
         });
 
         if (!result.ok) {

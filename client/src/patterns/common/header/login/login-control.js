@@ -1,47 +1,40 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 
+import { Context } from '../../../../index'
 
-function LoginButton(props) {
+function LoginLink(props) {
     return (
-        <button className="loginForm" onClick={props.onClick}>Login</button>
-
+        <Link to="/login">
+            <button className="loginForm">
+                Login
+            </button>
+        </Link>
     );
 }
 
-function LoggedButton(props) {
+function ProfileLink(props) {
     return (
-        <button className="logged" onClick={props.onClick}>
-            <p>name</p>
-        </button>
+        <Link to="/profile">
+            <button className="logged">
+                <div className="userIcon" />
+                <p>{props.username}</p>
+            </button>
+        </Link>
     );
 }
 
+function LoginControl() {
+    let session = useContext(Context);
+    let button;
 
-class LoginControl extends Component {
-    constructor(props) {
-        super(props);
-        this.handleLoginClick = this.handleLoginClick.bind(this);
-        this.handleLoggedInClick = this.handleLoggedInClick.bind(this);
+    if (session.isLoggedIn) {
+        button = <ProfileLink username={session.user.name} />
+    } else {
+        button = <LoginLink />
     }
 
-    handleLoginClick() {
-        // here need to call login form..
-    }
-
-    handleLoggedInClick() {
-        // here need to call profile form or link idk
-    }
-    render() {
-        let button;
-
-        if (this.props.isLoggedIn) {
-            button = <Link to="profile"><LoggedButton onClick={this.handleLoggedInClick} /></Link>
-        } else {
-            button = <Link to="/login"><LoginButton onClick={this.handleLoginClick} /></Link>
-        }
-        return button;
-    }
+    return button;
 }
 
 export default LoginControl;
