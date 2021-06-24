@@ -8,10 +8,16 @@ import Profile from './pages/profile/profile'
 // import LoginForm from './patterns/common/login-form/login-form'
 import LoginForm from './patterns/common/login-form2/login-form'
 
+// IN DEBUG
+import TestPage from "./pages/tests/tests"
+import ThemePage from "./pages/theme/theme"
+
 const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginForm },
   { path: '/profile', Component: Profile },
+  { path: '/:id/test', Component: TestPage },
+  { path: '/:id/theme', Component: ThemePage },
 ]
 
 class App extends Component {

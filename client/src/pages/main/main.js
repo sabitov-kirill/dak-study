@@ -46,10 +46,9 @@ class MainPage extends Component {
         return (
             <div>
                 <div className="footage">
-
                     <InfoPanel />
                 </div>
-                <Sliders heading="Example Slider" slides={slideData} />
+                <Sliders heading="Example Slider" slides={slideData} page="theme" />
                 <Footer />
                 <Header />
             </div>
