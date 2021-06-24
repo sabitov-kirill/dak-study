@@ -12,6 +12,7 @@ export default function FormInput(props) {
                     props.setValue(e.target.value);
                     props.setError(false);
                 }}
+                required
             />
         </div>
     );

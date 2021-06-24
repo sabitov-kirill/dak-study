@@ -3,30 +3,27 @@ import { io, Socket } from "socket.io-client"
 import UserService from './services/user-service'
 
 class Session {
-    // properties setters
-    setIsLoggedIn(value) {
-        if (typeof value === "boolean") {
-            this.isLoggedIn = value;
-        } else {
-            console.log("Cant set auth status. Wrong status.");
-        }
-    }
-    setUser(value) {
-        this.User = value;
-    }
-
     // Basic constructor
-    constructor() {
+    async init() {
         this.socket = io();
-        this.setIsLoggedIn(false);
+
+        try {
+            let user = await UserService.getUserFromSession()
+
+            this.user = user;
+            this.isLoggedIn = true;
+        } catch (e) {
+            this.isLoggedIn = false;
+        }
     }
 
     // User sign in function
     async signIn(email, password) {
         try {
             let user = await UserService.login(email, password);
-            this.setUser(user);
-            this.setIsLoggedIn(true);
+
+            this.user = user;
+            this.isLoggedIn = true;
         } catch (e) {
             throw new Error(`Sign in error: ${e}`);
         }
@@ -36,19 +33,22 @@ class Session {
     async signUp(email, firstName, lastName, password) {
         try {
             let user = await UserService.register(email, `${firstName} ${lastName}`, password);
-            this.setUser(user);
-            this.setIsLoggedIn(true);
+
+            this.user = user;
+            this.isLoggedIn = true;
         } catch (e) {
             throw new Error(`Sign up error: ${e}`);
         }
     }
 
     // User sign out function
-    signOut() {
+    async signOut() {
         try {
-            UserService.logout();
-            this.setUser(null);
-            this.setIsLoggedIn(false);
+            if (this.user) {
+                await UserService.logout();
+                delete this.user;
+                this.isLoggedIn = false;
+            }
         } catch (e) {
             throw new Error(`Sign out error: ${e}`);
         }

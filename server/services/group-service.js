@@ -1,32 +1,33 @@
 const GroupModel = require('../models/group-model');
 
 class GroupService {
-    async create(groupName) {
-        await GroupModel.create({
-            name: groupName
-        })
-            .then(null, (error) => {
-                if (error.code === 11000) {
-                    throw new Error(`Group with name "${groupName}" already exist.`)
-                } else {
-                    throw error;
-                }
-            });
-    }
-
-    async create(groupName, groupPassword) {
-        await GroupModel.create({
-            name: groupName,
-            isPublic: true,
-            password: groupPassword
-        })
-            .then(null, (error) => {
-                if (error.code === 11000) {
-                    throw new Error(`Group with name "${groupName}" already exist.`)
-                } else {
-                    throw error;
-                }
-            });
+    async create(groupName, isPublic, groupPassword) {
+        if (isPublic) {
+            await GroupModel.create({
+                name: groupName,
+                isPublic: true
+            })
+                .then(null, (error) => {
+                    if (error.code === 11000) {
+                        throw new Error(`Group with name "${groupName}" already exist.`)
+                    } else {
+                        throw error;
+                    }
+                });
+        } else {
+            await GroupModel.create({
+                name: groupName,
+                isPublic: false,
+                password: groupPassword
+            })
+                .then(null, (error) => {
+                    if (error.code === 11000) {
+                        throw new Error(`Group with name "${groupName}" already exist.`)
+                    } else {
+                        throw error;
+                    }
+                });
+        }
     }
 
     async getUsers(groupName) {

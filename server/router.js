@@ -7,9 +7,11 @@ const testController = require('./controllers/test-controller');
 const router = new Router();
 
 // User interaction requests
+router.get('/user-session', userController.session);
 router.post('/user-registration', userController.register);
 router.post('/user-login', userController.login);
-router.post('/user-logout', userController.logout);
+router.get('/user-logout', userController.logout);
+router.post('/user-set-status', userController.setStatus);
 router.post('/user-getinfo', userController.getInfo);
 router.post('/user-join-group', userController.joinGroup);
 

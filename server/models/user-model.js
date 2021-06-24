@@ -11,6 +11,9 @@ const UserSchema = new Schema({
     /* Password */
     password: { type: String, required: true },
 
+    /* User status */
+    status: { type: String, default: 'Student' },
+
     /* User activation status. WIP */
     isActivated: { type: Boolean, default: false },
 
