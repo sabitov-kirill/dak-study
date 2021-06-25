@@ -77,14 +77,14 @@ export default function GroupJoin(props) {
     return (
         <>
             {!props.isVisible &&
-                <button onClick={() => props.setIsVisible(true)}>
+                <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
                     Join new group
                 </button>
             }
             {props.isVisible &&
                 <>
                     <GroupJoinForm />
-                    <button onClick={() => props.setIsVisible(false)}>
+                    <button className="ButGroup1" onClick={() => props.setIsVisible(false)}>
                         Close
                     </button>
                 </>

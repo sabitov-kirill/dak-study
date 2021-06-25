@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import Sliders from "../main/body/scroll-menu";
 import "./theme.css"
 
-import ScrollToTopOnMount from "./../../patterns/common/scroll-top.js"
+// import ScrollToTopOnMount from "./../../patterns/common/scroll-top.js"
 
 const slideData = [
     {
@@ -33,10 +33,13 @@ export default function Body(props) {
 
     return (
         <div>
-            <ScrollToTopOnMount />
-            <div className={divName}>
-                {/* <div className="asdDiv"><h1 className="themeHeader1">{id}</h1></div> */}
-                <div className="asdDiv"><p className="themeHeader1">{id}</p></div>
+            {/* <ScrollToTopOnMount /> */}
+            <div>
+                <div className={divName}>
+                    {/* <div className="asdDiv"><h1 className="themeHeader1">{id}</h1></div> */}
+                    <div className="asdDiv"><p className="themeHeader1">{id}</p></div>
+                    <div className="backDiv"></div>
+                </div>
             </div>
             <div>
                 <Sliders heading="a" slides={slideData} from={id} />

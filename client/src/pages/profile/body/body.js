@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Context } from "../../../index"
 import ActionsContainer from "./actions/actions-container"
 import InfoPanel from "./info-panel"
+import "./../profile.css"
 
 export default function Body() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -22,8 +23,9 @@ export default function Body() {
         <>
             { session.isLoggedIn &&
                 <div className='profileBody'>
-                    <h1>Profile</h1>
+
                     <InfoPanel className='profileInfo' signOut={signOut} />
+                    <h1 className="ZagolovokProfile">Personal account</h1>
                     <ActionsContainer className='profileActions' />
                 </div>
             }

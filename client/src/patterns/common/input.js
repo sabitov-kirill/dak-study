@@ -1,6 +1,6 @@
 export default function FormInput(props) {
     return (
-        <div className="form-group">
+        <div className="form-group forListGroups">
             <label htmlFor={props.name}>{props.label}</label>
             <input
                 type={props.type}
