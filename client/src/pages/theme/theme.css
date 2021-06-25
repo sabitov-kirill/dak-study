@@ -1,0 +1,41 @@
+.themeHeader1 {
+    color: aliceblue;
+    padding-top: 5rem;
+    font-size: 9vmin;
+    margin: 0;
+    border-bottom: aliceblue 2px solid;
+}    
+
+.backgroundDiv {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+.eleBody {
+    background-image: url(https://github.com/CGSGAL6/filechange/blob/master/ele.jpg?raw=true);
+}
+
+.mecBody {
+    background-image: url(https://github.com/CGSGAL6/filechange/blob/master/mec.jpg?raw=true);
+}
+
+.molBody {
+    background-image: url(https://github.com/CGSGAL6/filechange/blob/master/mol.jpg?raw=true);
+}
+
+.magBody {
+    background-image: url(https://github.com/CGSGAL6/filechange/blob/master/mag.jpg?raw=true);
+}
+
+.optBody {
+    background-image: url(https://github.com/CGSGAL6/filechange/blob/master/opt.jpg?raw=true);
+}
+
+.asdDiv {
+    text-align: center;
+    position:relative;
+    top: 30%;
+    margin: auto;
+    width: fit-content;
+}

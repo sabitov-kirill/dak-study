@@ -11,7 +11,7 @@ const slideData = [
         index: 0,
         headline: 'Mechanics',
         button: 'go to menu',
-        src: "https://github.com/CGSGAL6/filechange/blob/master/mech.jpg?raw=true"
+        src: "https://github.com/CGSGAL6/filechange/blob/master/mec.jpg?raw=true"
     },
     {
         index: 1,
@@ -23,7 +23,7 @@ const slideData = [
         index: 2,
         headline: 'Electrodynamics',
         button: 'go to menu',
-        src: 'https://github.com/CGSGAL6/filechange/blob/master/el.jpg?raw=true'
+        src: 'https://github.com/CGSGAL6/filechange/blob/master/ele.jpg?raw=true'
     },
     {
         index: 3,
@@ -48,7 +48,7 @@ class MainPage extends Component {
                 <div className="footage">
                     <InfoPanel />
                 </div>
-                <Sliders heading="Example Slider" slides={slideData} page="theme" />
+                <Sliders heading="Example Slider" slides={slideData} from='' />
                 <Footer />
                 <Header />
             </div>
