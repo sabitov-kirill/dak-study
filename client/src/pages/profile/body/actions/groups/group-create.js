@@ -18,7 +18,7 @@ function GroupCreatenForm(props) {
                 await GroupService.create(nameValue, isGroupPrivate);
             }
 
-            alert('Succsess');
+            window.location.replace("/profile");
         } catch (e) {
             alert(e);
             setError(true);

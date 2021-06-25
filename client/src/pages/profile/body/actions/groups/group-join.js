@@ -30,8 +30,7 @@ function GroupJoinForm(props) {
                 setPasswordValue('');
             }
 
-            setNameValue('');
-            setGroupPrivacy(false);
+            window.location.replace("/profile");
         } catch (e) {
 
         }

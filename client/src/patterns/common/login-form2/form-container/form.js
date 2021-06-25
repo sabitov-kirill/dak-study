@@ -16,6 +16,7 @@ function SignIn(props) {
                 setValue={props.setEmail}
                 value={props.email}
                 setError={props.setError}
+                shouldMakeLowercase={true}
             />
             <FormInput
                 label="Password"
@@ -25,6 +26,7 @@ function SignIn(props) {
                 setValue={props.setPassword}
                 value={props.password}
                 setError={props.setError}
+                shouldMakeLowercase={false}
             />
         </Fragment>
     );
@@ -41,6 +43,7 @@ function SignUp(props) {
                 setValue={props.setName}
                 value={props.name}
                 setError={props.setError}
+                shouldMakeLowercase={true}
             />
             <FormInput
                 label="Last Name"

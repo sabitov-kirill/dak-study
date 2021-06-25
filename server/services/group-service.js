@@ -1,4 +1,5 @@
 const GroupModel = require('../models/group-model');
+const bcrypt = require('bcrypt');
 
 class GroupService {
     async create(groupName, isPrivate, groupPassword) {
