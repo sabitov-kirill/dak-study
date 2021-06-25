@@ -19,6 +19,11 @@
     border-radius: 10%;
     float:left;  
     background-color: #1D1F2F;
+   padding-top: 5vh;
+   width: 26vw;
+   align-items: center;
+   text-align: center;
+   padding-right: 3.5vw;
 }
 
 .grav img {
@@ -30,14 +35,48 @@
     margin-left: 1vmin;
     clear: both;
     position: relative;
+    background-color: transparent;
+    margin-left: 12vw;
+    font-size: 3.5vh;
 }
 .GroupsListTable  {
     float: right;
-    padding-right: 3vw;
+    padding-right: 47vw;
 }
 
 .footer-profile {
     clear:both;
     margin-top: 47vh;
     position: relative;
+}
+
+.ButGroup {
+    background-color: transparent;
+    color: white;
+    font-family: 'Courier' monospace;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    border: solid 2px white;
+    margin-top: 1vh;
+    transition-duration: 0.4s; 
+    height: 5vh;
+    padding-left: 0.9vw;
+}
+.ButGroup:hover {
+    background-color: white;
+    color: var(--color-secondary);
+    border: solid 2px white;
+   
+}
+
+.ZagTable {
+    border-bottom: white solid 2px;
+    margin-bottom: 2vh;
+}
+.ZagTable p {
+    display: inline-flex;
+}
+.index {
+    border-left: white solid 2px;
+    padding-left: 2vw;
 }

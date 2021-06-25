@@ -7,10 +7,10 @@ import GroupCreate from './group-create'
 
 function GroupsTableHeader() {
     return (
-        <tr>
-            <td>#</td>
-            <td>Group Name</td>
-        </tr>
+        <div>
+            <p>#</p>
+            <p>Group Name</p>
+        </div>
     );
 }
 
@@ -26,8 +26,8 @@ function GroupsTableBody(props) {
     // Array of table rows
     const groupsRows = props.groupsList.map((gr, index) => {
         return <tr onClick={() => openPopup(index)} key={gr}>
-            <td>{index + 1}</td>
-            <td>{gr}</td>
+            <td >{index + 1}</td>
+            <td className="index" >{gr}</td>
         </tr>
     })
 
@@ -66,8 +66,10 @@ export default function GroupsTable(props) {
     return (
         <div className="GroupsListTable">
             <h1>Your Groups</h1>
-            <table>
+            <div className="ZagTable">
                 <GroupsTableHeader />
+            </div>
+            <table>
                 <GroupsTableBody groupsList={session.user.groupsNames} />
                 <GroupAction action={session.user.status === 'teacher' ? 'create' : 'join'} />
             </table>

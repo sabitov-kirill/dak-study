@@ -18,7 +18,7 @@ export default function InfoPanel(props) {
                 <li className='infoPanelEllement'><p>{session.user.name}</p></li>
                 <li className='infoPanelEllement'><p>{session.user.email}</p></li>
                 <li className='infoPanelEllement'><p>{session.user.status}</p></li>
-                <li className='infoPanelEllement'><button onClick={props.signOut}>Sign out</button></li>
+                <li className='infoPanelEllement'><button className="ButGroup" onClick={props.signOut}>Sign out</button></li>
             </ul>
         </div>
     );
