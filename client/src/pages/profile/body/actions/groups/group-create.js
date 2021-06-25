@@ -1,39 +1,27 @@
 import React, { useState, useContext } from 'react';
 
-import UserService from '../../../../../model/services/user-service';
 import GroupService from '../../../../../model/services/group-service';
 import FormInput from '../../../../../patterns/common/input';
 
-function GroupJoinForm(props) {
+function GroupCreatenForm(props) {
     const [nameValue, setNameValue] = useState();              // Group name
     const [passwordValue, setPasswordValue] = useState('');    // Group password
     const [isGroupPrivate, setGroupPrivacy] = useState(false); // Group privacy status
-    const [isError, setError] = useState(false);               // Wrong group name or password status
-    const [isNameCorrect, setNameIsCorrect] = useState();      // Name correct status
+    const [isError, setError] = useState(false);               // Incorrect email status
 
-    const getGroupPrivacy = async () => {
-        try {
-            let privacy = await GroupService.getPrivacy(nameValue);
-            setGroupPrivacy(privacy.isPrivate);
-            setNameIsCorrect(true);
-        } catch (e) {
-            setError(true);
-        }
-    }
-
-    const joinGroup = async () => {
+    const createGroup = async () => {
         try {
             if (isGroupPrivate) {
-                UserService.joinGroup(nameValue, isGroupPrivate, passwordValue);
-            } else {
-                UserService.joinGroup(nameValue, isGroupPrivate);
-                setPasswordValue('');
+                await GroupService.create(nameValue, isGroupPrivate, passwordValue);
+            }
+            else {
+                await GroupService.create(nameValue, isGroupPrivate);
             }
 
-            setNameValue('');
-            setGroupPrivacy(false);
+            alert('Succsess');
         } catch (e) {
-
+            alert(e);
+            setError(true);
         }
     }
 
@@ -41,7 +29,7 @@ function GroupJoinForm(props) {
         <div>
             <form onSubmit={event => {
                 event.preventDefault();
-                getGroupPrivacy();
+                createGroup();
             }}>
                 <FormInput
                     label="Group Name"
@@ -52,12 +40,11 @@ function GroupJoinForm(props) {
                     setError={setError}
                     isError={isError}
                 />
-                {!isNameCorrect && <input type="submit" value="Check" />}
-            </form>
-            <form onSubmit={event => {
-                event.preventDefault();
-                joinGroup();
-            }}>
+
+                <input
+                    type="checkbox"
+                    onChange={(e) => setGroupPrivacy(e.target.checked)}
+                /> Private <br />
                 {isGroupPrivate && <FormInput
                     label="Group Password"
                     type="text"
@@ -68,23 +55,23 @@ function GroupJoinForm(props) {
                     isError={isError}
                 />}
 
-                {isNameCorrect && <input type="submit" value="Join" />}
+                <input type="submit" value="Create" />
             </form>
-        </div >
+        </div>
     );
 }
 
-export default function GroupJoin(props) {
+export default function GroupCreate(props) {
     return (
         <>
             {!props.isVisible &&
                 <button onClick={() => props.setIsVisible(true)}>
-                    Join new group
-                </button>
+                    Create new group
+            </button>
             }
             {props.isVisible &&
                 <>
-                    <GroupJoinForm />
+                    <GroupCreatenForm />
                     <button onClick={() => props.setIsVisible(false)}>
                         Close
                     </button>

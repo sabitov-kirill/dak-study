@@ -1,13 +1,17 @@
-const GroupService = require('../services/group-service')
+const GroupService = require('../services/group-service');
+const UserService = require('../services/user-service');
 
 class GroupController {
     async create(request, response) {
         try {
-            const { name, isPublic, password } = JSON.parse(request.body);
+            const { name, isPrivate, password } = JSON.parse(request.body);
+            const { id } = request.cookies;
 
-            await GroupService.create(name, isPublic, password);
+            await GroupService.create(name, isPrivate, password);
+            await GroupService.addMember(name, password, id);
+            await UserService.joinGroup(id, name);
 
-            response.status(200);
+            response.status(200).send({ isSuccsess: true });
         } catch (e) {
             response.status(400).send(e);
         }
