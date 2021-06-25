@@ -15,7 +15,7 @@
 }
 .infoPanel {
     position: absolute;
-    height: 70vh;
+    height: 80vh;
     border-radius: 10%;
     float:left;  
     background-color: #1D1F2F;
@@ -79,4 +79,17 @@
 .index {
     border-left: white solid 2px;
     padding-left: 2vw;
+}
+.input-group input{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 15vw;
+}
+.group-content {
+    border: solid white 2px;
+    width: 20vw;
+    height: 30vh;
+    padding-left: 2.5vw;
+    padding-top: 3vh;
+    margin-top: 2vh;
 }

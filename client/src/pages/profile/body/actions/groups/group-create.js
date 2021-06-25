@@ -63,7 +63,7 @@ function GroupCreatenForm(props) {
 
 export default function GroupCreate(props) {
     return (
-        <>
+        <div className="group-content">
             {!props.isVisible &&
                 <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
                     Create new group
@@ -77,6 +77,6 @@ export default function GroupCreate(props) {
                     </button>
                 </>
             }
-        </>
+        </div>
     );
 }

@@ -75,7 +75,7 @@ function GroupJoinForm(props) {
 
 export default function GroupJoin(props) {
     return (
-        <>
+        <div className="group-content">
             {!props.isVisible &&
                 <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
                     Join new group
@@ -89,6 +89,6 @@ export default function GroupJoin(props) {
                     </button>
                 </>
             }
-        </>
+        </div>
     );
 }
