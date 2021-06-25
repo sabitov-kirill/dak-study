@@ -13,7 +13,7 @@ class UserService {
             name,
             status: 'student',
             password: passwordHash,
-            groupsNames: new Map(),
+            groupsNames: ['public'],
             isOnline: true,
             activationLink
         })
@@ -24,8 +24,6 @@ class UserService {
                     throw error;
                 }
             });
-
-        await this.joinGroup(user._id, 'public');
 
         // Return user info object
         return {
@@ -87,8 +85,11 @@ class UserService {
         const user = await UserModel.findOne({ _id: id })
         if (!user) throw new Error('Wrong id. User not found.');
 
-        if (user.groupsNames.has(groupName)) throw new Error(`User already in group with name ${groupName}`);
-        else user.groupsNames.set(groupName, 1);
+        if (user.groupsNames.indexOf(groupName) === -1) {
+            user.groupsNames.push(groupName);
+        } else {
+            throw new Error(`User already in group with name ${groupName}`);
+        }
         await user.save();
     }
 }

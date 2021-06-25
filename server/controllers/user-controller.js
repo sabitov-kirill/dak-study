@@ -5,10 +5,10 @@ class UserController {
     async session(request, result) {
         try {
             const { email, password } = request.cookies;
-            const user_data = await userService.login(email, password);
+            const userData = await userService.login(email, password);
 
             // Return user data
-            result.status(200).send(user_data);
+            result.status(200).send(userData);
         } catch (e) {
             result.status(400).send(e);
         }
@@ -18,13 +18,14 @@ class UserController {
         try {
             // Getting login data from body
             const { email, name, password } = JSON.parse(request.body);
-            const user_data = await userService.registeration(email, name, password);
+            const userData = await userService.registeration(email, name, password);
 
             // Return user data
             result.cookie('email', email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             result.cookie('password', password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('status', user_data.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.status(200).send(user_data);
+            result.cookie('status', userData.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('id', userData.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.status(200).send(userData);
         } catch (e) {
             result.status(400).send({ Error: e });
         }
@@ -34,13 +35,14 @@ class UserController {
         try {
             // Getting registration data from body
             const { email, password } = JSON.parse(request.body);
-            const user_data = await userService.login(email, password);
+            const userData = await userService.login(email, password);
 
             // Return user data
-            result.cookie('email', user_data.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('email', userData.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
             result.cookie('password', password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('status', user_data.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.status(200).send(user_data);
+            result.cookie('status', userData.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('id', userData.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.status(200).send(userData);
         } catch (e) {
             result.status(400).send(e);
         }
@@ -55,6 +57,7 @@ class UserController {
             result.cookie('email', '', { maxAge: 0, httpOnly: true });
             result.cookie('password', '', { maxAge: 0, httpOnly: true });
             result.cookie('status', '', { maxAge: 0, httpOnly: true });
+            result.cookie('id', '', { maxAge: 0, httpOnly: true });
             result.status(200).send({ email });
         } catch (e) {
             result.status(400).send(e);
@@ -69,7 +72,7 @@ class UserController {
 
             // Return user data
             result.cookie('status', status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.status(200);
+            result.status(200).send({ isSuccsess: true });
         } catch (e) {
             result.status(400).send(e);
         }
@@ -78,10 +81,10 @@ class UserController {
     async getInfo(request, result) {
         try {
             const { id } = JSON.parse(request.body);
-            const user_data = await userService.getInfo(id);
+            const userData = await userService.getInfo(id);
 
             // Return user data
-            result.status(200).send(user_data);
+            result.status(200).send(userData);
         } catch (e) {
             result.status(400).send(e);
         }
@@ -90,10 +93,10 @@ class UserController {
     async getGroups(request, result) {
         try {
             const { id } = JSON.parse(request.cookies);
-            const user_group = await userService.getGroups(id);
+            const userGroups = await userService.getGroups(id);
 
             // Return user data
-            result.status(200).send(JSON.stringify(user_group));
+            result.status(200).send(JSON.stringify(userGroups));
         } catch (e) {
             result.status(400).send(e);
         }
@@ -101,10 +104,13 @@ class UserController {
 
     async joinGroup(request, result) {
         try {
-            const { userId, groupName } = JSON.parse(request.body);
+            const { groupName, password } = JSON.parse(request.body);
+            const { id } = request.cookies;
 
-            GroupService.addMember(groupName, userId);
-            userService.joinGroup(userId, groupName);
+            await GroupService.addMember(groupName, password, id);
+            await userService.joinGroup(id, groupName);
+
+            result.status(200).send({ isSuccsess: true });
         } catch (e) {
             result.status(400).send(e);
         }

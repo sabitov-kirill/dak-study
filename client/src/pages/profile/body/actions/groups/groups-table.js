@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 
-import { Context } from "../../../../../index"
-import UserService from '../../../../../model/services/user-service'
+import { Context } from '../../../../../index'
 import GroupMemmbersPopup from './group-members'
 import GroupJoin from './group-join'
+import GroupCreate from './group-create'
 
 function GroupsTableHeader() {
     return (
@@ -52,9 +52,9 @@ function GroupAction(props) {
                 {props.action === 'join' &&
                     <GroupJoin isVisible={isActionVisible} setIsVisible={setIsActionVisible} />
                 }
-                {/*props.action === 'create' && 
-                    <GroupCreate isVisible={isActionVisible} serIsVisible={setIsActionVisible}/>
-                */}
+                {props.action === 'create' &&
+                    <GroupCreate isVisible={isActionVisible} serIsVisible={setIsActionVisible} />
+                }
             </td>
         </tr>
     );
@@ -70,7 +70,6 @@ export default function GroupsTable(props) {
                 <GroupsTableHeader />
                 <GroupsTableBody groupsList={session.user.groupsNames} />
                 <GroupAction action={session.user.status === 'teacher' ? 'create' : 'join'} />
-                {/* <GroupsTableBody groupsList={session.user.groupsNames}/> */}
             </table>
         </div>
     );

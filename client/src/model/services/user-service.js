@@ -84,12 +84,21 @@ class UserService {
         }
     }
 
-    async joinGroup(groupName) {
-        let result = await fetch("/req/user-join-group", {
-            method: "POST",
-            headers: { "Contet-Type": "application/json;charset=utf-8" },
-            body: JSON.stringify({ groupName })
-        });
+    async joinGroup(groupName, isPrivate, password) {
+        let result;
+        if (isPrivate) {
+            result = await fetch("/req/user-join-group", {
+                method: "POST",
+                headers: { "Contet-Type": "application/json;charset=utf-8" },
+                body: JSON.stringify({ groupName, isPrivate, password })
+            });
+        } else {
+            result = await fetch("/req/user-join-group", {
+                method: "POST",
+                headers: { "Contet-Type": "application/json;charset=utf-8" },
+                body: JSON.stringify({ groupName, isPrivate })
+            });
+        }
 
         if (!result.ok) {
             let err = await result.text();

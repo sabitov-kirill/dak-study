@@ -5,13 +5,13 @@ const GroupSchema = new Schema({
     name: { type: String, unique: true, required: true },
 
     /* Privacy status */
-    isPublic: { type: Boolean, required: true },
+    isPrivate: { type: Boolean, required: true },
 
     /* Group password need to join group if its private */
     password: { type: String },
 
     /* User id, wich can be used to get user data */
-    usersId: { type: [Number] }
+    usersId: { type: [String] }
 });
 
 module.exports = model('Group', GroupSchema);
