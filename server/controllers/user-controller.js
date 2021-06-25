@@ -5,10 +5,17 @@ class UserController {
     async session(request, result) {
         try {
             const { email, password } = request.cookies;
-            const userData = await userService.login(email, password);
+            const user = await userService.session(email, password);
 
             // Return user data
-            result.status(200).send(userData);
+            result.status(200).send({
+                email: user.email,
+                name: user.name,
+                isOnline: user.isOnline,
+                status: user.status,
+                groupsNames: user.groupsNames,
+                id: user._id
+            });
         } catch (e) {
             result.status(400).send(e);
         }
@@ -18,14 +25,22 @@ class UserController {
         try {
             // Getting login data from body
             const { email, name, password } = JSON.parse(request.body);
-            const userData = await userService.registeration(email, name, password);
+            const user = await userService.registeration(email, name, password);
 
             // Return user data
-            result.cookie('email', email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('password', password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('status', userData.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('id', userData.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.status(200).send(userData);
+            result.cookie('email', user.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('password', user.password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('status', user.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('id', user.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+
+            result.status(200).send({
+                email: user.email,
+                name: user.name,
+                isOnline: user.isOnline,
+                status: user.status,
+                groupsNames: user.groupsNames,
+                id: user._id
+            });
         } catch (e) {
             result.status(400).send({ Error: e });
         }
@@ -35,14 +50,22 @@ class UserController {
         try {
             // Getting registration data from body
             const { email, password } = JSON.parse(request.body);
-            const userData = await userService.login(email, password);
+            const user = await userService.login(email, password);
 
             // Return user data
-            result.cookie('email', userData.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('password', password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('status', userData.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.cookie('id', userData.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
-            result.status(200).send(userData);
+            result.cookie('email', user.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('password', user.password, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('status', user.status, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            result.cookie('id', user.id, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+
+            result.status(200).send({
+                email: user.email,
+                name: user.name,
+                status: user.status,
+                isOnline: user.isOnline,
+                groupsNames: user.groupsNames,
+                id: user._id
+            });
         } catch (e) {
             result.status(400).send(e);
         }

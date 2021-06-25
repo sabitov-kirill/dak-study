@@ -26,14 +26,20 @@ class UserService {
             });
 
         // Return user info object
-        return {
-            email: user.email,
-            name: user.name,
-            isOnline: user.isOnline,
-            status: user.status,
-            groupsNames: user.groupsNames,
-            id: user._id
-        };
+        return user;
+    }
+
+    async session(email, hashPassword) {
+        // Check if user exist and set online status to true
+        const user = await UserModel.findOneAndUpdate({ email }, { isOnline: true })
+        if (!user) throw new Error('Wrong id. User not found.');
+
+        if (!hashPassword === user.password) {
+            throw new Error(`Wrong password.`)
+        }
+
+        // Return user info object
+        return user;
     }
 
     async login(email, password) {
@@ -47,14 +53,7 @@ class UserService {
         }
 
         // Return user info object
-        return {
-            email: user.email,
-            name: user.name,
-            status: user.status,
-            isOnline: user.isOnline,
-            groupsNames: user.groupsNames,
-            id: user._id
-        }
+        return user;
     }
 
     async logout(email) {
@@ -68,7 +67,7 @@ class UserService {
     }
 
     async getInfo(id) {
-        const user = await UserModel.findOne({ _id: id })
+        const user = await UserModel.findOne({ _id: id });
         if (!user) throw new Error('Wrong id. User not found.');
 
         // Return user info object

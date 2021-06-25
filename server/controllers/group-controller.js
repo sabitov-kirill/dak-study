@@ -32,8 +32,11 @@ class GroupController {
         try {
             const { name } = JSON.parse(request.body);
             const usersId = await GroupService.getUsers(name);
+            const usersData = await Promise.all(usersId.map(async (id) => {
+                return await UserService.getInfo(id);
+            }));
 
-            response.status(200).send(JSON.stringify({ usersId }));
+            response.status(200).send(JSON.stringify({ usersData }));
         } catch (e) {
             response.status(400).send(e);
         }

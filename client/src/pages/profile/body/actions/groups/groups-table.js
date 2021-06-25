@@ -53,7 +53,7 @@ function GroupAction(props) {
                     <GroupJoin isVisible={isActionVisible} setIsVisible={setIsActionVisible} />
                 }
                 {props.action === 'create' &&
-                    <GroupCreate isVisible={isActionVisible} serIsVisible={setIsActionVisible} />
+                    <GroupCreate isVisible={isActionVisible} setIsVisible={setIsActionVisible} />
                 }
             </td>
         </tr>
