@@ -43,9 +43,9 @@ class Slide extends Component {
     render() {
         const { src, /*button,*/ headline, index } = this.props.slide
         const current = this.props.current
-        const page = this.props.page;
         let classNames = 'slide'
-        let link = `/${headline}/${page}`
+        let link = `${this.props.from.toLowerCase()}/${headline.toLowerCase()}`;
+        // let link = `/${headline}/${page}`
 
         if (current === index) classNames += ' slide--current'
         else if (current - 1 === index) classNames += ' slide--previous'
@@ -157,7 +157,7 @@ class Sliders extends Component {
                                 slide={slide}
                                 current={current}
                                 handleSlideClick={this.handleSlideClick}
-                                page={this.props.page}
+                                from={this.props.from}
                             />
                         )
                     })}

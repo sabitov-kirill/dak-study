@@ -16,8 +16,8 @@ const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginForm },
   { path: '/profile', Component: Profile },
-  { path: '/:id/test', Component: TestPage },
-  { path: '/:id/theme', Component: ThemePage },
+  { path: '/:theme/tests', Component: TestPage },
+  { path: '/:id', Component: ThemePage },
 ]
 
 class App extends Component {

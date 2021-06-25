@@ -1,5 +1,9 @@
 import { useParams } from "react-router";
+
 import Sliders from "../main/body/scroll-menu";
+import "./theme.css"
+
+import ScrollToTopOnMount from "./../../patterns/common/scroll-top.js"
 
 const slideData = [
     {
@@ -24,12 +28,19 @@ const slideData = [
 ]
 
 export default function Body(props) {
-    const { id } = useParams();
+    let { id } = useParams();
+    let divName = `backgroundDiv ${id.slice(0, 3)}Body`
 
     return (
         <div>
-            <div><h>{props.theme}</h></div>
-            <Sliders heading="a" slides={slideData} page="test" from={id} />
+            <ScrollToTopOnMount />
+            <div className={divName}>
+                {/* <div className="asdDiv"><h1 className="themeHeader1">{id}</h1></div> */}
+                <div className="asdDiv"><p className="themeHeader1">{id}</p></div>
+            </div>
+            <div>
+                <Sliders heading="a" slides={slideData} from={id} />
+            </div>
         </div>
     );
 }
