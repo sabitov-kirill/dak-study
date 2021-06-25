@@ -88,8 +88,9 @@
 .group-content {
     border: solid white 2px;
     width: 20vw;
-    height: 30vh;
+    height: fit-content;
     padding-left: 2.5vw;
     padding-top: 3vh;
+    padding-bottom: 4vh;
     margin-top: 2vh;
 }
