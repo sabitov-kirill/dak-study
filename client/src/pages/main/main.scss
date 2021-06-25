@@ -54,6 +54,9 @@ a {
    display: flex;
    flex-direction: row;
  }
+ .commonFooter a {
+   text-decoration: underline;
+ }
 
  .footerClass {
    color: #fff;
@@ -64,7 +67,6 @@ a {
    margin-top: 5vh;
    height: 350px;
    background-image: url(../../images/new.png);
-  //  position: absolute;
  }
 
  .Rights {
@@ -133,9 +135,9 @@ a {
  }
 
  .loginForm {
-   margin-left: 84vw;
-   position: absolute;
-   margin-top: 17px;
+  float: right;
+  margin-right: 4vmin;
+   margin-top: 14px;
    font-family: 'Courier' monospace !important;
    letter-spacing: 6px;
    text-transform: uppercase;
@@ -155,8 +157,9 @@ a {
 }
 
 .logged {
-  margin-left: 84vw;
-  position: absolute;
+  float: right;
+  margin-right: 4vmin;
+  //position: absolute;
   margin-top: 9px;
   font-family: 'Courier' monospace !important;
   letter-spacing: 6px;

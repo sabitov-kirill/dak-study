@@ -15,10 +15,11 @@ import Body from "./body"
 // }
 
 class Test {
-    constructor(name, result, description) {
+    constructor(name, result, description, diff) {
         this.testName = name;
-        this.testResult = result;
+        this.testResult = "last result: " + result;
         this.testDescription = description;
+        this.testDiff = diff;
     }
 }
 
@@ -26,17 +27,19 @@ class TestPage extends Component {
     state = {
         theme: "ASDASDASD",
         tests: [
-            new Test("flex", "result: 10", "//description1//"),
-            new Test("asd", "result: 11", "//description2//"),
-            new Test("zxc", "result: 12", "//description3//"),
+            new Test("basic concepts", "none", "basic diffinitions and consepts of mechanic", "light"),
+            new Test("uniform movement", "82%", "movement without acceleration and its properties", "light"),
+            new Test("accelerated movement", "47%", "movement with acceleration and uniformly accelerated motion and its properties", "normal"),
+            new Test("movement at an angle to the horizon", "none", "derivation of formulas for motion at an angle to the horizon and its properties", "normal"),
+            new Test("circular motion", "30%", "derivation of formulas for circular motion, its properties, acceleration decomposition", "hard"),
         ],
     };
 
     render() {
         return (
             <div>
-                <Header />
                 <Body theme={this.state.theme} tests={this.state.tests} />
+                <Header />
                 <Footer />
             </div>
         );
