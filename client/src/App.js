@@ -11,6 +11,7 @@ import LoginForm from './patterns/common/login-form2/login-form'
 // IN DEBUG
 import TestPage from "./pages/tests/tests"
 import ThemePage from "./pages/theme/theme"
+import ScrollToTop from "./patterns/common/scoll-top2.js"
 
 const routes = [
   { path: '/', Component: MainPage },
@@ -24,6 +25,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        {/* <ScrollToTop /> */}
         <Switch>
           {routes.map(({ path, Component }) => (
             <Route key={path} path={path} exact>

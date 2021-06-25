@@ -5,7 +5,13 @@ class InfoPanel extends Component {
         return (
             <div className="head">
                 <p className="headProject">Study with us.</p>
-                <p className="headParagraph">about project</p>
+                <p className="headParagraph">
+                    This resource is an educational platform in physics.
+                </p>
+                <p>
+
+                </p>
+                <p className="headParagraph">Anything you need. And a bit more.</p>
             </div>
         );
     }

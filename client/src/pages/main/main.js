@@ -46,7 +46,7 @@ class MainPage extends Component {
         return (
             <div>
                 <div className="footage">
-                    <InfoPanel />
+                    <div className="backDiv1"><InfoPanel /></div>
                 </div>
                 <Sliders heading="Example Slider" slides={slideData} from='' />
                 <Footer />
