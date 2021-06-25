@@ -39,8 +39,26 @@ export default function Body(props) {
         new Test("circular motion", "30%", "derivation of formulas for circular motion, its properties, acceleration decomposition", "hard"),
     ];
 
+    let tests_mol = [
+        new Test("Heat capacity of gases and solids", "none", "the heat capacity of gases and solids, the Mayer ratio, LawDulong and Petit, and their output", "normal"),
+        new Test("Real gas", "47%", "real gas, experimental isotherm of real gas, critical state of matter, Avenarius experiment", "light"),
+        new Test("The first and third provisions", "none", "the dependence of the interaction forces of molecules on the distance between them", "hard"),
+        new Test("The second provision of the MKT", "27%", "Stern's experiment, Maxwell's distribution of molecules by velocities", "hard"),
+        new Test("Isochoric process", "30%", "Charles ' law, molecular and energyinterpretation", "light"),
+    ];
+
+    let tests_ele = [
+        new Test("Heat capacity of gases and solids", "none", "the heat capacity of gases and solids, the Mayer ratio, LawDulong and Petit, and their output", "normal"),
+        new Test("Real gas", "47%", "real gas, experimental isotherm of real gas, critical state of matter, Avenarius experiment", "light"),
+        new Test("The first and third provisions", "none", "the dependence of the interaction forces of molecules on the distance between them", "hard"),
+        new Test("The second provision of the MKT", "27%", "Stern's experiment, Maxwell's distribution of molecules by velocities", "hard"),
+        new Test("Isochoric process", "30%", "Charles ' law, molecular and energyinterpretation", "light"),
+    ];
+
     let allTests = new Map();
-    allTests.set("mechanics", tests_mech); // это засовывает массив в словарь
+    allTests.set("mechanics", tests_mech);
+    allTests.set("molecular", tests_mol);
+    allTests.set("electrodynamics", tests_ele); // это засовывает массив в словарь
 
     return (
         <Fragment>
