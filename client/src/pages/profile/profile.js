@@ -11,7 +11,6 @@ class ProfilePage extends Component {
     render() {
         return (
             <div>
-
                 <Body />
                 <div className="header-profile">
                     <Header />
