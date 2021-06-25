@@ -9,8 +9,9 @@ export default function FormInput(props) {
                 value={props.value}
                 maxLength={props.maxLength}
                 onChange={e => {
-                    const value = e.target.value.trim();
-                    if (props.shouldMakeLowercase) value = value.toLowerCase();
+                    let value = props.shouldMakeLowercase
+                        ? e.target.value.trim().toLowerCase()
+                        : e.target.value.trim();
                     props.setValue(value);
                     props.setError(false);
                 }}
