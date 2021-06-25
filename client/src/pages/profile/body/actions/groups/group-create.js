@@ -55,7 +55,7 @@ function GroupCreatenForm(props) {
                     isError={isError}
                 />}
 
-                <input type="submit" value="Create" />
+                <input type="submit" value="Create" className="ButGroup" />
             </form>
         </div>
     );
@@ -63,7 +63,7 @@ function GroupCreatenForm(props) {
 
 export default function GroupCreate(props) {
     return (
-        <>
+        <div className="group-content">
             {!props.isVisible &&
                 <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
                     Create new group
@@ -72,11 +72,11 @@ export default function GroupCreate(props) {
             {props.isVisible &&
                 <>
                     <GroupCreatenForm />
-                    <button className="ButGroup1" onClick={() => props.setIsVisible(false)}>
+                    <button className="ButGroup" onClick={() => props.setIsVisible(false)}>
                         Close
                     </button>
                 </>
             }
-        </>
+        </div>
     );
 }

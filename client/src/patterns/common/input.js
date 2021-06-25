@@ -1,6 +1,6 @@
 export default function FormInput(props) {
     return (
-        <div className="form-group forListGroups">
+        <div className="form-group forListGroups input-group">
             <label htmlFor={props.name}>{props.label}</label>
             <input
                 type={props.type}
@@ -9,8 +9,9 @@ export default function FormInput(props) {
                 value={props.value}
                 maxLength={props.maxLength}
                 onChange={e => {
-                    const value = e.target.value.trim();
-                    if (props.shouldMakeLowercase) value = value.toLowerCase();
+                    let value = props.shouldMakeLowercase
+                        ? e.target.value.trim().toLowerCase()
+                        : e.target.value.trim();
                     props.setValue(value);
                     props.setError(false);
                 }}

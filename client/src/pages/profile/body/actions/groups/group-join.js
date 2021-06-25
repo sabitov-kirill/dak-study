@@ -67,7 +67,7 @@ function GroupJoinForm(props) {
                     isError={isError}
                 />}
 
-                {isNameCorrect && <input type="submit" value="Join" />}
+                {isNameCorrect && <input type="submit" value="Join" className="ButGroup" />}
             </form>
         </div >
     );
@@ -75,7 +75,7 @@ function GroupJoinForm(props) {
 
 export default function GroupJoin(props) {
     return (
-        <>
+        <div className="group-content">
             {!props.isVisible &&
                 <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
                     Join new group
@@ -84,11 +84,11 @@ export default function GroupJoin(props) {
             {props.isVisible &&
                 <>
                     <GroupJoinForm />
-                    <button className="ButGroup1" onClick={() => props.setIsVisible(false)}>
+                    <button className="ButGroup" onClick={() => props.setIsVisible(false)}>
                         Close
                     </button>
                 </>
             }
-        </>
+        </div>
     );
 }
