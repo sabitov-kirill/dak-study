@@ -7,11 +7,11 @@ import MainPage from './pages/main/main'
 import Profile from './pages/profile/profile'
 // import LoginForm from './patterns/common/login-form/login-form'
 import LoginForm from './patterns/common/login-form2/login-form'
+import ScrollToTop from "./patterns/common/scoll-top2.js"
 
 // IN DEBUG
 import TestPage from "./pages/tests/tests"
 import ThemePage from "./pages/theme/theme"
-import ScrollToTop from "./patterns/common/scoll-top2.js"
 
 const routes = [
   { path: '/', Component: MainPage },
@@ -21,21 +21,21 @@ const routes = [
   { path: '/:id', Component: ThemePage },
 ]
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        {/* <ScrollToTop /> */}
-        <Switch>
-          {routes.map(({ path, Component }) => (
-            <Route key={path} path={path} exact>
-              <Component />
-            </Route>
-          ))}
-        </Switch>
-      </Router>
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      {/* <ScrollRestoration> */}
+      <Switch>
+        {routes.map(({ path, Component }) => (
+          <Route key={path} path={path} exact>
+            <Component />
+          </Route>
+        ))}
+      </Switch>
+      {/* </ScrollRestoration> */}
+    </Router>
+  );
 }
 
 export default App;
