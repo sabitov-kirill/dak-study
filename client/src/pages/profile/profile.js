@@ -4,7 +4,7 @@ import Header from "../../patterns/common/header/header";
 import Footer from "../../patterns/common/footer/footer";
 import Body from "./body/body"
 
-import './profile.css'
+import './profile.scss'
 
 class ProfilePage extends Component {
     state = {}
@@ -13,7 +13,9 @@ class ProfilePage extends Component {
             <div>
                 <Header />
                 <Body />
-                <Footer />
+                <div className="footer-profile">
+                    <Footer />
+                </div>
             </div>
         );
     }

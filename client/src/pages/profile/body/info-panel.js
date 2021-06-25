@@ -14,7 +14,7 @@ export default function InfoPanel(props) {
     return (
         <div className='infoPanel'>
             <ul>
-                <li className='infoPanelEllement'><img src={getGravatar()} alt='' /></li>
+                <li className='infoPanelEllement grav'><img src={getGravatar()} alt='' /></li>
                 <li className='infoPanelEllement'><p>{session.user.name}</p></li>
                 <li className='infoPanelEllement'><p>{session.user.email}</p></li>
                 <li className='infoPanelEllement'><p>{session.user.status}</p></li>
