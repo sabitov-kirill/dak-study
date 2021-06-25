@@ -24,9 +24,9 @@ function GroupJoinForm(props) {
     const joinGroup = async () => {
         try {
             if (isGroupPrivate) {
-                UserService.joinGroup(nameValue, isGroupPrivate, passwordValue);
+                await UserService.joinGroup(nameValue, isGroupPrivate, passwordValue);
             } else {
-                UserService.joinGroup(nameValue, isGroupPrivate);
+                await UserService.joinGroup(nameValue, isGroupPrivate);
                 setPasswordValue('');
             }
 
