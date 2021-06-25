@@ -51,7 +51,7 @@ function GroupJoinForm(props) {
                     setError={setError}
                     isError={isError}
                 />
-                {!isNameCorrect && <input type="submit" value="Check" />}
+                {!isNameCorrect && <input type="submit" value="Check" className="ButGroup" />}
             </form>
             <form onSubmit={event => {
                 event.preventDefault();
