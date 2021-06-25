@@ -64,7 +64,7 @@ export default function GroupsTable(props) {
     let session = useContext(Context);
 
     return (
-        <div>
+        <div className="GroupsListTable">
             <h1>Your Groups</h1>
             <table>
                 <GroupsTableHeader />

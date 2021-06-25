@@ -1,0 +1,43 @@
+.profileBody {
+    color:white;
+    font-family: 'Courier' monospace;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-top: 10vh;
+  
+}
+.forListGroups label{
+    color: white !important;
+}
+
+.infoPanel ul{
+    list-style-type: none !important;
+}
+.infoPanel {
+    position: absolute;
+    height: 70vh;
+    border-radius: 10%;
+    float:left;  
+    background-color: #1D1F2F;
+}
+
+.grav img {
+  border-radius: 50%;
+  border: white solid 2px;
+}
+
+.ZagolovokProfile {
+    margin-left: 1vmin;
+    clear: both;
+    position: relative;
+}
+.GroupsListTable  {
+    float: right;
+    padding-right: 3vw;
+}
+
+.footer-profile {
+    clear:both;
+    margin-top: 47vh;
+    position: relative;
+}
