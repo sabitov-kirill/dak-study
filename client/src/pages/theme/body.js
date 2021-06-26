@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 
 import Sliders from "../main/body/scroll-menu";
-import "./theme.css"
+import "./theme.scss"
 
 // import ScrollToTopOnMount from "./../../patterns/common/scroll-top.js"
 
