@@ -59,8 +59,11 @@
     border: solid 2px white;
     margin-top: 1vh;
     transition-duration: 0.4s; 
-    height: 5vh;
     padding-left: 0.9vw;
+    width: fit-content;
+    height: fit-content;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 .ButGroup:hover {
     background-color: white;

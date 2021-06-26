@@ -4,7 +4,7 @@ function AboutUs(props) {
     return (
         <div className="Discr">
             <h3>About us</h3>
-            <p>text here..</p>
+            {/* <p>text here..</p> */}
         </div>
     );
 }
