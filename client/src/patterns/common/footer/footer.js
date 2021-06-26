@@ -39,7 +39,7 @@ function DivRights(props) {
         <div className="Rights">
             <img src="" />
             <div>
-                © 2021 DAK LLC.
+                © 2021 CGSG'Jr.
                 <span> All Rights Reserved. </span>
             </div>
         </div>

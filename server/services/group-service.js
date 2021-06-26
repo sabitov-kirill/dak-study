@@ -54,7 +54,7 @@ class GroupService {
 
         if (group.isPrivate) {
             const isPassEquals = await bcrypt.compare(password, group.password);
-            if (isPassEquals) throw new Error('Wrong group password');
+            if (!isPassEquals) throw new Error('Wrong group password');
         }
 
         if (group.usersId.indexOf(userId) === -1) {
