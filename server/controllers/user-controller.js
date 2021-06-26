@@ -24,8 +24,8 @@ class UserController {
     async register(request, result) {
         try {
             // Getting login data from body
-            const { email, name, password } = JSON.parse(request.body);
-            const user = await userService.registeration(email, name, password);
+            const { email, name, password, status } = JSON.parse(request.body);
+            const user = await userService.registeration(email, name, password, status);
 
             // Return user data
             result.cookie('email', user.email, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });

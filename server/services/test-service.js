@@ -1,12 +1,13 @@
 const TestModel = require('../models/test-model');
 
 class TestService {
-    create(name, description, questions, maxPassCount) {
+    create(theme, name, description, difficulty, questions) {
         TestModel.create({
+            theme,
             name,
             description,
-            questions,
-            maxPassCount
+            difficulty,
+            questions
         })
             .then(null, (error) => {
                 if (error.code === 11000) {
@@ -15,6 +16,14 @@ class TestService {
                     throw error;
                 }
             });
+    }
+
+    getByTheme(theme) {
+        return TestModel.find({ theme });
+    }
+
+    getById(id) {
+        return TestModel.find({ _id: id });
     }
 
     addUserResult(userId, result, testName) {

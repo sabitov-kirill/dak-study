@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 
 import GroupService from '../../../../../model/services/group-service';
 import FormInput from '../../../../../patterns/common/input';
+import WrongInputLabel from '../../../../../patterns/common/wrong-input-label'
 
 function GroupCreatenForm(props) {
     const [nameValue, setNameValue] = useState();              // Group name
@@ -20,7 +21,6 @@ function GroupCreatenForm(props) {
 
             window.location.replace("/profile");
         } catch (e) {
-            alert(e);
             setError(true);
         }
     }
@@ -57,26 +57,29 @@ function GroupCreatenForm(props) {
 
                 <input type="submit" value="Create" className="ButGroup" />
             </form>
+            <WrongInputLabel isError={isError} text='Group with that name already exist.' />
         </div>
     );
 }
 
 export default function GroupCreate(props) {
+    let content
+    if (props.isVisible) {
+        content =
+            <><GroupCreatenForm />
+                <button className="ButGroup" onClick={() => props.setIsVisible(false)}>
+                    Close
+                </button></>
+    } else {
+        content =
+            <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
+                Create new group
+            </button>
+    }
+
     return (
         <div className="group-content">
-            {!props.isVisible &&
-                <button className="ButGroup" onClick={() => props.setIsVisible(true)}>
-                    Create new group
-            </button>
-            }
-            {props.isVisible &&
-                <>
-                    <GroupCreatenForm />
-                    <button className="ButGroup" onClick={() => props.setIsVisible(false)}>
-                        Close
-                    </button>
-                </>
-            }
+            {content}
         </div>
     );
 }

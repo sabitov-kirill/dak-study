@@ -12,8 +12,8 @@ class UserService {
         }
     }
 
-    async register(email, name, password) {
-        let reg_data = { email, name, password }
+    async register(email, name, password, status) {
+        let reg_data = { email, name, password, status }
         let result = await fetch("/req/user-registration", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },

@@ -23,6 +23,8 @@ router.post('/group-users', groupController.getUsers);
 
 // Tests interaction
 router.post('/test-create', testController.create);
+router.post('/test-list', testController.getList);
+router.post('/test-questions', testController.getQuestions);
 router.post('/test-add-result', testController.addUserResult);
 router.post('/test-get-result', testController.getUserResult);
 

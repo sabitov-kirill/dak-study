@@ -4,15 +4,16 @@ const nanoid = require('nanoid');
 const UserModel = require('../models/user-model');
 
 class UserService {
-    async registeration(email, name, password) {
+    async registeration(email, name, password, status) {
         // User creation
         const activationLink = `activate${nanoid.nanoid()}`;
         const passwordHash = await bcrypt.hash(password, 4);
         const user = await UserModel.create({
             email,
             name,
-            status: 'student',
+            status,
             password: passwordHash,
+            status,
             groupsNames: ['public'],
             isOnline: true,
             activationLink

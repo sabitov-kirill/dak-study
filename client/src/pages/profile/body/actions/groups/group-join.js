@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import UserService from '../../../../../model/services/user-service';
 import GroupService from '../../../../../model/services/group-service';
 import FormInput from '../../../../../patterns/common/input';
+import WrongInputLabel from '../../../../../patterns/common/wrong-input-label'
 
 function GroupJoinForm(props) {
     const [nameValue, setNameValue] = useState();              // Group name
@@ -32,7 +33,7 @@ function GroupJoinForm(props) {
 
             window.location.replace("/profile");
         } catch (e) {
-
+            setError(true);
         }
     }
 
@@ -69,6 +70,7 @@ function GroupJoinForm(props) {
 
                 {isNameCorrect && <input type="submit" value="Join" className="ButGroup" />}
             </form>
+            <WrongInputLabel isError={isError} text='Wrong name or password.' />
         </div >
     );
 }

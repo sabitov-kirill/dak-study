@@ -34,9 +34,9 @@ class Session {
     }
 
     // User sign up function
-    async signUp(email, firstName, lastName, password) {
+    async signUp(email, firstName, lastName, password, status) {
         try {
-            let user = await UserService.register(email, `${firstName} ${lastName}`, password);
+            let user = await UserService.register(email, `${firstName} ${lastName}`, password, status);
 
             this.user = user;
             this.isLoggedIn = true;

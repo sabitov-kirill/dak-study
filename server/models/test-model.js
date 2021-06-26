@@ -10,21 +10,32 @@ const TestSchema = new Schema({
     /* Test description */
     description: { type: String },
 
-    /* Group, connected to test name */
-    groupName: { type: String, required: true },
+    /* Test difficulty */
+    difficulty: { type: String },
 
-    /* Test questions stringyfied to JSON */
-    questions: { type: String },
+    /* Test questions stringyfied to JSON.
+     * Text: question text.
+     * Options: options text.
+     * Answer: Right option.
+     */
+    questions: {
+        type: {
+            text: { type: String },
+            options: { type: [String] },
+            answer: { type: String }
+        }
+    },
 
-    /* Max test passing count. If not set - 1 */
-    maxPassCount: { type: Number },
-
-    /* People, who passed test list.
+    /* People, who passed test stringyfied to JSON.
      * Id: id of user;
      * Marks: user marks list;
-     * passCount: count, wich shows how much times test passed by user.
      */
-    usersResults: { type: Map, of: [Number] }
+    usersResults: {
+        type: {
+            id: String,
+            Marks: [Number]
+        }
+    }
 });
 
 module.exports = model('Test', TestSchema);
