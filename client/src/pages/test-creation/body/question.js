@@ -4,7 +4,7 @@ function HeadQuestion(props) {
     return (
         <div>
             <label htmlFor="questionName">Name</label>
-            <input 
+            <input
                 type="text"
                 id="questionName"
                 value={props.text}
@@ -22,8 +22,8 @@ class Question extends Component {
         this.state = {
             variants: [],
             isOpened: true,
-         };
-        
+        };
+
         this.handleClose = this.handleClose.bind(this);
     }
 
@@ -32,9 +32,9 @@ class Question extends Component {
             isOpened: !state.isOpened
         }));
     }
-    
-    render() { 
-        return ( 
+
+    render() {
+        return (
             <div>
                 <HeadQuestion
                     close={this.handleClose}
@@ -44,8 +44,8 @@ class Question extends Component {
                     text={this.props.text}
                 />
             </div>
-         );
+        );
     }
 }
- 
+
 export default Question;

@@ -1,0 +1,348 @@
+* {
+  box-sizing: border-box;
+}
+  
+ .allElements {
+     height: 100vh;
+     width: 100vw;
+     margin: 0;
+     display: grid;
+     align-content: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+      animation: headerLane1 2s linear 1 forwards;
+  }
+  @keyframes headerLane1 {
+    0% {
+        background-image: url(../../images/space3.jpg);
+    }
+    50% {
+        background-image: url(../../images/space2.jpg);
+    }
+    100% {
+        background-image: url(../../images/space2.jpg);
+    }
+  }
+
+  .pb-5, .py-5 {
+    padding-bottom: 3rem!important;
+  }
+
+  .pt-5, .py-5 {
+    padding-top: 2rem!important;
+  }
+
+  @mixin backlight($x, $y, $spread, $size, $colorA, $colorB, $duration) {
+    &:after {
+      position: absolute;
+      content: "";
+      top: $y;
+      left: $x;
+      right: 0;
+      z-index: -1;
+      height:40vh;
+      width: 70vw;
+      margin: 0 auto;
+      transform: scale($size);
+      -webkit-filter: blur($spread);
+      -moz-filter: blur($spread);
+      -ms-filter: blur($spread);
+      filter: blur($spread);
+      background: linear-gradient(270deg, $colorA, $colorB);
+      background-size: 200% 200%;
+      animation: animateGlow $duration ease infinite;
+      
+      @keyframes animateGlow {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+      }
+    }
+  }
+  
+  .fonLogin h1 {
+    color: #252B37;
+    animation: textColor 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor {
+      0% {
+        color: #7e0fff;
+      }
+      50% {
+        color: #0fffc1;
+      }
+      100% {
+        color: #7e0fff;
+      }
+    }
+  }
+
+  .Zag {
+    color: #101118 !important;
+    text-align: center;
+  }
+
+  .fonLogin {
+    background-color: rgba($color: #101118, $alpha: 1.0);
+    height: 35vh;
+    padding-top: 4vh;
+    width: 40vw;
+  }
+ 
+  
+  .containSelection {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+
+    border-radius: 5px;
+    padding: 60px;
+    position: relative;
+    z-index: 4;
+  }
+
+  .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  
+  .containSelection .left,
+  .containSelection .right {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .container h1 {
+    font-size: 25px;
+    margin: 0;
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  .d-flex p {
+    font-size: 16px;
+    margin: 15px 0 0 0;
+    color: white;
+    font-weight: 300;
+  }
+  
+  .containSelection button {
+    font-size: 16px;
+    margin: 25px 0 0 0;
+  }
+  
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .containForm {
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 30%;
+    margin-top: 30vh;
+    background: white;
+    transition: all 800ms ease-in-out 400ms;
+    z-index: 7;
+  }
+
+  .containForm form {
+    border-radius: 5px;
+    border: 4px double;
+    padding: 20px;
+    align-items: center;
+  }
+  
+  .form-group label {
+    margin: 8px 0 2px 0;
+    color: rgba($color: #101118, $alpha: 1.0);
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .statusSelector {
+    color: black !important;
+    margin-top: 3vh !important;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #fff;
+    box-shadow: 0 0 6px 0 #fff;
+    transition-duration: 0.3s;
+  }
+  
+  form .btns:hover {
+    color: white;
+    box-shadow: 0 0 6px 0 #101118;
+    transition-duration: 0.3s;
+  }
+
+  .btn-danger:hover {
+      color: #fff;
+      background-color: #101118;
+      border-color: #101118;
+  }
+  .btns:hover {
+      color: #212529;
+      text-decoration: none;
+  }
+  [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      cursor: pointer;
+  }
+
+  form .btns {
+      margin: 15px 0 0 0;
+      border-radius: 500px;
+      transition: all 300ms ease-in-out;
+  }
+
+  .containSelection button {
+    font-size: 16px;
+    margin: 25px 0 0 0;
+  }
+
+  .btns {
+      display: inline-block;
+      font-weight: 400;
+      color: #212529;
+      text-align: center;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  #signUp.btns {
+    color: #252B37;
+    animation: textColor1 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor1 {
+      0% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+      50% {
+        color: #0fffc1;
+        border: #0fffc1 solid 2px;
+      }
+      100% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+    }
+  }
+  
+
+  #signIn.btns {
+    color: #252B37;
+    animation: textColor1 10s ease infinite;
+    @include backlight(0, 5vw, 5vw, 0.75, #0fffc1, #7e0fff, 10s);
+    @keyframes textColor1 {
+      0% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+      50% {
+        color: #0fffc1;
+        border: #0fffc1 solid 2px;
+      }
+      100% {
+        color: #7e0fff;
+        border: #7e0fff solid 2px;
+      }
+    }
+  }
+
+  .btn-outline-danger {
+    color: rgba($color: #fff, $alpha: 1.0);
+    border-color: rgba($color: #fff, $alpha: 1.0);
+  }
+
+  .form-control {
+      display: block;
+      width: 100%;
+      height: calc(1.5em + .75rem + 2px);
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  [type=button], [type=reset], [type=submit], button {
+      -webkit-appearance: button;
+  }
+
+
+  button, input, optgroup, select, textarea {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+
+  .form-group button .container button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    outline: 0 !important;
+  }
+  
+  .forgotPassword {
+    font-size: 12px;
+    text-align: center;
+    color: rgba($color: #101118, $alpha: 1.0);
+    margin-top: 25px;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+  }
+
+  input.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1vmin;
+  } 
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}

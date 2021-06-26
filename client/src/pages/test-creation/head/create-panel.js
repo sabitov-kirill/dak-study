@@ -1,11 +1,11 @@
 // export default function asd(props) {
 //     return (
-        // <div>
-        //     {/* change this on e => {..functions(params)} */}
-        //     <form onSubmit={props.onSubmit}>
+// <div>
+//     {/* change this on e => {..functions(params)} */}
+//     <form onSubmit={props.onSubmit}>
 
-        //     </form>
-        // </div>
+//     </form>
+// </div>
 //     );
 // }
 
@@ -15,7 +15,7 @@ const RadBut = (props) => {
     return (
         <div>
             <input type="radio" id="lowButton"
-                name="difficulty" value="low"  required onClick={props.onClick} />
+                name="difficulty" value="low" required onClick={props.onClick} />
             <label htmlFor="easyButton">low</label>
 
             <input type="radio" id="mediumButton"
@@ -32,23 +32,23 @@ const RadBut = (props) => {
 class HeadForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             name: '',
             description: '',
             difficulty: '',
-         };
-         this.handleInputChange = this.handleInputChange.bind(this);
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleInputChange(event) {
         const target = event.target;
         this.setState({
-            [target.name] : target.value  
+            [target.name]: target.value
         });
     }
-    
-    render() { 
-        return ( 
+
+    render() {
+        return (
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
@@ -58,15 +58,15 @@ class HeadForm extends Component {
                     e.preventDefault();
                 }}>
                     <div>
-                        <p>Create new test</p>
-                        <input type="submit" value="Create"/>
+                        <h1>Create new test</h1>
+                        <input type="submit" value="Create" />
                     </div>
                     <div>
                         <label htmlFor="entryName">Name</label>
-                        <input 
-                            type="text" 
-                            id="entryName" 
-                            placeholder="Entry name" 
+                        <input
+                            type="text"
+                            id="entryName"
+                            placeholder="Entry name"
                             required
                             onChange={this.handleInputChange}
                             name="name"
@@ -75,18 +75,18 @@ class HeadForm extends Component {
                         <label htmlFor="entryDescription">Description</label>
                         <input
                             type="text"
-                            id="entryDescription" 
-                            placeholder="Entry description" 
-                            required 
+                            id="entryDescription"
+                            placeholder="Entry description"
+                            required
                             onChange={this.handleInputChange}
                             name="description"
                         />
-                        <RadBut onClick={this.handleInputChange}/>
+                        <RadBut onClick={this.handleInputChange} />
                     </div>
                 </form>
             </div>
-         );
+        );
     }
 }
- 
+
 export default HeadForm;
