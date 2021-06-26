@@ -12,11 +12,13 @@ import ScrollToTop from "./patterns/common/scoll-top2.js"
 // IN DEBUG
 import TestPage from "./pages/tests/tests"
 import ThemePage from "./pages/theme/theme"
+import TestCreationPage from './pages/test-creation/create-test';
 
 const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginForm },
   { path: '/profile', Component: Profile },
+  { path: '/addtest', Component: TestCreationPage },
   { path: '/:theme/tests', Component: TestPage },
   { path: '/:id', Component: ThemePage },
 ]
