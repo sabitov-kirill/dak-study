@@ -18,10 +18,10 @@ const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: Login },
   { path: '/profile', Component: Profile },
-  { path: '/addtest', Component: TestCreationPage },
+  { path: '/test-create', Component: TestCreationPage },
+  { path: '/:theme', Component: ThemePage },
   { path: '/:theme/tests', Component: TestPage },
-  { path: '/test-pass', Component: TestPass },
-  { path: '/:id', Component: ThemePage },
+  { path: '/:theme/tests/:id', Component: TestPass },
 ]
 
 function App() {

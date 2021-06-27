@@ -1,11 +1,13 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom'
 
 import TestService from '../../model/services/test-service'
 import './card.scss'
 
 const TestCard = props => {
     return (
+        <Link to={location => (`${location.pathname}/${props.testId}`)}>
         <div className={props.testDiff}>
             <div className="flip">
                 <div className="front">
@@ -17,6 +19,7 @@ const TestCard = props => {
                 </div>
             </div>
         </div>
+        </Link>
     );
 }
 
