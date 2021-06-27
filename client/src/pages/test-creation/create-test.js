@@ -7,6 +7,8 @@ import Body from "./body/body"
 import Header from "./../../patterns/common/header/header"
 import Footer from "./../../patterns/common/footer/footer"
 
+import TestService from '../../model/services/test-service'
+
 // class Question {
 //     constructor() {
 //         this.text = '';
@@ -19,9 +21,6 @@ class TestCreationPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            testName: '',
-            testDescription: '',
-            testDifficulty: '',
             questions: [],
         };
 
@@ -52,20 +51,15 @@ class TestCreationPage extends Component {
     }
 
     addQuestion = (question) => {
-        this.setState({ questions: [...this.state.questions, question] })
+        this.setState((state) => {
+            return { questions: [...state.questions, question] }
+        })
     }
 
-    handleOnSubmitForm(name, description, difficulty) {
-        this.setState({
-            testName: name,
-            testDescription: description,
-            testDifficulty: difficulty,
-        });
+    handleOnSubmitForm(theme, name, description, difficulty) {
+        TestService.create(theme, name, description, difficulty, this.state.questions);
 
-        // send data after all 
-
-        // and then reset this.state
-        // now this isn't done for debug data (check chrome react debugger)
+        this.setState({ questions: [] });
     }
 
     render() {

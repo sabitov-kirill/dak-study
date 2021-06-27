@@ -1,8 +1,8 @@
 const TestModel = require('../models/test-model');
 
 class TestService {
-    create(theme, name, description, difficulty, questions) {
-        TestModel.create({
+    async create(theme, name, description, difficulty, questions) {
+        await TestModel.create({
             theme,
             name,
             description,
@@ -18,16 +18,30 @@ class TestService {
             });
     }
 
-    getByTheme(theme) {
-        return TestModel.find({ theme });
+    async getByTheme(theme) {
+        const tests = await TestModel.find({ theme });
+        if (!tests || tests.length == 0) throw new Error(`Tests with theme ${theme} not found.`);
+
+        const testsList = tests.map((test) => {
+            return {
+                name: test.name,
+                description: test.description,
+                difficulty: test.difficulty,
+                id: test._id
+            };
+        });
+        return testsList;
     }
 
-    getById(id) {
-        return TestModel.find({ _id: id });
+    async getById(id) {
+        const test = TestModel.findOne({ _id: id });
+        if (!tests) throw new Error(`Test with id ${id} not found.`) 
+
+        return test;
     }
 
-    addUserResult(userId, result, testName) {
-        const test = TestModel.findOne({ name: testName });
+    async addUserResult(userId, result, testName) {
+        const test = await TestModel.findOne({ name: testName });
         if (!test) throw new Error(`Test with name ${testName} not found.`);
 
         // Key should be string. Probably error.
@@ -39,8 +53,8 @@ class TestService {
         test.save();
     }
 
-    getUserResult(userId, testName) {
-        const test = TestModel.findOne({ name: testName });
+    async getUserResult(userId, testName) {
+        const test = await TestModel.findOne({ name: testName });
         if (!test) throw new Error(`Test with name ${testName} not found.`);
 
         let results = test.usersResult.get(userId);

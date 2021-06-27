@@ -1,3 +1,7 @@
+import React, { Component } from 'react';
+
+import RadioSelector from '../../../patterns/common/radio-selector'
+
 // export default function asd(props) {
 //     return (
 // <div>
@@ -9,22 +13,32 @@
 //     );
 // }
 
-import React, { Component } from 'react';
+const ThemeSelector = (props) => {
+    const themeSelectors = [
+        'mechanics',
+        'molecular',
+        'electrodynamics',
+        'magnetism',
+        'optics'
+    ];
 
-const RadBut = (props) => {
     return (
         <div>
-            <input type="radio" id="lowButton"
-                name="difficulty" value="low" required onClick={props.onClick} />
-            <label htmlFor="easyButton">low</label>
+            <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+        </div>
+    );
+};
 
-            <input type="radio" id="mediumButton"
-                name="difficulty" value="medium" required onClick={props.onClick} />
-            <label htmlFor="mediumButton">medium</label>
+const DifficultySelector = (props) => {
+    const difficultySelectors = [
+        'low',
+        'medium',
+        'hard',
+    ];
 
-            <input type="radio" id="hardButton"
-                name="difficulty" value="hard" required onClick={props.onClick} />
-            <label htmlFor="hardButton">hard</label>
+    return (
+        <div>
+            <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
         </div>
     );
 };
@@ -33,6 +47,7 @@ class HeadForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            theme: '',
             name: '',
             description: '',
             difficulty: '',
@@ -52,7 +67,7 @@ class HeadForm extends Component {
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
-                        this.props.submit(this.state.name, this.state.description, this.state.difficulty);
+                        this.props.submit(this.state.theme, this.state.name, this.state.description, this.state.difficulty);
                         e.target.reset();
                     }
                     e.preventDefault();
@@ -62,6 +77,7 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div>
+                        <ThemeSelector onClick={this.handleInputChange} />
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"
@@ -81,7 +97,7 @@ class HeadForm extends Component {
                             onChange={this.handleInputChange}
                             name="description"
                         />
-                        <RadBut onClick={this.handleInputChange} />
+                        <DifficultySelector onClick={this.handleInputChange} />
                     </div>
                 </form>
             </div>

@@ -22,7 +22,7 @@ class TestService {
         });
 
         if (result.ok) {
-            text = await result.test();
+            let text = await result.text();
             return JSON.parse(text);
         } else {
             let err = await result.text();
@@ -39,7 +39,7 @@ class TestService {
         });
 
         if (result.ok) {
-            text = await result.test();
+            let text = await result.test();
             return JSON.parse(text);
         } else {
             let err = await result.text();

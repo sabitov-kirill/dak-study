@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { Context } from "../../../index"
 import ActionsContainer from "./actions/actions-container"
 import InfoPanel from "./info-panel"
-import "./../profile.css"
 
 export default function Body() {
     const [shouldRedirect, setShouldRedirect] = useState(false);
