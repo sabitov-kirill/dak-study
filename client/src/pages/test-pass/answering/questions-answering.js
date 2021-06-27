@@ -1,97 +1,57 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 
+import TestServise from '../../../model/services/test-service'
 import Question from './question'
 
-export default class QuestionsAnswering extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoaded: false,
-            answers: []
-        };
-    }
+export default function QuestionsAnswering(props) {
+    const [content, setContent] = useState(<h1>test questions are loading</h1>);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [answers, setAnswers] = useState([]);
+    const { id } = useParams();
 
-    async componentDidMount() {
-        this.questions =
-            [
-                {
-                    text: 'What is flex?',
-                    options:
-                        [
-                            'option 1',
-                            'option 2',
-                            'option 3',
-                            'option 4',
-                        ]
-                },
-                {
-                    text: 'What is flex 2?',
-                    options:
-                        [
-                            'option 1',
-                            'option 2',
-                            'option 3',
-                            'option 4',
-                        ]
-                },
-                {
-                    text: 'What is flex 3?',
-                    options:
-                        [
-                            'option 1',
-                            'option 2',
-                            'option 3',
-                            'option 4',
-                        ]
-                },
-            ];
-
-        this.setState({ isLoaded: true });
-    }
-
-    async checkAnswers() {
-        let ans = this.state.answers;
-    }
-
-    selectQuestionAnswer(answer, questionIndex) {
-        this.setState((state) => {
-            state.answers[questionIndex] = answer;
-            return { answers: state.answers };
+    const selectQuestionAnswer = (answer, questionIndex) => {
+        setAnswers((answers) => {
+            answers[questionIndex] = answer;
+            return answers;
         });
     }
 
-    renderQuestions() {
-        const questions = this.questions.map((question, index) => {
-            return (
-                <Question
-                    question={question}
-                    selectAnswer={(value) => {
-                        this.selectQuestionAnswer(value, index);
-                    }}
-                />
-            );
-        })
+    useEffect(async () => {
+        if (!isLoaded && !isError) {
+            try {
+                const questionsList = await TestServise.getQuestions(id);
+                const questions = questionsList.map((question, index) => {
+                    return (
+                        <Question
+                            question={question}
+                            selectAnswer={(value) => selectQuestionAnswer(value, index)}
+                        />
+                    );
+                });
 
-        return (
-            <form onSubmit={(e) => {
-                this.checkAnswers();
-                e.preventDefault();
-            }}>
-                <div>{questions}</div>
-                <input type='submit' value='Send' />
-            </form>
-        );
-    }
+                setIsLoaded(true);
+                setContent(
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        props.checkAnswers(answers);
+                    }}>
+                        <div>{questions}</div>
+                        <input type='submit' value='Send' />
+                    </form>
+                );
+            } catch (e) {
+                setContent(<h1>test questions loading error.</h1>);   
+                setIsError(true);
+            }
+        }
+    });
 
-    render() {
-        let content = this.state.isLoaded
-            ? this.renderQuestions()
-            : <p>Loading</p>;
-
-        return (
-            <div className='test-pass'>
-                { content}
-            </div>
-        );
-    }
+    return (
+        <div className='test-pass'>
+            <h1>test passing page</h1>
+            { content }
+        </div>
+    )
 }

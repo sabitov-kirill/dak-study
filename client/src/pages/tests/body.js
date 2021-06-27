@@ -7,15 +7,15 @@ import './card.scss'
 
 const TestCard = props => {
     return (
-        <Link to={location => (`${location.pathname}/${props.testId}`)}>
-        <div className={props.testDiff}>
+        <Link to={location => (`${location.pathname}/${props.test.id}`)}>
+        <div className={props.test.difficulty}>
             <div className="flip">
                 <div className="front">
-                    <h1>{props.testName}</h1>
+                    <h1>{props.test.name}</h1>
                 </div>
                 <div className="back">
                     <h2>{props.testResult}</h2>
-                    <p>{props.testDescription}</p>
+                    <p>{props.test.description}</p>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@ const TestCard = props => {
 export default function Body(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [content, setConstent] = useState(<h1>tests are loading</h1>);
+    const [content, setContent] = useState(<h1>tests are loading</h1>);
     const { theme } = useParams();
 
     const setRestResult = (result) => {
@@ -45,19 +45,16 @@ export default function Body(props) {
                 const cards = tests.map(test => {
                     return (
                         <TestCard
-                            testName={test.name}
-                            testDescription={test.description}
-                            testDiff={test.difficulty}
+                            test={test}
                             testResult={setRestResult(-1)}
-                            testId={test.id}
                         />
                     );
                 });
 
-                setConstent(<>{cards}</>);
+                setContent(<>{cards}</>);
                 setIsLoaded(true);
             } catch (e) {
-                setConstent(<h1>tests loading error.</h1>);   
+                setContent(<h1>tests loading error.</h1>);   
                 setIsError(true);
             }
         }

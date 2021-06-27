@@ -32,14 +32,14 @@ class TestService {
 
     async getQuestions(id) {
         let test_data = { id }
-        let result = await fetch("/req/test-list", {
+        let result = await fetch("/req/test-questions", {
             method: "POST",
             headers: { "Contet-Type": "application/json;charset=utf-8" },
             body: JSON.stringify(test_data)
         });
 
         if (result.ok) {
-            let text = await result.test();
+            let text = await result.text();
             return JSON.parse(text);
         } else {
             let err = await result.text();
