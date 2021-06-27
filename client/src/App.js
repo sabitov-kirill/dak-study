@@ -6,7 +6,7 @@ import './App.css';
 import MainPage from './pages/main/main'
 import Profile from './pages/profile/profile'
 import Login from './pages/login/login-form'
-import ScrollToTop from "./patterns/common/scoll-top2.js"
+import ScrollToTop from "./patterns/common/scroll-top"
 
 // IN DEBUG
 import TestPass from './pages/test-pass/test-pass'
@@ -28,7 +28,6 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      {/* <ScrollRestoration> */}
       <Switch>
         {routes.map(({ path, Component }) => (
           <Route key={path} path={path} exact>
@@ -36,7 +35,6 @@ function App() {
           </Route>
         ))}
       </Switch>
-      {/* </ScrollRestoration> */}
     </Router>
   );
 }
