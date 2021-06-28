@@ -6,7 +6,7 @@ import Header from "../../patterns/common/header/header";
 import Footer from "../../patterns/common/footer/footer";
 import Body from "./body"
 
-export default function TestPass() {
+export default function TestPassPage() {
     return (
         <>
             <Header />

@@ -8,41 +8,40 @@ import "./theme.scss"
 const slideData = [
     {
         index: 0,
+        headline: 'Tests',
+        button: 'go to menu',
+        src: ''
+    },
+    {
+        index: 1,
         headline: 'Materials',
         button: 'go to menu',
         src: ""
     },
     {
-        index: 1,
+        index: 2,
         headline: 'Models',
         button: 'go to menu',
         src: ''
-    },
-    {
-        index: 2,
-        headline: 'Tests',
-        button: 'go to menu',
-        src: ''
-    },
-
+    }
 ]
 
 export default function Body(props) {
-    let { id } = useParams();
-    let divName = `backgroundDiv ${id.slice(0, 3)}Body`
+    let { theme } = useParams();
+    let divName = `backgroundDiv ${theme.slice(0, 3)}Body`
 
     return (
         <div>
             {/* <ScrollToTopOnMount /> */}
             <div>
                 <div className={divName}>
-                    {/* <div className="asdDiv"><h1 className="themeHeader1">{id}</h1></div> */}
-                    <div className="asdDiv"><p className="themeHeader1">{id}</p></div>
+                    {/* <div className="asdDiv"><h1 className="themeHeader1">{theme}</h1></div> */}
+                    <div className="asdDiv"><p className="themeHeader1">{theme}</p></div>
                     <div className="backDiv"></div>
                 </div>
             </div>
             <div>
-                <Sliders heading="a" slides={slideData} from={id} />
+                <Sliders heading="a" slides={slideData} from={theme} />
             </div>
         </div>
     );

@@ -115,6 +115,10 @@ export default function Form(props) {
         }
     }
 
+    if (isSuccsess) { 
+        return <Redirect to='/profile' />
+    }
+
     return (
         <form onSubmit={event => {
             event.preventDefault();
@@ -152,12 +156,10 @@ export default function Form(props) {
                 </button>
             </div>
 
-            <div className="forgotPassword">Forgot Password?</div>
             <WrongInputLabel isError={isError} text={props.form === "Sign in"
                 ? 'Wrong email or password.'
                 : 'User with this email already exist.'
             } />
-            {isSuccsess && <Redirect to='/' />}
         </form>
     );
 }

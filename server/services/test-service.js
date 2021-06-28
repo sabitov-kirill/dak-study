@@ -35,7 +35,7 @@ class TestService {
 
     async getById(id) {
         const test = TestModel.findOne({ _id: id });
-        if (!tests) throw new Error(`Test with id ${id} not found.`) 
+        if (!test) throw new Error(`Test with id ${id} not found.`) 
 
         return test;
     }

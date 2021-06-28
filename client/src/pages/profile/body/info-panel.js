@@ -7,7 +7,8 @@ export default function InfoPanel(props) {
     let session = useContext(Context);
 
     const getGravatar = () => {
-        const emailHash = md5(session.user.email);
+        const email = session.user.email.toLowerCase();
+        const emailHash = md5(email);
         return ('https://www.gravatar.com/avatar/' + emailHash);
     }
 

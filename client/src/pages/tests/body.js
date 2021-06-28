@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
+import React, { useState, useEffect, Fragment } from "react";
+import { useParams } from "react-router";
+import { Link } from 'react-router-dom'
 
 import TestService from '../../model/services/test-service'
 import './card.scss'
 
 const TestCard = props => {
     return (
-        <div className={props.testDiff}>
-            <Link to="/" >
+        <Link to={location => (`${location.pathname}/${props.test.id}`)}>
+            <div className={props.test.difficulty}>
                 <div className="flip">
                     <div className="front">
-                        <h1>{props.testName}</h1>
+                        <h1>{props.test.name}</h1>
                     </div>
                     <div className="back">
                         <h2>{props.testResult}</h2>
-                        <p>{props.testDescription}</p>
+                        <p>{props.test.description}</p>
                     </div>
                 </div>
-            </Link>
-        </div>
+            </div>
+        </Link>
     );
 }
 
 export default function Body(props) {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [content, setConstent] = useState(<h1>tests are loading</h1>);
+    const [content, setContent] = useState(<h1>tests are loading</h1>);
     const { theme } = useParams();
 
     const setRestResult = (result) => {
@@ -36,31 +35,23 @@ export default function Body(props) {
         }
     }
 
-    // Loading tests
     useEffect(async () => {
-        if (!isLoaded && !isError) {
-            try {
-                const tests = await TestService.getList(theme);
-                const cards = tests.map(test => {
-                    return (
-                        <TestCard
-                            testName={test.name}
-                            testDescription={test.description}
-                            testDiff={test.difficulty}
-                            testResult={setRestResult(-1)}
-                            testId={test.id}
-                        />
-                    );
-                });
+        try {
+            const tests = await TestService.getList(theme);
+            const cards = tests.map(test => {
+                return (
+                    <TestCard
+                        test={test}
+                        testResult={setRestResult(-1)}
+                    />
+                );
+            });
 
-                setConstent(<>{cards}</>);
-                setIsLoaded(true);
-            } catch (e) {
-                setConstent(<h1>tests loading error.</h1>);
-                setIsError(true);
-            }
+            setContent(<>{cards}</>);
+        } catch (e) {
+            setContent(<h1>tests loading error.</h1>);
         }
-    });
+    }, []);
 
     return (
         <>
