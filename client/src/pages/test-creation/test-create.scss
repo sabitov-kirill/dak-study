@@ -3,7 +3,7 @@
 }
 
 .ZagTest h1 {
-   margin-left: 2vw; 
+   margin-left: -67%; 
    border-bottom: 2px white solid;
    padding-bottom: 1vh;
 }
@@ -16,7 +16,8 @@
 .ZagTest input {
     width: fit-content;
     height: fit-content;
-    margin-left:auto;
+    margin-left:89%;
+    position: absolute;
     float: right;
     margin-right: 3vw;
     border: 2px solid #fff;
@@ -167,6 +168,7 @@
     font-family: 'Courier' monospace !important;
     letter-spacing: 6px;
     background-color: transparent;
+    transition-duration: 0.4s;
 }
 
 .alt-button:hover {
