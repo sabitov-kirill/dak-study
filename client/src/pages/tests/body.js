@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { useParams } from "react-router";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router";
 
 import TestService from '../../model/services/test-service'
 import './card.scss'
@@ -7,15 +7,17 @@ import './card.scss'
 const TestCard = props => {
     return (
         <div className={props.testDiff}>
-            <div className="flip">
-                <div className="front">
-                    <h1>{props.testName}</h1>
+            <Link to="/" >
+                <div className="flip">
+                    <div className="front">
+                        <h1>{props.testName}</h1>
+                    </div>
+                    <div className="back">
+                        <h2>{props.testResult}</h2>
+                        <p>{props.testDescription}</p>
+                    </div>
                 </div>
-                <div className="back">
-                    <h2>{props.testResult}</h2>
-                    <p>{props.testDescription}</p>
-                </div>
-            </div>
+            </Link>
         </div>
     );
 }
@@ -54,7 +56,7 @@ export default function Body(props) {
                 setConstent(<>{cards}</>);
                 setIsLoaded(true);
             } catch (e) {
-                setConstent(<h1>tests loading error.</h1>);   
+                setConstent(<h1>tests loading error.</h1>);
                 setIsError(true);
             }
         }
