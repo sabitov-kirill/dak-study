@@ -3,6 +3,22 @@ import { useParams } from 'react-router';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
 
+const ThemeSelector = (props) => {
+    const themeSelectors = [
+        'mechanics',
+        'molecular',
+        'electrodynamics',
+        'magnetism',
+        'optics'
+    ];
+
+    return (
+        <div className="Opp">
+            <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+        </div>
+    );
+};
+
 const DifficultySelector = (props) => {
     const difficultySelectors = [
         'low',
@@ -11,7 +27,7 @@ const DifficultySelector = (props) => {
     ];
 
     return (
-        <div>
+        <div className="Opp">
             <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
         </div>
     );
@@ -53,6 +69,7 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div className="allTests">
+                        <ThemeSelector onClick={this.handleInputChange} />
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"
@@ -80,4 +97,4 @@ class HeadForm extends Component {
     }
 }
 
-export default Wrapper;
+export default HeadForm;

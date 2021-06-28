@@ -17,6 +17,7 @@ const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginPage },
   { path: '/profile', Component: ProfilePage },
+  { path: '/tests/create', Component: TestCreationPage },
   { path: '/:theme', Component: ThemePage },
   { path: '/:theme/tests', Component: TestPage },
   { path: '/:theme/tests/create', Component: TestCreationPage },
