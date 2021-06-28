@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useParams } from 'react-router';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
 
@@ -32,6 +33,8 @@ const DifficultySelector = (props) => {
     );
 };
 
+const Wrapper = (props) => { const { theme } = useParams(); return <HeadForm theme={theme} ok={props.ok} submit={props.submit} /> }
+
 class HeadForm extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +59,7 @@ class HeadForm extends Component {
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
-                        this.props.submit(this.state.theme, this.state.name, this.state.description, this.state.difficulty);
+                        this.props.submit(this.props.theme, this.state.name, this.state.description, this.state.difficulty);
                         e.target.reset();
                     }
                     e.preventDefault();
@@ -66,7 +69,6 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div>
-                        <ThemeSelector onClick={this.handleInputChange} />
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"

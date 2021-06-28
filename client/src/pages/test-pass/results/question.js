@@ -13,8 +13,9 @@ export default function Question(props) {
 
     const options = props.question.options.map((option, index) => {
         <>
-            <p className={optionsClasses[index]}
-            >{option}</p>
+            <p className={optionsClasses[index]}>
+                {option}
+            </p>
             <br />
         </>
     });
