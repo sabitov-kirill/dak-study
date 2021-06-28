@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
 
-// export default function asd(props) {
-//     return (
-// <div>
-//     {/* change this on e => {..functions(params)} */}
-//     <form onSubmit={props.onSubmit}>
-
-//     </form>
-// </div>
-//     );
-// }
-
 const ThemeSelector = (props) => {
     const themeSelectors = [
         'mechanics',

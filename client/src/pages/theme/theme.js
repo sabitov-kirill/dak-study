@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router';
+
 import Footer from '../../patterns/common/footer/footer';
 import Header from '../../patterns/common/header/header';
 import Body from "./body"
-// import ScrollToTopOnMount from "./../../patterns/common/scroll-top.js"
 
 class ThemePage extends Component {
     constructor(props) {
@@ -14,7 +13,6 @@ class ThemePage extends Component {
     render() {
         return (
             <div>
-                {/* <ScrollToTopOnMount /> */}
                 <Body />
                 <Header />
                 <Footer />
