@@ -10,6 +10,7 @@ import TestPassPage from './pages/test-pass/test-pass'
 import TestPage from "./pages/tests/tests"
 import ThemePage from "./pages/theme/theme"
 import TestCreationPage from './pages/test-creation/create-test';
+import ErrorPage from './pages/error/error'
 
 import ScrollToTop from "./patterns/common/scroll-top"
 
@@ -20,7 +21,6 @@ const routes = [
   { path: '/tests/create', Component: TestCreationPage },
   { path: '/:theme', Component: ThemePage },
   { path: '/:theme/tests', Component: TestPage },
-  { path: '/:theme/tests/create', Component: TestCreationPage },
   { path: '/:theme/tests/:id', Component: TestPassPage },
 ]
 
