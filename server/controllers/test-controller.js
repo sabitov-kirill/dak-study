@@ -43,7 +43,7 @@ class TestController {
 
     async checkAnswers(request, result) {
         try {
-            const { userId: id } = request.cookies;
+            const userId = request.cookies.id;
             const { answers, id } = JSON.parse(request.body);
             const checkedAnswers = await TestsService.checkAnswers(answers, id);
 
