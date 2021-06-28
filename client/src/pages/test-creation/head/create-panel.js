@@ -75,6 +75,7 @@ class HeadForm extends Component {
                 }}>
                     <div className="ZagTest">
                         <h1>Create new test</h1>
+
                         <input type="submit" value="Create" />
                     </div>
                     <div className="allTests">

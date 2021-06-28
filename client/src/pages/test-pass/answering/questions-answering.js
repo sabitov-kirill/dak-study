@@ -27,7 +27,7 @@ export default function QuestionsAnswering(props) {
             props.checkAnswers(answers);
         }}>
             {questions}
-            <input type='submit' value='Send' />
+            <input className="alt-button2" type='submit' value='Send' />
         </form>;
 
     return (
