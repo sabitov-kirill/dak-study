@@ -52,7 +52,7 @@ class HeadForm extends Component {
                         <h1>Create new test</h1>
                         <input type="submit" value="Create" />
                     </div>
-                    <div>
+                    <div className="allTests">
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"

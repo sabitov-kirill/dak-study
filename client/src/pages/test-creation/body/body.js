@@ -36,7 +36,7 @@ export default function Body(props) {
     return (
         <div>
             <div>
-                {!isClicked && <button onClick={() => setIsClicked(!isClicked)}>Add</button>}
+                {!isClicked && <button className="alt-button" onClick={() => setIsClicked(!isClicked)}>Add</button>}
                 {isClicked && <AddQuest add={props.addQuestion} close={setIsClicked} />}
             </div>
             {questions}

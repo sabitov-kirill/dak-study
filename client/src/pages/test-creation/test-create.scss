@@ -3,5 +3,37 @@
 }
 
 .ZagTest h1 {
-   margin-left: 1.5vw; 
+   margin-left: 2vw; 
+}
+.ZagTest{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} 
+.ZagTest input {
+    width: fit-content;
+    height: fit-content;
+    margin-left:auto;
+    float: right;
+    margin-right: 3vw;
+    border: 2px solid #fff;
+    color: white;
+    background-color: transparent;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    padding: 0.8vh;
+    padding-left: 0.6vw;
+}
+.ZagTest input:hover {
+    border: 2px solid #fff;
+    color: var(--color-secondary);
+    background-color: #fff;
+}
+.allTests {
+    margin-left: 2vw;
+}
+.alt-button {
+    margin-left: 2vw;
 }
