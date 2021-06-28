@@ -13,8 +13,11 @@ const ThemeSelector = (props) => {
     ];
 
     return (
-        <div className="Opp">
-            <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+        <div className="need">
+            <h3>Theme choose</h3>
+            <div className="Opp">
+                <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+            </div>
         </div>
     );
 };
@@ -27,8 +30,12 @@ const DifficultySelector = (props) => {
     ];
 
     return (
-        <div className="Opp">
-            <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
+        <div className="diff">
+            <h3>Difficulty</h3>
+            <div className="Opp level">
+
+                <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
+            </div>
         </div>
     );
 };
@@ -70,26 +77,30 @@ class HeadForm extends Component {
                     </div>
                     <div className="allTests">
                         <ThemeSelector onClick={this.handleInputChange} />
-                        <label htmlFor="entryName">Name</label>
-                        <input
-                            type="text"
-                            id="entryName"
-                            placeholder="Entry name"
-                            required
-                            onChange={this.handleInputChange}
-                            name="name"
-                        />
+                        <div className="vvod">
+                            <div className="Pole">
 
-                        <label htmlFor="entryDescription">Description</label>
-                        <input
-                            type="text"
-                            id="entryDescription"
-                            placeholder="Entry description"
-                            required
-                            onChange={this.handleInputChange}
-                            name="description"
-                        />
-                        <DifficultySelector onClick={this.handleInputChange} />
+                                <input
+                                    type="text"
+                                    id="entryName"
+                                    placeholder="Entry name"
+                                    required
+                                    onChange={this.handleInputChange}
+                                    name="name"
+                                /> <label htmlFor="entryName">Name</label>
+
+
+                                <input
+                                    type="text"
+                                    id="entryDescription"
+                                    placeholder="Entry description"
+                                    required
+                                    onChange={this.handleInputChange}
+                                    name="description"
+                                    className="second"
+                                /><label htmlFor="entryDescription">Description</label>
+                            </div>
+                            <DifficultySelector onClick={this.handleInputChange} /></div>
                     </div>
                 </form>
             </div>
