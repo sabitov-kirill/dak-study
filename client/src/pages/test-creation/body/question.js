@@ -11,8 +11,9 @@ function HeadQuestion(props) {
                 id="questionName"
                 value={props.text}
                 onChange={props.nameChange}
+                required
             />
-            <button onClick={props.close}>close</button>
+            {/* <button onClick={props.close}>close</button> */}
             <button onClick={() => props.remove(props.index)}>delete</button>
         </div>
     );
@@ -51,7 +52,7 @@ class Question extends Component {
 
     addOption() {
         this.setState(state => {
-            return { options: [...state.options, ' '] }
+            return { options: [...state.options, ''] }
         });
     }
 
@@ -67,7 +68,7 @@ class Question extends Component {
 
     render() {
         return (
-            <div tabIndex="0" onBlur={() => this.props.change({text: this.state.text, options: this.state.options, answer: this.state.answer}, this.props.index)}>
+            <div tabIndex="0" onBlur={() => this.props.change({ text: this.state.text, options: this.state.options, answer: this.state.answer }, this.props.index)}>
                 <HeadQuestion
                     close={this.handleClose}
                     remove={this.props.remove}
@@ -78,17 +79,19 @@ class Question extends Component {
                 />
 
                 {
-                    this.state.isOpened && 
+                    this.state.isOpened &&
                     <div>
                         <button onClick={this.addOption}>new option</button>
                         <div>
                             {this.state.options.map((option, index) => {
                                 return <Option
-                                            index={index}
-                                            key={index} 
-                                            onClick={this.handleOnRadio} 
-                                            onChange={this.changeOption}
-                                        />
+                                    index={this.props.index}
+                                    key={index}
+                                    onClick={this.handleOnRadio}
+                                    onChange={this.changeOption}
+                                    text={option}
+                                    checked={this.props.answer}
+                                />
                             })}
                         </div>
                     </div>

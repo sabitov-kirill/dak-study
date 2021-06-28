@@ -12,16 +12,22 @@ class StoreQuestion {
 const AddQuest = (props) => {
     const [name, setName] = useState('');
 
+    const a = (e) => {
+        props.add(new StoreQuestion(name));
+        props.close(false);
+        e.preventDefault();
+    };
+
     return (
         <div>
-            <form onSubmit={(e) => {
+            {/* <form name="a" onSubmit={(e) => {
                 props.add(new StoreQuestion(name));
                 props.close(false);
                 e.preventDefault();
-            }}>
-                <input type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
-                <input type="submit" value="confirm" />
-            </form>
+            }}> */}
+            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
+            <input type="button" value="confirm" onClick={a} />
+            {/* </form> */}
         </div>
     )
 }

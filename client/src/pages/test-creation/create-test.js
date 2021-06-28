@@ -58,13 +58,18 @@ class TestCreationPage extends Component {
         return (
             <div className='testCreat'>
                 <Header />
-                <HeadForm submit={this.handleOnSubmitForm} ok={this.state.questions.length} />
-                <Body
+                <HeadForm submit={this.handleOnSubmitForm} ok={this.state.questions.length}
                     questions={this.state.questions}
                     removeQuestion={this.removeQuestion}
                     addQuestion={this.addQuestion}
                     changeQuestion={this.changeQuestion}
                 />
+                {/* <Body
+                    questions={this.state.questions}
+                    removeQuestion={this.removeQuestion}
+                    addQuestion={this.addQuestion}
+                    changeQuestion={this.changeQuestion}
+                /> */}
                 <Footer />
             </div>
         );
