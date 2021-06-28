@@ -19,14 +19,14 @@ const AddQuest = (props) => {
     };
 
     return (
-        <div>
+        <div className="confirm">
             {/* <form name="a" onSubmit={(e) => {
                 props.add(new StoreQuestion(name));
                 props.close(false);
                 e.preventDefault();
             }}> */}
-            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
-            <input type="button" value="confirm" onClick={a} />
+            <input className="alt-input" type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
+            <input className="alt-button" type="button" value="confirm" onClick={a} />
             {/* </form> */}
         </div>
     )

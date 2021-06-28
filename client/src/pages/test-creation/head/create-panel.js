@@ -78,31 +78,34 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div className="allTests">
-                        <ThemeSelector onClick={this.handleInputChange} />
                         <div className="vvod">
-                            <div className="Pole">
-
-                                <input
-                                    type="text"
-                                    id="entryName"
-                                    placeholder="Entry name"
-                                    required
-                                    onChange={this.handleInputChange}
-                                    name="name"
-                                /> <label htmlFor="entryName">Name</label>
-
-
-                                <input
-                                    type="text"
-                                    id="entryDescription"
-                                    placeholder="Entry description"
-                                    required
-                                    onChange={this.handleInputChange}
-                                    name="description"
-                                    className="second"
-                                /><label htmlFor="entryDescription">Description</label>
-                            </div>
+                            <ThemeSelector onClick={this.handleInputChange} />
                             <DifficultySelector onClick={this.handleInputChange} /></div>
+                        <div className="Pole">
+
+                            <h3>Info</h3>
+
+                            <input
+                                type="text"
+                                id="entryName"
+                                placeholder="Entry name"
+                                required
+                                onChange={this.handleInputChange}
+                                name="name"
+                            /> <label htmlFor="entryName">Name</label>
+
+
+                            <input
+                                type="text"
+                                id="entryDescription"
+                                placeholder="Entry description"
+                                required
+                                onChange={this.handleInputChange}
+                                name="description"
+                                className="second"
+                            /><label htmlFor="entryDescription">Description</label>
+                        </div>
+
                     </div>
                     <Body
                         questions={this.props.questions}

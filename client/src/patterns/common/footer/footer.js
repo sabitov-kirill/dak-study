@@ -5,6 +5,7 @@ function AboutUs(props) {
         <div className="Discr">
             <h3>About us</h3>
             {/* <p>text here..</p> */}
+            <p className="fonn"></p>
         </div>
     );
 }
