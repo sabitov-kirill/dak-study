@@ -1,5 +1,3 @@
-import React from 'react';
-
 import RadioSelector from '../../../patterns/common/radio-selector'
 
 export default function Question(props) {

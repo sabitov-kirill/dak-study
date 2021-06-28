@@ -72,20 +72,24 @@ function SignUp(props) {
                 value={props.password}
                 setError={props.setError}
             />
-            <input
-                type='radio'
-                value={'student'}
-                name='status'
-                onChange={(e) => props.setStatus(e.target.value)}
-                required
-            /><label className='statusSelector'>Student</label>
-            <input
-                type='radio'
-                value={'teacher'}
-                name='status'
-                onChange={(e) => props.setStatus(e.target.value)}
-                required
-            /><label className='statusSelector'>Teacher</label>
+            <div className="Choose">
+                <input
+                    type='radio'
+                    value={'student'}
+                    name='status'
+                    onChange={(e) => props.setStatus(e.target.value)}
+                    required
+                /><label className='statusSelector'>Student</label>
+                <div className="teach">
+                    <input
+                        type='radio'
+                        value={'teacher'}
+                        name='status'
+                        onChange={(e) => props.setStatus(e.target.value)}
+                        required
+                    /><label className='statusSelector'>Teacher</label>
+                </div>
+            </div>
         </Fragment>
     );
 }
@@ -115,7 +119,7 @@ export default function Form(props) {
         }
     }
 
-    if (isSuccsess) { 
+    if (isSuccsess) {
         return <Redirect to='/profile' />
     }
 

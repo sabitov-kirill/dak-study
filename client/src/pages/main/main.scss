@@ -16,6 +16,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   font-family: 'IBM Plex Sans', sans-serif;
+  user-select: none;
 }
 
 a {
@@ -25,7 +26,7 @@ a {
 .footage {
  background-repeat: no-repeat;
  background-size: cover;
- height: 100vh;
+ height: 1030px;
  width: 100vw;
  background-image: url(../../images/space.jpg);
  z-index: -1;
@@ -54,7 +55,7 @@ a {
 
 .head {
   animation: paragraph 1.5s linear 1 forwards;
-  font-family: 'Courier' monospace;
+  font-family: 'Courier' monospace !important;
   letter-spacing: 6px;
   text-transform: uppercase;
   padding-left: 9vmin;
@@ -70,19 +71,29 @@ a {
 
  .footerClass {
    color: #fff;
-   font-family: 'Courier' monospace;
+   font-family: 'Courier' monospace !important;
    letter-spacing: 6px;
    text-transform: uppercase;
    padding-top: 9.5vmin;
    margin-top: 5vh;
-   height: 350px;
-   background-image: url(../../images/new.png);
+   height: fit-content;
    position: relative;
+   z-index: 2;
  }
 
- .Rights {
+ .backDiv2 {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background: linear-gradient(180deg, #ffffff00, #000);
+  position: relative;
+  z-index:1 ;
+} 
+
+.Rights {
    padding-left: 0.4vw;
-   margin-top: 6vh;
+   padding-top: 7.4vh;
+
  }
 
  .contacts a {
@@ -102,10 +113,10 @@ a {
 }
 
  .contacts ul {
-   padding-left: 59vw;
+   padding-left: 68vw;
  }
  .contacts h3 {
-   padding-left: 59vw;
+   padding-left: 68vw;
  }
 
  .Discr p {
@@ -119,14 +130,15 @@ a {
    margin: 0;
    padding-top: 12vmin; // вот эту парашу менять
  }
+ 
  .Zagolovok {
    color: #fff;
-   font-family: 'Courier' monospace;
+   font-family: 'Courier' monospace !important;
    letter-spacing: 6px;
    text-transform: uppercase;
    margin-bottom: 3vw;
    position: absolute;
-   margin-top: 14px;
+   margin-top: 16px;
    margin-left: 1.5vw;
    font-size: 2vmin;
  }
@@ -135,10 +147,10 @@ a {
  }
 
  .headLogo {
+   background-image: url(../../images/grad.png);
    position: fixed;
    top: 0;
    width: 100%;
-   background-image:url(../../images/grad.png);
    padding-top: 2vmin;
    padding-left: 2vmin;
    height: 102px;
@@ -205,7 +217,6 @@ a {
   opacity: 1;
 }
 }
-
 
 body {
   background-color: var(--color-secondary);
@@ -278,6 +289,7 @@ h1, h2, h3, p {
   position: absolute;
   top: calc(100% + 1rem);
   width: 100%;
+  z-index: 4;
   
   .btn {
     --size: 3rem;
@@ -320,7 +332,17 @@ h1, h2, h3, p {
   position: absolute;
   transition: transform var(--base-duration) cubic-bezier(0.25, 1, 0.35, 1);
 }
-
+.slider-animation {
+  animation: wipe-enter 2s 1
+}
+@keyframes wipe-enter {
+  0% {
+    transform: scale(0, .025)
+  }
+  50% {
+    transform: scale(1, .025)
+  }
+}
 
 .slide {
   align-items: center;
