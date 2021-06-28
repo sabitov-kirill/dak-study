@@ -87,6 +87,7 @@ class Question extends Component {
                             {this.state.options.map((option, index) => {
                                 return <Option
                                     index={this.props.index}
+                                    ind={index}
                                     key={index}
                                     onClick={this.handleOnRadio}
                                     onChange={this.changeOption}

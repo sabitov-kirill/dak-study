@@ -11,15 +11,15 @@ export default function Option(props) {
                 type="radio"
                 name={name}
                 required
-                onClick={() => props.onClick(props.index)}
+                onClick={() => props.onClick(props.ind)}
             />
             <input
                 type="text"
                 placeholder="option.."
-                onChange={e => setValue(e.target.value.trim())}
+                onChange={e => setValue(e.target.value)}
                 value={value}
                 required
-                onBlur={() => props.onChange(value, props.index)}
+                onBlur={() => props.onChange(value, props.ind)}
             />
 
 
