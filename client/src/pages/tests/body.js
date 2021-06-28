@@ -53,10 +53,5 @@ export default function Body(props) {
         }
     }, []);
 
-    return (
-        <>
-            <h1>{props.theme}</h1>
-            <div className="collectCards">{content}</div>
-        </>
-    )
+    return <div className="collectCards">{content}</div>;
 }

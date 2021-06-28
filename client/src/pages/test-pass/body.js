@@ -13,9 +13,9 @@ export default function Body() {
     const checkAnswers = (answers, id) => {
         try {
             const result = TestServise.checkAnswers(answers, id);
-            setContent(<QuestionsResults testResult={result} checkedAnswers={result.checkedAnswers}/>);
+            setContent(<QuestionsResults testResult={result} checkedAnswers={result.checkedAnswers} />);
         } catch (e) {
-            setContent(<h1>test answers check error.</h1>);   
+            setContent(<h1>test answers check error.</h1>);
         }
     }
 
@@ -25,9 +25,9 @@ export default function Body() {
             questionsList = await TestServise.getQuestions(id);
             setContent(<QuestionsAnswering questionsList={questionsList} checkAnswers={checkAnswers} />);
         } catch (e) {
-            setContent(<h1>test questions loading error.</h1>);   
+            setContent(<h1>test questions loading error.</h1>);
         }
     }, []);
 
-    return <>{ content }</>;
+    return <>{content}</>;
 }

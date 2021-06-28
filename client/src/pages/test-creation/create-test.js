@@ -9,14 +9,6 @@ import Footer from "./../../patterns/common/footer/footer"
 
 import TestService from '../../model/services/test-service'
 
-// class Question {
-//     constructor() {
-//         this.text = '';
-//         this.options = [];
-//         this.answer = '';
-//     }
-// }
-
 class TestCreationPage extends Component {
     constructor(props) {
         super(props);

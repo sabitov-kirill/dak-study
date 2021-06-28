@@ -17,9 +17,9 @@ const routes = [
   { path: '/', Component: MainPage },
   { path: '/login', Component: LoginPage },
   { path: '/profile', Component: ProfilePage },
-  { path: '/test-create', Component: TestCreationPage },
   { path: '/:theme', Component: ThemePage },
   { path: '/:theme/tests', Component: TestPage },
+  { path: '/:theme/tests/create', Component: TestCreationPage },
   { path: '/:theme/tests/:id', Component: TestPassPage },
 ]
 
@@ -27,13 +27,13 @@ function App() {
   return (
     <Router>
       <ScrollToTop>
-      <Switch>
-        {routes.map(({ path, Component }) => (
-          <Route key={path} path={path} exact>
-            <Component />
-          </Route>
-        ))}
-      </Switch>
+        <Switch>
+          {routes.map(({ path, Component }) => (
+            <Route key={path} path={path} exact>
+              <Component />
+            </Route>
+          ))}
+        </Switch>
       </ScrollToTop>
     </Router>
   );
