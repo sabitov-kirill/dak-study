@@ -49,7 +49,7 @@ let tests_mag = [
     new Test("Ampere Power", "82%", "the effect of a magnetic field on a conductor with a current", "light"),
     new Test("The Lorentz force", "47%", "mechanics of motion of a charged particle in a magnetic field", "hard"),
     new Test("The flow of the magnetic induction vector", "none", "Faraday's experiments, the law of electromagnetic induction, Lenz's Rule", "normal"),
-    new Test("The phenomenon of self-induction", "30%", "inductance, a unit of measurement, calculation of the inductance of the solenoid", "hard"),
+    new Test("inductance, a unit of measurement, calculation of the inductance of the solenoid", "30%", "inductance, a unit of measurement, calculation of the inductance of the solenoid", "hard"),
 ];
 let tests_opt = [
     new Test("Approximations of geometric optics", "none", "rectilinear propagation of light, shadow, partial shade", "normal"),
