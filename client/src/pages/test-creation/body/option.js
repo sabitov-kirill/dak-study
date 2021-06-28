@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Option(props) {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(props.text);
     const name = `option${props.index}`
 
     return (
@@ -10,14 +10,17 @@ export default function Option(props) {
             <input
                 type="text"
                 placeholder="option.."
-                onChange={e => setValue(e.target.value)}
+                onChange={e => setValue(e.target.value.trim())}
+                value={value}
                 required
                 onBlur={() => props.onChange(value, props.index)}
             />
+
             <input
                 type="radio"
                 name={name}
-                required onClick={() => props.onClick(props.index)}
+                required
+                onClick={() => props.onClick(props.index)}
             />
         </div>
     );

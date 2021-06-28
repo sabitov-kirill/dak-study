@@ -3,6 +3,8 @@ import { useParams } from 'react-router';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
 
+import Body from "./../body/body"
+
 const ThemeSelector = (props) => {
     const themeSelectors = [
         'mechanics',
@@ -59,7 +61,7 @@ class HeadForm extends Component {
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
-                        this.props.submit(this.props.theme, this.state.name, this.state.description, this.state.difficulty);
+                        this.props.submit(this.state.theme, this.state.name, this.state.description, this.state.difficulty);
                         e.target.reset();
                     }
                     e.preventDefault();
@@ -91,6 +93,12 @@ class HeadForm extends Component {
                         />
                         <DifficultySelector onClick={this.handleInputChange} />
                     </div>
+                    <Body
+                        questions={this.props.questions}
+                        removeQuestion={this.props.removeQuestion}
+                        addQuestion={this.props.addQuestion}
+                        changeQuestion={this.props.changeQuestion}
+                    />
                 </form>
             </div>
         );
