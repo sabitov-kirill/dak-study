@@ -10,9 +10,11 @@ export default function RadioSelector(props) {
                 id={selectorText + 'Button'}
                 onClick={props.onClick}
                 name={props.name}
+                className='radioButton'
                 required
             />
             <label htmlFor={selectorText + 'Button'}>{selectorText}</label>
+            <br />
             </>
         )
     })

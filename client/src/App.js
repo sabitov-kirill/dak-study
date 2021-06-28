@@ -4,31 +4,29 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 
 import MainPage from './pages/main/main'
-import Profile from './pages/profile/profile'
-import Login from './pages/login/login-form'
-import ScrollToTop from "./patterns/common/scoll-top2.js"
-
-// IN DEBUG
-import TestPass from './pages/test-pass/test-pass'
+import ProfilePage from './pages/profile/profile'
+import LoginPage from './pages/login/login-form'
+import TestPassPage from './pages/test-pass/test-pass'
 import TestPage from "./pages/tests/tests"
 import ThemePage from "./pages/theme/theme"
 import TestCreationPage from './pages/test-creation/create-test';
 
+import ScrollToTop from "./patterns/common/scroll-top"
+
 const routes = [
   { path: '/', Component: MainPage },
-  { path: '/login', Component: Login },
-  { path: '/profile', Component: Profile },
+  { path: '/login', Component: LoginPage },
+  { path: '/profile', Component: ProfilePage },
   { path: '/test-create', Component: TestCreationPage },
   { path: '/:theme', Component: ThemePage },
   { path: '/:theme/tests', Component: TestPage },
-  { path: '/:theme/tests/:id', Component: TestPass },
+  { path: '/:theme/tests/:id', Component: TestPassPage },
 ]
 
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      {/* <ScrollRestoration> */}
+      <ScrollToTop>
       <Switch>
         {routes.map(({ path, Component }) => (
           <Route key={path} path={path} exact>
@@ -36,7 +34,7 @@ function App() {
           </Route>
         ))}
       </Switch>
-      {/* </ScrollRestoration> */}
+      </ScrollToTop>
     </Router>
   );
 }
