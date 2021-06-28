@@ -15,8 +15,10 @@ class ProfilePage extends Component {
                 <div className="header-profile">
                     <Header />
                 </div>
-                <div className="footer-profile">
-                    <Footer />
+                <div className="backDiv2">
+                    <div className="footer-profile">
+                        <Footer />
+                    </div>
                 </div>
             </div>
         );

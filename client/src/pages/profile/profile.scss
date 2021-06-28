@@ -6,6 +6,7 @@
     margin-top: 10vh;
   
 }
+
 .forListGroups label{
     color: white !important;
 }
@@ -36,7 +37,7 @@
     clear: both;
     position: relative;
     background-color: transparent;
-    margin-left: 12vw;
+    margin-left: 14vw;
     font-size: 3.5vh;
 }
 .GroupsListTable  {
@@ -45,11 +46,11 @@
 }
 
 .footer-profile {
-    clear:both;
-    margin-top: 47vh;
-    position: relative;
+   margin-top: 35.5vh;
+   position: absolute;
+   z-index: 2;
+   width: 100%;
 }
-
 .ButGroup {
     background-color: transparent;
     color: white;
@@ -59,17 +60,18 @@
     border: solid 2px white;
     margin-top: 1vh;
     transition-duration: 0.4s; 
-    padding-left: 0.9vw;
+    padding-left: 0.8vw;
     width: fit-content;
     height: fit-content;
     padding-top: 2vh;
     padding-bottom: 2vh;
+    z-index: 5;
+    position: relative;
 }
 .ButGroup:hover {
     background-color: white;
     color: var(--color-secondary);
     border: solid 2px white;
-   
 }
 
 .ZagTable {
@@ -97,4 +99,6 @@
     padding-bottom: 4vh;
     margin-top: 2vh;
     padding-right: 2.5vw;
+    position: absolute;
+    z-index: 2;
 }

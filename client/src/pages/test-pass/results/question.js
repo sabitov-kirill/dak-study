@@ -1,21 +1,19 @@
 import React from 'react';
 
-export default function Question(props) {
-    return (
-        <div>
-            <p>{props.question.text}</p>
-            <RadioSelector
-                selectorsText={props.question.options}
-                onClick={props.selectAnswer}
-                name={props.question.text}
-            />
-        </div>
-    );
+// export default function Question(props) {
+//     return (
+//         <div>
+//             <p>{props.question.text}</p>
+//             <RadioSelector
+//                 selectorsText={props.question.options}
+//                 onClick={props.selectAnswer}
+//                 name={props.question.text}
+//             />
+//         </div>
+//     );
 
-    
-}
 
-import React from 'react';
+// }
 
 export default function Question(props) {
     let optionsClasses = new Array(props.question.options.length);
@@ -30,16 +28,16 @@ export default function Question(props) {
 
     const options = props.question.options.map((option, index) => {
         <>
-        <p className={optionsClasses[index]}
-        >{option}</p>
-        <br />
+            <p className={optionsClasses[index]}
+            >{option}</p>
+            <br />
         </>
     });
 
     return (
         <div>
             <p>{props.question.text}</p>
-            { options }
+            { options}
         </div>
     );
 }
