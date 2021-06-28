@@ -1,7 +1,5 @@
 import React from 'react';
 
-import RadioSelector from '../../../patterns/common/radio-selector'
-
 export default function Question(props) {
     return (
         <div>
@@ -12,5 +10,5 @@ export default function Question(props) {
                 name={props.question.text}
             />
         </div>
-    );
+    );    
 }

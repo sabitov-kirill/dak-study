@@ -47,7 +47,7 @@ class TestService {
         }
     }
 
-    async checkAnswers(id, answers) {
+    async checkAnswers(answers, id) {
 
     }
 }

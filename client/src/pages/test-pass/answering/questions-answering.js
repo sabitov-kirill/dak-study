@@ -5,9 +5,9 @@ import Question from './question'
 export default function QuestionsAnswering(props) {
     const [answers, setAnswers] = useState([]);
 
-    const selectQuestionAnswer = (answer, questionIndex) => {
+    const selectQuestionAnswer = (questionIndex) => {
         setAnswers((answers) => {
-            answers[questionIndex] = answer;
+            answers[questionIndex] = questionIndex;
             return answers;
         });
     }
@@ -16,7 +16,7 @@ export default function QuestionsAnswering(props) {
         return (
             <Question
                 question={question}
-                selectAnswer={(value) => selectQuestionAnswer(value, index)}
+                selectAnswer={(value) => selectQuestionAnswer(index)}
             />
         );
     });
@@ -26,7 +26,7 @@ export default function QuestionsAnswering(props) {
             e.preventDefault();
             props.checkAnswers(answers);
         }}>
-            <div>{questions}</div>
+            { questions }
             <input type='submit' value='Send' />
         </form>;
 
