@@ -1,3 +1,247 @@
 .testCreat {
     margin-top: 10vh;
 }
+
+.ZagTest h1 {
+   margin-left: 2vw; 
+   border-bottom: 2px white solid;
+   padding-bottom: 1vh;
+}
+.ZagTest{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} 
+.ZagTest input {
+    width: fit-content;
+    height: fit-content;
+    margin-left:auto;
+    float: right;
+    margin-right: 3vw;
+    border: 2px solid #fff;
+    color: white;
+    background-color: transparent;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    padding: 0.8vh;
+    padding-left: 0.6vw;
+}
+.ZagTest input:hover {
+    border: 2px solid #fff;
+    color: var(--color-secondary);
+    background-color: #fff;
+    transition-duration: 0.6s;
+}
+.allTests {
+    margin-left: 2vw;
+
+}
+
+.need {
+    border: 2px solid #fff;
+    width: fit-content;
+    padding:20px;
+    padding-top: 10px;
+}
+.vvod {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.OptionsTheme {
+    margin-bottom: 1.5vh;
+    border-bottom: 10px solid var(--color-secondary);
+    padding-bottom: 1vh;
+    height: fit-content;
+    padding-left: 1vw;
+
+    padding-right: 7vw;
+}
+.OptionsTheme label:hover{
+    animation: paragraph3 0.5s linear 1 forwards;
+}
+
+@keyframes paragraph3 {
+    0% {
+        color:rgba(255, 255, 255, 0);
+    }
+  
+  100% {
+    
+    color:rgba(255, 255, 255, 1);
+  }
+  }
+
+.level {
+    height: 16.5vh;
+
+}
+
+.diff {
+    float: right;
+    margin-left: auto;
+    margin-right: 12.4vw;
+    border:2px solid #fff;
+    padding: 20px;
+    padding-top:10px ;
+    margin-top: 2vh;
+}
+
+.Pole {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    width:40%;
+    margin-top: 40px;
+    border: white solid 2px;
+    padding:25px;
+    padding-top: 10px;
+}
+
+.Pole input::placeholder {
+    font-size: 20px;
+
+}
+.second {
+    margin-top: 30px;
+}
+
+.Pole input {
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    outline :none !important;
+    outline-offset: 0;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courier' monospace !important;
+
+}
+
+.Pole input:active, input:hover, input:focus {
+    outline :none !important;
+    outline-offset: 0;
+}
+
+.Pole label {
+    font-size: 20px;
+}
+
+.allTests h3 {
+    color:white;
+    background-color: transparent;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    border-bottom: 2px white solid;
+    width: fit-content;
+    padding-bottom: 1vh;
+
+}
+
+.Opp {
+    background-color: var(--color-accent);
+    width: fit-content;
+    border-top: solid 1vh var(--color-accent);
+
+}
+
+.OptionsTheme label {
+    margin-left: 1vw;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.alt-button {
+    color: white;
+    margin-left: 2vw;
+    margin-top: 3vh;
+    border: 2px solid #fff;
+    width: fit-content;
+    padding:20px;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    background-color: transparent;
+}
+
+.alt-button:hover {
+    color: var(--color-secondary);
+    margin-left: 2vw;
+    margin-top: 3vh;
+    border: 2px solid #fff;
+    width: fit-content;
+    padding:20px;
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    background-color: #fff;
+}
+.alt-input {
+    border: 2px solid #fff;
+    background-color: transparent;
+    outline :none !important;
+    outline-offset: 0;
+    color: white;
+    font-size: 20px;
+    width:40%;
+    font-family: 'Courier' monospace !important;
+}
+
+.Pole2 {
+    font-family: 'Courier' monospace !important;
+    letter-spacing: 6px;
+    width:39%;
+    display:flex;
+    flex-direction: column;
+    margin-left: 2vw;
+    margin-top: 3vh;
+}
+.newPole {
+    display:flex;
+    flex-direction: row;
+}
+.Pole2 input {
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    outline :none !important;
+    outline-offset: 0;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courier' monospace !important;
+
+}
+
+.radioNew {
+    margin-left: 1vw;
+    margin-top: 3vh;
+}
+
+.radioNew input {
+    margin-left: 1vw;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    outline :none !important;
+    outline-offset: 0;
+    color: white;
+    font-size: 20px;
+    font-family: 'Courier' monospace !important;
+}
+.radioNew input:active, input:hover, input:focus {
+    outline :none !important;
+    outline-offset: 0;
+}
+
+.Pole2 input:active, input:hover, input:focus {
+    outline :none !important;
+    outline-offset: 0;
+}
+
+.confirm {
+    margin-left: 2vw;
+}

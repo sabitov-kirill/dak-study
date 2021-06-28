@@ -7,8 +7,8 @@ import Body from "./body"
 function TestPage() {
     return (
         <div>
-            <Body />
             <Header />
+            <Body />
             <Footer />
         </div>
     );

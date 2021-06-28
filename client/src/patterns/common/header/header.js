@@ -7,7 +7,7 @@ function LogoSpace(props) {
     return (
         <div className="headerClass">
             <div className="imageLogo"></div>
-            <span className="Zagolovok">DAK-Study</span>
+            <span className="Zagolovok">CGSG-DAK-Study</span>
         </div>
     );
 }

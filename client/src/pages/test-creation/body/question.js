@@ -4,17 +4,18 @@ import Option from './option';
 
 function HeadQuestion(props) {
     return (
-        <div>
-            <label htmlFor="questionName">Name</label>
-            <input
-                type="text"
-                id="questionName"
-                value={props.text}
-                onChange={props.nameChange}
-                required
-            />
+        <div className="newPole">
+            <div className="Pole2">
+
+                <input
+                    type="text"
+                    id="questionName"
+                    value={props.text}
+                    onChange={props.nameChange}
+                    required
+                /><label htmlFor="questionName">Name</label></div>
             {/* <button onClick={props.close}>close</button> */}
-            <button onClick={() => props.remove(props.index)}>delete</button>
+            <button className="alt-button" onClick={() => props.remove(props.index)}>delete</button>
         </div>
     );
 }
@@ -81,7 +82,7 @@ class Question extends Component {
                 {
                     this.state.isOpened &&
                     <div>
-                        <button onClick={this.addOption}>new option</button>
+                        <button className="alt-button" onClick={this.addOption}>new option</button>
                         <div>
                             {this.state.options.map((option, index) => {
                                 return <Option

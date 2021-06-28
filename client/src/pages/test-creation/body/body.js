@@ -19,14 +19,14 @@ const AddQuest = (props) => {
     };
 
     return (
-        <div>
+        <div className="confirm">
             {/* <form name="a" onSubmit={(e) => {
                 props.add(new StoreQuestion(name));
                 props.close(false);
                 e.preventDefault();
             }}> */}
-            <input type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
-            <input type="button" value="confirm" onClick={a} />
+            <input className="alt-input" type="text" onChange={(e) => setName(e.target.value)} placeholder="question" required />
+            <input className="alt-button" type="button" value="confirm" onClick={a} />
             {/* </form> */}
         </div>
     )
@@ -42,7 +42,7 @@ export default function Body(props) {
     return (
         <div>
             <div>
-                {!isClicked && <button onClick={() => setIsClicked(!isClicked)}>Add</button>}
+                {!isClicked && <button className="alt-button" onClick={() => setIsClicked(!isClicked)}>Add</button>}
                 {isClicked && <AddQuest add={props.addQuestion} close={setIsClicked} />}
             </div>
             {questions}

@@ -14,9 +14,9 @@ export default function QuestionsAnswering(props) {
 
     return (
         <div className='test-pass'>
-            <h1>test results page</h1>
-            <h1>your result: {props.testResult}%</h1>
-            { questionsResults }
+            <h1 className='testResultHeader'>test results page</h1>
+            <h1 className='testResultText' >your result: {props.testResult}%</h1>
+            {questionsResults}
         </div>
     )
 }

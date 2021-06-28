@@ -6,7 +6,13 @@ export default function Option(props) {
 
     return (
         // <div tabIndex="0" onBlur={props.onChange(value, props.index)}>
-        <div>
+        <div className="radioNew">
+            <input
+                type="radio"
+                name={name}
+                required
+                onClick={() => props.onClick(props.index)}
+            />
             <input
                 type="text"
                 placeholder="option.."
@@ -16,12 +22,7 @@ export default function Option(props) {
                 onBlur={() => props.onChange(value, props.index)}
             />
 
-            <input
-                type="radio"
-                name={name}
-                required
-                onClick={() => props.onClick(props.index)}
-            />
+
         </div>
     );
 }
