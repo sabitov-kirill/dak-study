@@ -1,33 +1,7 @@
 import React, { Component } from 'react';
+import { useParams } from 'react-router';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
-
-// export default function asd(props) {
-//     return (
-// <div>
-//     {/* change this on e => {..functions(params)} */}
-//     <form onSubmit={props.onSubmit}>
-
-//     </form>
-// </div>
-//     );
-// }
-
-const ThemeSelector = (props) => {
-    const themeSelectors = [
-        'mechanics',
-        'molecular',
-        'electrodynamics',
-        'magnetism',
-        'optics'
-    ];
-
-    return (
-        <div>
-            <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
-        </div>
-    );
-};
 
 const DifficultySelector = (props) => {
     const difficultySelectors = [
@@ -42,6 +16,8 @@ const DifficultySelector = (props) => {
         </div>
     );
 };
+
+const Wrapper = (props) => { const { theme } = useParams(); return <HeadForm theme={theme} ok={props.ok} submit={props.submit} /> }
 
 class HeadForm extends Component {
     constructor(props) {
@@ -67,7 +43,7 @@ class HeadForm extends Component {
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
-                        this.props.submit(this.state.theme, this.state.name, this.state.description, this.state.difficulty);
+                        this.props.submit(this.props.theme, this.state.name, this.state.description, this.state.difficulty);
                         e.target.reset();
                     }
                     e.preventDefault();
@@ -77,7 +53,6 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div>
-                        <ThemeSelector onClick={this.handleInputChange} />
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"
@@ -105,4 +80,4 @@ class HeadForm extends Component {
     }
 }
 
-export default HeadForm;
+export default Wrapper;
