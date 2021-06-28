@@ -1,5 +1,11 @@
 const { Schema, model } = require('mongoose');
 
+const TestResultsSchema = new Schema({
+    testId: { type: String },
+    testName: { type: String },
+    results: { type: [Number] }
+});
+
 const UserSchema = new Schema({
     /* Email */
     email: { type: String, unique: true, required: true },
@@ -20,7 +26,10 @@ const UserSchema = new Schema({
     isOnline: { type: Boolean },
 
     /* Users group list */
-    groupsNames: { type: [String] }
+    groupsNames: { type: [String] },
+
+    /* User tests results */
+    testsResults: { type: [TestResultsSchema] }
 });
 
 module.exports = model('User', UserSchema);

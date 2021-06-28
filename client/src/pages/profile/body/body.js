@@ -23,7 +23,7 @@ export default function Body() {
             { session.isLoggedIn &&
                 <div className='profileBody'>
 
-                    <InfoPanel className='profileInfo' signOut={signOut} />
+                    <InfoPanel className='profileInfo' isTeacher={session.user.status === 'teacher'} signOut={signOut} />
                     <h1 className="ZagolovokProfile">Personal account</h1>
                     <ActionsContainer className='profileActions' />
                 </div>

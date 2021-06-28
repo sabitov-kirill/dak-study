@@ -12,11 +12,11 @@ export default function Body() {
 
     const checkAnswers = async (answers, id) => {
         try {
-            const checkedAnswers = await TestServise.checkAnswers(answers, id);
+            const result = await TestServise.checkAnswers(answers, id);
             setContent(<QuestionsResults
                 questionsList={questionsList}
-                checkedAnswers={checkedAnswers}
-            /*testResult={answers}*/
+                checkedAnswers={result.checkedAnswers}
+                testResult={result.result}
             />);
         } catch (e) {
             setContent(<h1>test answers check error.</h1>);

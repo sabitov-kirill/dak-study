@@ -22,8 +22,8 @@ export default function Question(props) {
     });
 
     return (
-        <div>
-            <p>{props.question.text}</p>
+        <div className='questionResult'>
+            <p className='questionResultText'>{props.question.text}</p>
             { options}
         </div>
     );

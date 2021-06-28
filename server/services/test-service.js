@@ -41,19 +41,21 @@ class TestService {
     }
 
     async checkAnswers(answers, id) {
+        let rightAns = 0;
         const test = await this.getById(id);
         if (!test) throw new Error(`Test with id ${id} not found.`);
 
         // Checking answers
         const checkedAnswers = test.questions.map((question, index) => {
             if (answers[index] === question.answer) {
+                rightAns++;
                 return { inputIndex: answers[index], isCorrect: true }
             } else {
                 return { inputIndex: answers[index], isCorrect: false, correctIndex: question.answer };
             }
         });
 
-        return checkedAnswers;
+        return { checkedAnswers, result: Math.ceil(rightAns / test.questions.length * 100) };
     }
 
     async addUserResult(userId, result, testName) {

@@ -20,3 +20,25 @@
     width: fit-content;
     border-bottom: 2px solid green !important;
 }
+
+.questionResult {
+    margin-top: 3vh;
+    margin-left: 3vh;
+    padding-left: 1.5vw;
+    max-width: 60vw;
+    border: 2px solid white;
+}
+
+.questionResultText {
+    border-bottom: 2px solid white;
+    padding-bottom: 0.5vh;
+    width: fit-content;
+}
+
+.testResultText {
+    margin-left: 3vh;
+}
+
+.testResultHeader {
+    text-align: center;
+}
