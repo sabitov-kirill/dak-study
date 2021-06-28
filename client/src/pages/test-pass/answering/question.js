@@ -1,15 +1,15 @@
 import React from 'react';
 
-import QuestionOptions from './question-options'
+import RadioSelector from '../../../patterns/common/radio-selector'
 
 export default function Question(props) {
     return (
         <div>
             <p>{props.question.text}</p>
-            <QuestionOptions
-                selectAnswer={props.selectAnswer}
-                options={props.question.options}
-                questionText={props.question.text}
+            <RadioSelector
+                selectorsText={props.question.options}
+                onClick={props.selectAnswer}
+                name={props.question.text}
             />
         </div>
     );

@@ -24,8 +24,6 @@ const TestCard = props => {
 }
 
 export default function Body(props) {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [isError, setIsError] = useState(false);
     const [content, setContent] = useState(<h1>tests are loading</h1>);
     const { theme } = useParams();
 
@@ -37,28 +35,23 @@ export default function Body(props) {
         }
     }
 
-    // Loading tests
     useEffect(async () => {
-        if (!isLoaded && !isError) {
-            try {
-                const tests = await TestService.getList(theme);
-                const cards = tests.map(test => {
-                    return (
-                        <TestCard
-                            test={test}
-                            testResult={setRestResult(-1)}
-                        />
-                    );
-                });
+        try {
+            const tests = await TestService.getList(theme);
+            const cards = tests.map(test => {
+                return (
+                    <TestCard
+                        test={test}
+                        testResult={setRestResult(-1)}
+                    />
+                );
+            });
 
-                setContent(<>{cards}</>);
-                setIsLoaded(true);
-            } catch (e) {
-                setContent(<h1>tests loading error.</h1>);   
-                setIsError(true);
-            }
+            setContent(<>{cards}</>);
+        } catch (e) {
+            setContent(<h1>tests loading error.</h1>);   
         }
-    });
+    }, []);
 
     return (
         <>
