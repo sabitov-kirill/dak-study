@@ -69,6 +69,7 @@ class HeadForm extends Component {
                         <input type="submit" value="Create" />
                     </div>
                     <div>
+                        <ThemeSelector onClick={this.handleInputChange} />
                         <label htmlFor="entryName">Name</label>
                         <input
                             type="text"
