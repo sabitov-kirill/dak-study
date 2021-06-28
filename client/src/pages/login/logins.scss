@@ -84,9 +84,10 @@
 
   .fonLogin {
     background-color: rgba($color: #101118, $alpha: 1.0);
-    height: 35vh;
+    height: fit-content;
     padding-top: 4vh;
-    width: 40vw;
+    width: fit-content;
+    padding-bottom: 4vh;
   }
  
   

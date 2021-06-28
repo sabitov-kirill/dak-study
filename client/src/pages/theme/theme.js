@@ -15,7 +15,9 @@ class ThemePage extends Component {
             <div>
                 <Body />
                 <Header />
-                <Footer />
+                <div className="Footer-profile">
+                    <Footer />
+                </div>
             </div>
         );
     }

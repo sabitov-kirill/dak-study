@@ -3,6 +3,8 @@ import { useParams } from 'react-router';
 
 import RadioSelector from '../../../patterns/common/radio-selector'
 
+import Body from "./../body/body"
+
 const ThemeSelector = (props) => {
     const themeSelectors = [
         'mechanics',
@@ -13,8 +15,11 @@ const ThemeSelector = (props) => {
     ];
 
     return (
-        <div>
-            <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+        <div className="need">
+            <h3>Theme choose</h3>
+            <div className="Opp">
+                <RadioSelector selectorsText={themeSelectors} onClick={props.onClick} name='theme' />
+            </div>
         </div>
     );
 };
@@ -27,8 +32,12 @@ const DifficultySelector = (props) => {
     ];
 
     return (
-        <div>
-            <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
+        <div className="diff">
+            <h3>Difficulty</h3>
+            <div className="Opp level">
+
+                <RadioSelector selectorsText={difficultySelectors} onClick={props.onClick} name='difficulty' />
+            </div>
         </div>
     );
 };
@@ -64,33 +73,46 @@ class HeadForm extends Component {
                     }
                     e.preventDefault();
                 }}>
-                    <div>
+                    <div className="ZagTest">
                         <h1>Create new test</h1>
                         <input type="submit" value="Create" />
                     </div>
-                    <div>
-                        <ThemeSelector onClick={this.handleInputChange} />
-                        <label htmlFor="entryName">Name</label>
-                        <input
-                            type="text"
-                            id="entryName"
-                            placeholder="Entry name"
-                            required
-                            onChange={this.handleInputChange}
-                            name="name"
-                        />
+                    <div className="allTests">
+                        <div className="vvod">
+                            <ThemeSelector onClick={this.handleInputChange} />
+                            <DifficultySelector onClick={this.handleInputChange} /></div>
+                        <div className="Pole">
 
-                        <label htmlFor="entryDescription">Description</label>
-                        <input
-                            type="text"
-                            id="entryDescription"
-                            placeholder="Entry description"
-                            required
-                            onChange={this.handleInputChange}
-                            name="description"
-                        />
-                        <DifficultySelector onClick={this.handleInputChange} />
+                            <h3>Info</h3>
+
+                            <input
+                                type="text"
+                                id="entryName"
+                                placeholder="Entry name"
+                                required
+                                onChange={this.handleInputChange}
+                                name="name"
+                            /> <label htmlFor="entryName">Name</label>
+
+
+                            <input
+                                type="text"
+                                id="entryDescription"
+                                placeholder="Entry description"
+                                required
+                                onChange={this.handleInputChange}
+                                name="description"
+                                className="second"
+                            /><label htmlFor="entryDescription">Description</label>
+                        </div>
+
                     </div>
+                    <Body
+                        questions={this.props.questions}
+                        removeQuestion={this.props.removeQuestion}
+                        addQuestion={this.props.addQuestion}
+                        changeQuestion={this.props.changeQuestion}
+                    />
                 </form>
             </div>
         );
