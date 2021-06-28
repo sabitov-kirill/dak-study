@@ -17,7 +17,9 @@ class ThemePage extends Component {
                 {/* <ScrollToTopOnMount /> */}
                 <Body />
                 <Header />
-                <Footer />
+                <div className="Footer-profile">
+                    <Footer />
+                </div>
             </div>
         );
     }

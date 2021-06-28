@@ -36,9 +36,9 @@ function Contacts(props) {
 
 function DivRights(props) {
     return (
-        <div className="Rights">
+        <div>
             <img src="" />
-            <div>
+            <div className="Rights">
                 © 2021 CGSG'Jr.
                 <span> All Rights Reserved. </span>
             </div>
@@ -48,13 +48,16 @@ function DivRights(props) {
 
 function DivFooter(props) {
     return (
-        <div className="footerClass">
-            <div className="commonFooter">
-                <AboutUs />
-                <Contacts />
+        <div className="backDiv2">
+            <div className="backDiv2">
+                <div className="footerClass">
+                    <div className="commonFooter">
+                        <AboutUs />
+                        <Contacts />
+                    </div>
+                    <DivRights />
+                </div>
             </div>
-            <DivRights />
-
         </div>
     );
 }

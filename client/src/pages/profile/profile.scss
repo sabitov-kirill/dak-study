@@ -21,7 +21,7 @@
     float:left;  
     background-color: #1D1F2F;
    padding-top: 5vh;
-   width: 26vw;
+   width: fit-content;
    align-items: center;
    text-align: center;
    padding-right: 3.5vw;
@@ -41,8 +41,9 @@
     font-size: 3.5vh;
 }
 .GroupsListTable  {
-    float: right;
-    padding-right: 47vw;
+    float: left;
+    position: relative;
+    left:40%;
 }
 
 .footer-profile {
