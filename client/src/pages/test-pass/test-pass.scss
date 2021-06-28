@@ -5,3 +5,18 @@
 .test-pass p, label, h1 {
     color:white;
 }
+
+.optionResultCorrect {
+    width: fit-content;
+    color: green !important;
+}
+
+.optionResultWrong {
+    width: fit-content;
+    color: red !important;
+}
+
+.optionResultAnswer {
+    width: fit-content;
+    border-bottom: 2px solid green !important;
+}

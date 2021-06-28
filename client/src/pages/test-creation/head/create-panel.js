@@ -59,7 +59,7 @@ class HeadForm extends Component {
             <div>
                 <form onSubmit={(e) => {
                     if (this.props.ok !== 0) {
-                        this.props.submit(this.props.theme, this.state.name, this.state.description, this.state.difficulty);
+                        this.props.submit(this.state.theme, this.state.name, this.state.description, this.state.difficulty);
                         e.target.reset();
                     }
                     e.preventDefault();

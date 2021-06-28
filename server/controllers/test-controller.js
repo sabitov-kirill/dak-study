@@ -27,7 +27,7 @@ class TestController {
     async getQuestions(request, result) {
         try {
             const { id } = JSON.parse(request.body);
-            const test = await TestsService.getById(id)
+            const test = await TestsService.getById(id);
             const questionsData = test.questions.map((question) => {
                 return {
                     text: question.text,
@@ -36,6 +36,17 @@ class TestController {
             });
 
             result.status(200).send(JSON.stringify(questionsData));
+        } catch (e) {
+            result.status(400).send(e);
+        }
+    }
+
+    async checkAnswers(request, result) {
+        try {
+            const { answers, id } = JSON.parse(request.body);
+            const checkedAnswers = await TestsService.checkAnswers(answers, id);
+
+            result.status(200).send(JSON.stringify(checkedAnswers));
         } catch (e) {
             result.status(400).send(e);
         }

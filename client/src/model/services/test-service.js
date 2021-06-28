@@ -48,7 +48,20 @@ class TestService {
     }
 
     async checkAnswers(answers, id) {
+        let test_data = { answers, id }
+        let result = await fetch("/req/test-check", {
+            method: "POST",
+            headers: { "Contet-Type": "application/json;charset=utf-8" },
+            body: JSON.stringify(test_data)
+        });
 
+        if (result.ok) {
+            let text = await result.text();
+            return JSON.parse(text);
+        } else {
+            let err = await result.text();
+            throw new Error(`${err}`);
+        }
     }
 }
 

@@ -10,10 +10,14 @@ export default function Body() {
     const { id } = useParams();
     let questionsList;
 
-    const checkAnswers = (answers, id) => {
+    const checkAnswers = async (answers, id) => {
         try {
-            const result = TestServise.checkAnswers(answers, id);
-            setContent(<QuestionsResults testResult={result} checkedAnswers={result.checkedAnswers} />);
+            const checkedAnswers = await TestServise.checkAnswers(answers, id);
+            setContent(<QuestionsResults
+                questionsList={questionsList}
+                checkedAnswers={checkedAnswers}
+            /*testResult={answers}*/
+            />);
         } catch (e) {
             setContent(<h1>test answers check error.</h1>);
         }
@@ -23,7 +27,10 @@ export default function Body() {
     useEffect(async () => {
         try {
             questionsList = await TestServise.getQuestions(id);
-            setContent(<QuestionsAnswering questionsList={questionsList} checkAnswers={checkAnswers} />);
+            setContent(<QuestionsAnswering
+                questionsList={questionsList}
+                checkAnswers={(answers) => checkAnswers(answers, id)}
+            />);
         } catch (e) {
             setContent(<h1>test questions loading error.</h1>);
         }

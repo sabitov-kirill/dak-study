@@ -7,17 +7,18 @@ export default function Question(props) {
     if (props.checkedAnswer.isCorrect) {
         optionsClasses[props.checkedAnswer.inputIndex] += 'Correct'
     } else {
-        optionsClasses[props.checkedAnswer.correctIndex] += 'Correct'
+        optionsClasses[props.checkedAnswer.correctIndex] += 'Answer'
         optionsClasses[props.checkedAnswer.inputIndex] += 'Wrong'
     }
 
     const options = props.question.options.map((option, index) => {
-        <>
-            <p className={optionsClasses[index]}>
-                {option}
-            </p>
-            <br />
-        </>
+        return (
+            <>
+                <p className={optionsClasses[index]}>
+                    {option}
+                </p>
+            </>
+        );
     });
 
     return (
